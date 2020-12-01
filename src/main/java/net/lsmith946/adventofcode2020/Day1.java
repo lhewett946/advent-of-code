@@ -8,7 +8,8 @@ public class Day1 implements Puzzle{
     private Set<Integer> values;
 
     public Day1() throws IOException {
-        this.values = InputLoader.loadToIntSet(getClass().getResource("/day1_input.txt").getFile());
+        InputLoader il = new InputLoader();
+        this.values = il.loadToIntSet("/day1_input.txt");
     }
 
     public void solve() {

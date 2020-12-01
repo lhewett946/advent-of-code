@@ -11,7 +11,8 @@ public class InputLoaderTest {
 
     @Test
     public void testLoadingIntsToSet() throws IOException {
-        Set<Integer> loadedInts = InputLoader.loadToIntSet(getClass().getResource("/int_loader_test_data.txt").getFile());
+        InputLoader il = new InputLoader();
+        Set<Integer> loadedInts = il.loadToIntSet("/int_loader_test_data.txt");
         Set<Integer> expectedInts = new HashSet<>();
 
         expectedInts.add(1721);
