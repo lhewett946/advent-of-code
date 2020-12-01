@@ -12,8 +12,9 @@ public class Day1 {
     }
 
     public void solve() {
-        System.out.println("--- Day 1 ---");
+        System.out.println("------ DAY 1 ------");
         solvePartOne();
+        solvePartTwo();
     }
 
     public int solvePartOne() {
@@ -27,6 +28,30 @@ public class Day1 {
                 System.out.println("--- PART ONE ---");
                 System.out.println("The two values found are " + i.toString() + " and " + remaining.toString());
                 System.out.println("The product of these two values is " + product);
+                break;
+            }
+        }
+        return product;
+    }
+
+    public int solvePartTwo() {
+        // part 2 is to find three integers from the list which sum to 2020
+        // and then find the product of those three integers
+        int product = 0;
+        for (Integer i : values) {
+            boolean solutionFound = false;
+            for (Integer j : values) {
+                Integer remaining = 2020 - i - j;
+                if (values.contains(remaining)) {
+                    product = i * j * remaining;
+                    System.out.println("--- PART TWO ---");
+                    System.out.println("The three values found are " + i.toString() + ", " + j.toString() + " and " + remaining.toString());
+                    System.out.println("The product of these three values is " + product);
+                    solutionFound = true;
+                    break;
+                }
+            }
+            if (solutionFound) {
                 break;
             }
         }
