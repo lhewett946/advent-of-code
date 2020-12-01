@@ -3,7 +3,6 @@ package net.lsmith946.adventofcode2020;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
