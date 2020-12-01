@@ -3,7 +3,7 @@ package net.lsmith946.adventofcode2020;
 import java.io.IOException;
 import java.util.Set;
 
-public class Day1 {
+public class Day1 implements Puzzle{
 
     private Set<Integer> values;
 
