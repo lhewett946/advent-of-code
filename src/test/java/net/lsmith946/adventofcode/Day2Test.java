@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode2020;
+package net.lsmith946.adventofcode;
 
 import org.junit.Assert;
 import org.junit.Test;

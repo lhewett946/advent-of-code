@@ -1,11 +1,9 @@
-package net.lsmith946.adventofcode2020;
+package net.lsmith946.adventofcode;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Day1Test {
 

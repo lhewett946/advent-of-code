@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode2020;
+package net.lsmith946.adventofcode;
 
 public interface Puzzle {
 
