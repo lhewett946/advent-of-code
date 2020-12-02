@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode;
+package net.lsmith946.adventofcode.problems2020;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
