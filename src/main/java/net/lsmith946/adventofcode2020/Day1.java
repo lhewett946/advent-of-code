@@ -12,12 +12,14 @@ public class Day1 implements Puzzle{
         this.values = il.loadToIntSet("/day1_input.txt");
     }
 
+    @Override
     public void solve() {
         System.out.println("------ DAY 1 ------");
         solvePartOne();
         solvePartTwo();
     }
 
+    @Override
     public int solvePartOne() {
         // part 1 is to find two integers from the list which sum to 2020
         // and then find the product of those two integers
@@ -35,6 +37,7 @@ public class Day1 implements Puzzle{
         return product;
     }
 
+    @Override
     public int solvePartTwo() {
         // part 2 is to find three integers from the list which sum to 2020
         // and then find the product of those three integers
