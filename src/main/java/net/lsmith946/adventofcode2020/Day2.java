@@ -49,6 +49,23 @@ public class Day2 implements Puzzle {
 
     @Override
     public int solvePartTwo() {
-        return 0;
+        int validPasswords = 0;
+        for (String s: values) {
+            // decode the data from the input file
+            String [] splitStrings = s.split(" ");
+            String [] minMaxCount = splitStrings[0].split("-");
+            int firstPosition = Integer.parseInt(minMaxCount[0]) - 1;
+            int secondPosition = Integer.parseInt(minMaxCount[1]) - 1;
+            char letter = splitStrings[1].charAt(0);
+            char[] password = splitStrings[2].toCharArray();
+
+            // check password validity
+            if (password[firstPosition] == letter ^ password[secondPosition] == letter) {
+                validPasswords++;
+            }
+        }
+        System.out.println("--- PART TWO ---");
+        System.out.println("The number of valid passwords is " + validPasswords);
+        return validPasswords;
     }
 }
