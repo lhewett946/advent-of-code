@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode;
+package net.lsmith946.adventofcode.utils;
 
 public interface Puzzle {
 

@@ -1,9 +1,12 @@
 package net.lsmith946.adventofcode;
 
+import net.lsmith946.adventofcode.utils.InputLoader;
+import net.lsmith946.adventofcode.utils.Puzzle;
+
 import java.io.IOException;
 import java.util.Set;
 
-public class Day1 implements Puzzle{
+public class Day1 implements Puzzle {
 
     private Set<Integer> values;
 

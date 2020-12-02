@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode;
+package net.lsmith946.adventofcode.utils;
 
 import java.io.*;
 import java.net.URL;

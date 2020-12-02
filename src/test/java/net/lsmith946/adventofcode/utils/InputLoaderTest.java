@@ -1,5 +1,6 @@
-package net.lsmith946.adventofcode;
+package net.lsmith946.adventofcode.utils;
 
+import net.lsmith946.adventofcode.utils.InputLoader;
 import org.junit.Assert;
 import org.junit.Test;
 
