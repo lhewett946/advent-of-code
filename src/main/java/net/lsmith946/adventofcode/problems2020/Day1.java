@@ -41,7 +41,7 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public int solvePartTwo() {
+    public long solvePartTwo() {
         // part 2 is to find three integers from the list which sum to 2020
         // and then find the product of those three integers
         int product = 0;

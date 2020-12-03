@@ -51,7 +51,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public int solvePartTwo() {
+    public long solvePartTwo() {
         int validPasswords = 0;
         for (String s: values) {
             // decode the data from the input file
