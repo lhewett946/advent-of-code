@@ -4,15 +4,51 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Day4 implements Puzzle {
 
     List<String> values;
+    List<Passport> passports;
 
     public Day4() throws IOException {
         InputLoader il = new InputLoader();
         this.values = il.loadToStringList("/day4_input.txt");
+        this.passports = new ArrayList<>();
+        loadPassports();
+    }
+
+    private void loadPassports() {
+        Passport currentPassport = new Passport();
+        for (String s: values) {
+            if (s.equals("")) {
+                // if the string is empty, we are at the start of a new passport
+                // so store the current passport and create a new one
+                passports.add(currentPassport);
+                currentPassport = new Passport();
+            } else {
+                String[] fieldsInString = s.split(" ");
+                // check for each field appearing in the string
+                // fields are not presented in a consistent order
+                // so any field could be anywhere within each passports data
+                for (String field : fieldsInString) {
+                    String[] fieldAndValue = field.split(":");
+                    switch (fieldAndValue[0]) {
+                        case "byr" -> currentPassport.setBirthYear(fieldAndValue[1]);
+                        case "iyr" -> currentPassport.setIssueYear(fieldAndValue[1]);
+                        case "eyr" -> currentPassport.setExpirationYear(fieldAndValue[1]);
+                        case "hgt" -> currentPassport.setHeight(fieldAndValue[1]);
+                        case "hcl" -> currentPassport.setHairColour(fieldAndValue[1]);
+                        case "ecl" -> currentPassport.setEyeColour(fieldAndValue[1]);
+                        case "pid" -> currentPassport.setPassportID(fieldAndValue[1]);
+                        case "cid" -> currentPassport.setCountryID(fieldAndValue[1]);
+                    }
+                }
+            }
+        }
+        // load the final passport to the list
+        passports.add(currentPassport);
     }
 
     @Override
@@ -24,56 +60,25 @@ public class Day4 implements Puzzle {
 
     @Override
     public int solvePartOne() {
-        Passport currentPassport = new Passport();
         int validPassports = 0;
-        for (String s: values) {
-            if (s.equals("")) {
-                // if the string is empty, we are at the start of a new passport
-                // so check the validity of the current one and then create a new one
-                if (currentPassport.checkValidity()) {
-                    validPassports++;
-                }
-                currentPassport = new Passport();
-            } else {
-                // check for each field appearing in the string
-                // fields are not presented in a consistent order
-                // so any field could be anywhere within each passports data
-                if (s.contains("byr:")) {
-                    currentPassport.birthYearPresent = true;
-                }
-                if (s.contains("iyr:")) {
-                    currentPassport.issueYearPresent = true;
-                }
-                if (s.contains("eyr:")) {
-                    currentPassport.expirationYearPresent = true;
-                }
-                if (s.contains("hgt:")) {
-                    currentPassport.heightPresent = true;
-                }
-                if (s.contains("hcl:")) {
-                    currentPassport.hairColourPresent = true;
-                }
-                if (s.contains("ecl:")) {
-                    currentPassport.eyeColourPresent = true;
-                }
-                if (s.contains("pid:")) {
-                    currentPassport.passportIDPresent = true;
-                }
-                if (s.contains("cid:")) {
-                    currentPassport.countryIDPresent = true;
-                }
+        for (Passport p : passports) {
+            if (p.checkFieldsPresent()) {
+                validPassports++;
             }
         }
-        // check the validity of the final passport in the file
-        if (currentPassport.checkValidity()) {
-            validPassports++;
-        }
-        System.out.println("The number of valid passports is: " + validPassports);
+        System.out.println("The number of passports with the required fields is: " + validPassports);
         return validPassports;
     }
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        int validPassports = 0;
+        for (Passport p : passports) {
+            if (p.checkPassportValidity()) {
+                validPassports++;
+            }
+        }
+        System.out.println("The number of valid passports is: " + validPassports);
+        return validPassports;
     }
 }
