@@ -12,4 +12,9 @@ public class Day5Test {
         Assert.assertEquals(970, d5.solvePartOne());
     }
 
+    @Test
+    public void testDay5Part2() throws IOException {
+        Day5 d5 = new Day5();
+        Assert.assertEquals(587, d5.solvePartTwo());
+    }
 }

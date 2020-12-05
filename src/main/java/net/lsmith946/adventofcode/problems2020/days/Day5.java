@@ -4,7 +4,9 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Day5 implements Puzzle {
 
@@ -47,6 +49,22 @@ public class Day5 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        Set<Integer> seatIDs = new HashSet<>();
+        for(String s : values) {
+            seatIDs.add(calculateSeatID(s));
+        }
+
+        // get the highest seat ID from part 1
+        int highestSeatID = solvePartOne();
+
+        for(int i = 0; i < highestSeatID; i++) {
+            if (!seatIDs.contains(i) &&
+                seatIDs.contains(i-1) &&
+                seatIDs.contains(i+1)) {
+                System.out.println("Your seat ID is: " + i);
+                return i;
+            }
+        }
+        return 0; // should never happen
     }
 }
