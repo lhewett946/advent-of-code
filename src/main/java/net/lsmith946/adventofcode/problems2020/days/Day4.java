@@ -1,5 +1,6 @@
-package net.lsmith946.adventofcode.problems2020;
+package net.lsmith946.adventofcode.problems2020.days;
 
+import net.lsmith946.adventofcode.problems2020.Passport;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 

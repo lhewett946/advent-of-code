@@ -1,5 +1,10 @@
 package net.lsmith946.adventofcode.problems2020;
 
+import net.lsmith946.adventofcode.problems2020.days.Day1;
+import net.lsmith946.adventofcode.problems2020.days.Day2;
+import net.lsmith946.adventofcode.problems2020.days.Day3;
+import net.lsmith946.adventofcode.problems2020.days.Day4;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
