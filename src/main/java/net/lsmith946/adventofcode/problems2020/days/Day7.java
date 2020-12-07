@@ -73,15 +73,6 @@ public class Day7 implements Puzzle {
         return possibleBags.size();
     }
 
-    private Map<String, Integer> bagsInsideCurrentBag(String currentBagColour) {
-        for (Bag b: bags) {
-            if (b.getBagColour().equals(currentBagColour)) {
-                return b.getBagContents();
-            }
-        }
-        return null;
-    }
-
     @Override
     public long solvePartTwo() {
         int numberOfBags = 0;
