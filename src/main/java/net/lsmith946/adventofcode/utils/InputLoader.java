@@ -42,4 +42,14 @@ public class InputLoader {
 
         return strings;
     }
+
+    public String loadToString(String resourcePath) throws IOException {
+        BufferedReader br = openFileForReading(resourcePath);
+        String str;
+        String input = "";
+        while((str = br.readLine()) != null) {
+            input = input.concat(str);
+        }
+        return input;
+    }
 }
