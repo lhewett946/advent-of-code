@@ -23,4 +23,8 @@ public class Bag {
     public boolean canContain(String bagName) {
         return bagContents.containsKey(bagName);
     }
+
+    public Map<String, Integer> getBagContents() {
+        return bagContents;
+    }
 }
