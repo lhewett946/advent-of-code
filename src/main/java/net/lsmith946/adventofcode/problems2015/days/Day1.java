@@ -38,6 +38,19 @@ public class Day1 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        char[] inputAsChars = input.toCharArray();
+        int currentFloor = 0;
+        for (int pos = 0; pos < inputAsChars.length; pos++) {
+            if (inputAsChars[pos] == '(') {
+                currentFloor++;
+            } else {
+                currentFloor--;
+            }
+            if (currentFloor == -1) {
+                System.out.println("Santa is taken to the basement by the character at position: " + (pos + 1));
+                return pos + 1;
+            }
+        }
+        return -1;
     }
 }
