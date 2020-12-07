@@ -12,7 +12,7 @@ public class Day3 implements Puzzle {
 
     public Day3() throws IOException {
         InputLoader il = new InputLoader();
-        this.values = il.loadToStringList("/day3_input.txt");
+        this.values = il.loadToStringList("/2020/day3_input.txt");
     }
 
     private int countTreesOnRoute(int horizontalChange, int verticalChange) {

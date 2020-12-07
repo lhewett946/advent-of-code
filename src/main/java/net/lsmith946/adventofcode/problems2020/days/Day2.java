@@ -12,7 +12,7 @@ public class Day2 implements Puzzle {
 
     public Day2() throws IOException {
         InputLoader il = new InputLoader();
-        this.values = il.loadToStringList("/day2_input.txt");
+        this.values = il.loadToStringList("/2020/day2_input.txt");
     }
 
     @Override
