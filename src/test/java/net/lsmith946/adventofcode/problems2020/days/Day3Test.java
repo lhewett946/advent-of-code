@@ -1,6 +1,5 @@
 package net.lsmith946.adventofcode.problems2020.days;
 
-import net.lsmith946.adventofcode.problems2020.days.Day3;
 import org.junit.Assert;
 import org.junit.Test;
 
