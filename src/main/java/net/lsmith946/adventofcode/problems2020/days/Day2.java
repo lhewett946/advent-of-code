@@ -18,7 +18,9 @@ public class Day2 implements Puzzle {
     @Override
     public void solve() {
         System.out.println("------ DAY 2 ------");
+        System.out.println("--- PART ONE ---");
         solvePartOne();
+        System.out.println("--- PART TWO ---");
         solvePartTwo();
     }
 
@@ -45,7 +47,6 @@ public class Day2 implements Puzzle {
                 validPasswords++;
             }
         }
-        System.out.println("--- PART ONE ---");
         System.out.println("The number of valid passwords is " + validPasswords);
         return validPasswords;
     }
@@ -67,7 +68,6 @@ public class Day2 implements Puzzle {
                 validPasswords++;
             }
         }
-        System.out.println("--- PART TWO ---");
         System.out.println("The number of valid passwords is " + validPasswords);
         return validPasswords;
     }

@@ -21,7 +21,9 @@ public class Day6 implements Puzzle {
     @Override
     public void solve() {
         System.out.println("------ DAY 6 ------");
+        System.out.println("--- PART ONE ---");
         solvePartOne();
+        System.out.println("--- PART TWO ---");
         solvePartTwo();
     }
 

@@ -34,7 +34,9 @@ public class Day3 implements Puzzle {
     @Override
     public void solve() {
         System.out.println("------ DAY 3 ------");
+        System.out.println("--- PART ONE ---");
         solvePartOne();
+        System.out.println("--- PART TWO ---");
         solvePartTwo();
     }
 

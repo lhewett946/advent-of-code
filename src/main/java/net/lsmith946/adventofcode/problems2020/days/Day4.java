@@ -4,7 +4,7 @@ import net.lsmith946.adventofcode.problems2020.Passport;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
-import java.io.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +55,9 @@ public class Day4 implements Puzzle {
     @Override
     public void solve() {
         System.out.println("------ DAY 4 ------");
+        System.out.println("--- PART ONE ---");
         solvePartOne();
+        System.out.println("--- PART TWO ---");
         solvePartTwo();
     }
 

@@ -18,7 +18,9 @@ public class Day1 implements Puzzle {
     @Override
     public void solve() {
         System.out.println("------ DAY 1 ------");
+        System.out.println("--- PART ONE ---");
         solvePartOne();
+        System.out.println("--- PART TWO ---");
         solvePartTwo();
     }
 
@@ -31,7 +33,6 @@ public class Day1 implements Puzzle {
             Integer remaining = 2020 - i;
             if (values.contains(remaining)) {
                 product = i * remaining;
-                System.out.println("--- PART ONE ---");
                 System.out.println("The two values found are " + i.toString() + " and " + remaining.toString());
                 System.out.println("The product of these two values is " + product);
                 break;
@@ -51,7 +52,6 @@ public class Day1 implements Puzzle {
                 Integer remaining = 2020 - i - j;
                 if (values.contains(remaining)) {
                     product = i * j * remaining;
-                    System.out.println("--- PART TWO ---");
                     System.out.println("The three values found are " + i.toString() + ", " + j.toString() + " and " + remaining.toString());
                     System.out.println("The product of these three values is " + product);
                     solutionFound = true;

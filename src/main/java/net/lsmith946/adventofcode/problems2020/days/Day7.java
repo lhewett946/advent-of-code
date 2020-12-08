@@ -40,7 +40,9 @@ public class Day7 implements Puzzle {
     @Override
     public void solve() {
         System.out.println("------ DAY 7 ------");
+        System.out.println("--- PART ONE ---");
         solvePartOne();
+        System.out.println("--- PART TWO ---");
         solvePartTwo();
     }
 
