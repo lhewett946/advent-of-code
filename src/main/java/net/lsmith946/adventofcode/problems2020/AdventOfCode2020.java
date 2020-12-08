@@ -1,12 +1,6 @@
 package net.lsmith946.adventofcode.problems2020;
 
-import net.lsmith946.adventofcode.problems2020.days.Day1;
-import net.lsmith946.adventofcode.problems2020.days.Day2;
-import net.lsmith946.adventofcode.problems2020.days.Day3;
-import net.lsmith946.adventofcode.problems2020.days.Day4;
-import net.lsmith946.adventofcode.problems2020.days.Day5;
-import net.lsmith946.adventofcode.problems2020.days.Day6;
-import net.lsmith946.adventofcode.problems2020.days.Day7;
+import net.lsmith946.adventofcode.problems2020.days.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -91,6 +85,17 @@ public class AdventOfCode2020 {
             System.exit(FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
         } catch (IOException e) {
             System.err.println("Unable to read input file for Day 7!");
+            System.exit(IO_EXCEPTION_EXIT_CODE);
+        }
+
+        try {
+            Day8 d8 = new Day8();
+            d8.solve();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to open input data file for Day 8!");
+            System.exit(FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
+        } catch (IOException e) {
+            System.err.println("Unable to read input file for Day 8!");
             System.exit(IO_EXCEPTION_EXIT_CODE);
         }
     }
