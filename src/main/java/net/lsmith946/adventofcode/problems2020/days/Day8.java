@@ -42,15 +42,37 @@ public class Day8 implements Puzzle {
     public int solvePartOne() {
         Computer comp = new Computer(instructions);
         comp.executeInstructions();
-        // when the instruction pointer is a value which has been seen before
-        // that is the start of the infinite loop
-        // as requested, return the value in the accumulator
-        System.out.println("The value of the accumulator when the instruction is executed for the second time is: " + comp.getAccumulator());
+        System.out.println("The value of the accumulator just before an instruction is executed for the second time is: " + comp.getAccumulator());
         return comp.getAccumulator();
     }
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        for (int i = 0; i < instructions.size(); i++) {
+            if (instructions.get(i).getOpcode().equals("nop") || instructions.get(i).getOpcode().equals("jmp")) {
+                List<Instruction> modifiedInstructions = new ArrayList<>(instructions.size());
+                // make sure to take a copy of the list
+                // otherwise due to objects passing by reference we will modify the original instructions
+                for (Instruction instr : instructions) {
+                    Instruction copiedByValue = instr.copyByValue();
+                    modifiedInstructions.add(copiedByValue);
+                }
+                Instruction instructionToModify = modifiedInstructions.get(i);
+                if (instructionToModify.getOpcode().equals("nop")) {
+                    instructionToModify.setOpcode("jmp");
+                } else {
+                    instructionToModify.setOpcode("nop");
+                }
+                modifiedInstructions.set(i, instructionToModify);
+                Computer comp = new Computer(modifiedInstructions);
+                if (comp.executeInstructions()) {
+                    // if the computer executes the instructions successfully
+                    // get and return the accumulator
+                    System.out.println("The value of the accumulator at the end of the program is: " + comp.getAccumulator());
+                    return comp.getAccumulator();
+                }
+            }
+        }
+        return -1;
     }
 }

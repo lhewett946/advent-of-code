@@ -8,10 +8,12 @@ public class Computer {
 
     List<Instruction> instructions;
     int accumulator;
+    int instructionPointer;
 
     public Computer(List<Instruction> instructions) {
         this.instructions = instructions;
         this.accumulator = 0;
+        this.instructionPointer = 0;
     }
 
     public int getAccumulator() {
@@ -21,9 +23,10 @@ public class Computer {
     // function to execute the instructions loaded to the computer
     // returns true if the instructions complete and false if an infinite loop is detected
     public boolean executeInstructions() {
-        int instructionPointer = 0;
         Set<Integer> instructionPositionsExecuted = new HashSet<>();
-        while (!instructionPositionsExecuted.contains(instructionPointer)) {
+        // when the instruction pointer is a value which has been seen before, that is the start of an infinite loop
+        // when the instruction pointer reaches the end of the instructions, that is the end of the program
+        while (!instructionPositionsExecuted.contains(instructionPointer) && instructionPointer < instructions.size()) {
             instructionPositionsExecuted.add(instructionPointer);
             Instruction currentInstruction = instructions.get(instructionPointer);
             switch (currentInstruction.getOpcode()) {
@@ -43,6 +46,7 @@ public class Computer {
                 default -> throw new IllegalStateException("Unexpected opcode: " + currentInstruction.getOpcode());
             }
         }
-        return false;
+        // detect if the program has ended correctly or not
+        return instructionPointer >= instructions.size();
     }
 }

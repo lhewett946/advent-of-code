@@ -10,11 +10,20 @@ public class Instruction {
         this.argument = argument;
     }
 
+    public void setOpcode(String opcode) {
+        this.opcode = opcode;
+    }
+
     public String getOpcode() {
         return opcode;
     }
 
     public int getArgument() {
         return argument;
+    }
+
+    public Instruction copyByValue() {
+        Instruction newInstruction = new Instruction(this.opcode, this.argument);
+        return newInstruction;
     }
 }
