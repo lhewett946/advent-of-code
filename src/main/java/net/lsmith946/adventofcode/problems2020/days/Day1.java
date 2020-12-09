@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Day1 implements Puzzle {
@@ -24,20 +25,36 @@ public class Day1 implements Puzzle {
         solvePartTwo();
     }
 
+    private Set<Integer> findUniqueIntsToSumTo(int targetValue, int numberOfOperands, Set<Integer> inputValues) {
+        Set<Integer> result = new HashSet<>();
+        if (numberOfOperands == 1) {
+            if (inputValues.contains(targetValue)) {
+                result.add(targetValue);
+            }
+        } else {
+            for (Integer i : inputValues) {
+                int remaining = targetValue - i;
+                Set<Integer> intermediateResult = findUniqueIntsToSumTo(remaining, numberOfOperands - 1, inputValues);
+                if (intermediateResult.size() != 0) {
+                    result.addAll(intermediateResult);
+                    result.add(i);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
     @Override
     public int solvePartOne() {
         // part 1 is to find two integers from the list which sum to 2020
         // and then find the product of those two integers
-        int product = 0;
-        for (Integer i : values) {
-            Integer remaining = 2020 - i;
-            if (values.contains(remaining)) {
-                product = i * remaining;
-                System.out.println("The two values found are " + i.toString() + " and " + remaining.toString());
-                System.out.println("The product of these two values is " + product);
-                break;
-            }
+        int product = 1;
+        Set<Integer> intsMatchingSum = findUniqueIntsToSumTo(2020, 2, values);
+        for (Integer i : intsMatchingSum) {
+            product *= i;
         }
+        System.out.println("The product of the two values is " + product);
         return product;
     }
 
@@ -45,23 +62,12 @@ public class Day1 implements Puzzle {
     public long solvePartTwo() {
         // part 2 is to find three integers from the list which sum to 2020
         // and then find the product of those three integers
-        int product = 0;
-        for (Integer i : values) {
-            boolean solutionFound = false;
-            for (Integer j : values) {
-                Integer remaining = 2020 - i - j;
-                if (values.contains(remaining)) {
-                    product = i * j * remaining;
-                    System.out.println("The three values found are " + i.toString() + ", " + j.toString() + " and " + remaining.toString());
-                    System.out.println("The product of these three values is " + product);
-                    solutionFound = true;
-                    break;
-                }
-            }
-            if (solutionFound) {
-                break;
-            }
+        int product = 1;
+        Set<Integer> intsMatchingSum = findUniqueIntsToSumTo(2020, 3, values);
+        for (Integer i : intsMatchingSum) {
+            product *= i;
         }
+        System.out.println("The product of the three values is " + product);
         return product;
     }
 }
