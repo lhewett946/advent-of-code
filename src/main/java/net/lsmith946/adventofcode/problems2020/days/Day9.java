@@ -5,10 +5,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import net.lsmith946.adventofcode.utils.SumUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Day9 implements Puzzle {
 
@@ -50,6 +47,23 @@ public class Day9 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        long targetValue = solvePartOne();
+        for (int i = 0; i < values.size(); i++) {
+            long runningTotal = values.get(i);
+            Set<Long> valuesInRange = new HashSet<>();
+            valuesInRange.add(values.get(i));
+            for (int j = i + 1; j < values.size(); j++) {
+                runningTotal += values.get(j);
+                valuesInRange.add(values.get(j));
+                if (runningTotal == targetValue) {
+                    long weakness = Collections.min(valuesInRange) + Collections.max(valuesInRange);
+                    System.out.println("The encryption weakness is: " + weakness);
+                    return weakness;
+                } else if (runningTotal > targetValue) {
+                    break;
+                }
+            }
+        }
+        return -1;
     }
 }
