@@ -46,6 +46,25 @@ public class InputLoader {
     }
 
     /**
+     * This method loads the contents of the file specified by resourcePath to an integer list
+     *
+     * @param resourcePath The path to the file to be read in, under resources
+     * @return
+     * @throws IOException
+     */
+    public List<Long> loadToLongList(String resourcePath) throws IOException {
+        BufferedReader br = openFileForReading(resourcePath);
+        List<Long> ints = new ArrayList<>();
+
+        String str;
+        while ((str = br.readLine()) != null) {
+            ints.add(Long.valueOf(str));
+        }
+
+        return ints;
+    }
+
+    /**
      * This method loads the contents of the file specified by resourcePath to a list of strings
      *
      * @param resourcePath The path to the file to be read in, under resources

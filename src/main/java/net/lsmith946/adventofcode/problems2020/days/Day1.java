@@ -1,8 +1,8 @@
 package net.lsmith946.adventofcode.problems2020.days;
 
 import net.lsmith946.adventofcode.utils.InputLoader;
-import net.lsmith946.adventofcode.utils.IntegerSumUtils;
 import net.lsmith946.adventofcode.utils.Puzzle;
+import net.lsmith946.adventofcode.utils.SumUtils;
 
 import java.io.IOException;
 import java.util.Set;
@@ -26,11 +26,11 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         // part 1 is to find two integers from the list which sum to 2020
         // and then find the product of those two integers
-        int product = 1;
-        Set<Integer> intsMatchingSum = IntegerSumUtils.findUniqueIntsToSumTo(2020, 2, values);
+        long product = 1;
+        Set<Integer> intsMatchingSum = SumUtils.findUniqueIntsToSumTo(2020, 2, values);
         for (Integer i : intsMatchingSum) {
             product *= i;
         }
@@ -42,8 +42,8 @@ public class Day1 implements Puzzle {
     public long solvePartTwo() {
         // part 2 is to find three integers from the list which sum to 2020
         // and then find the product of those three integers
-        int product = 1;
-        Set<Integer> intsMatchingSum = IntegerSumUtils.findUniqueIntsToSumTo(2020, 3, values);
+        long product = 1;
+        Set<Integer> intsMatchingSum = SumUtils.findUniqueIntsToSumTo(2020, 3, values);
         for (Integer i : intsMatchingSum) {
             product *= i;
         }

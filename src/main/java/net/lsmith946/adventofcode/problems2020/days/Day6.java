@@ -28,17 +28,17 @@ public class Day6 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         int totalTrueAnswers = 0;
         Set<Character> uniqueChars = new HashSet<>();
-        for (String s: values) {
-           if (s.equals("")) {
-               // if this is an empty string, count the number of true answers
-               totalTrueAnswers += uniqueChars.size();
-               uniqueChars.clear();
-           } else {
-               char[] charsInString = s.toCharArray();
-               for (char c: charsInString) {
+        for (String s : values) {
+            if (s.equals("")) {
+                // if this is an empty string, count the number of true answers
+                totalTrueAnswers += uniqueChars.size();
+                uniqueChars.clear();
+            } else {
+                char[] charsInString = s.toCharArray();
+                for (char c : charsInString) {
                    uniqueChars.add(c);
                }
            }

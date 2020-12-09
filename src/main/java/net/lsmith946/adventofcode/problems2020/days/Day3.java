@@ -41,7 +41,7 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         int treesHit = countTreesOnRoute(3, 1);
         System.out.println("Number of trees hit: " + treesHit);
         return treesHit;

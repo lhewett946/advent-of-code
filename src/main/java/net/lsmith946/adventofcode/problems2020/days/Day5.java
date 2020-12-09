@@ -40,9 +40,9 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         int highestSeatID = 0;
-        for (String s: values) {
+        for (String s : values) {
             highestSeatID = Math.max(highestSeatID, calculateSeatID(s));
         }
         System.out.println("The highest seat ID is: " + highestSeatID);
@@ -57,7 +57,7 @@ public class Day5 implements Puzzle {
         }
 
         // get the highest seat ID from part 1
-        int highestSeatID = solvePartOne();
+        long highestSeatID = solvePartOne();
 
         for(int i = 0; i < highestSeatID; i++) {
             if (!seatIDs.contains(i) &&

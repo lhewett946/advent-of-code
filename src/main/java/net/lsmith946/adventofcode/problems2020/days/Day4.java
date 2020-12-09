@@ -62,7 +62,7 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         int validPassports = 0;
         for (Passport p : passports) {
             if (p.checkFieldsPresent()) {

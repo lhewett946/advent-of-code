@@ -25,12 +25,12 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         int validPasswords = 0;
-        for (String s: values) {
+        for (String s : values) {
             // decode the data from the input file
-            String [] splitStrings = s.split(" ");
-            String [] minMaxCount = splitStrings[0].split("-");
+            String[] splitStrings = s.split(" ");
+            String[] minMaxCount = splitStrings[0].split("-");
             int minCount = Integer.parseInt(minMaxCount[0]);
             int maxCount = Integer.parseInt(minMaxCount[1]);
             char letter = splitStrings[1].charAt(0);

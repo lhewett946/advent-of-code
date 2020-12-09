@@ -57,11 +57,11 @@ public class Day7 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         Set<Bag> possibleBags = new HashSet<>();
         // first find all the bags that could contain a shiny gold bag
         List<Bag> newPossibleBags = getPossibleBags("shiny gold");
-        while(newPossibleBags.size() != 0) {
+        while (newPossibleBags.size() != 0) {
             Bag bagToCheck = newPossibleBags.get(0);
             newPossibleBags.remove(bagToCheck);
             // if the current bag that is being checked is not already in the set

@@ -22,10 +22,10 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         char[] inputAsChars = input.toCharArray();
         int currentFloor = 0;
-        for (Character c: inputAsChars) {
+        for (Character c : inputAsChars) {
             if (c.equals('(')) {
                 currentFloor++;
             } else {

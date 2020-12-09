@@ -39,7 +39,7 @@ public class Day8 implements Puzzle {
     }
 
     @Override
-    public int solvePartOne() {
+    public long solvePartOne() {
         Computer comp = new Computer(instructions);
         comp.executeInstructions();
         System.out.println("The value of the accumulator just before an instruction is executed for the second time is: " + comp.getAccumulator());
