@@ -39,7 +39,9 @@ public class InputLoader {
 
         String str;
         while ((str = br.readLine()) != null) {
-            ints.add(Integer.valueOf(str));
+            if (!ints.add(Integer.valueOf(str))) {
+                throw new IllegalArgumentException("Tried to add an integer that already existed in the set!");
+            }
         }
 
         return ints;
