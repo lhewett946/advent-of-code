@@ -1,21 +1,33 @@
 package net.lsmith946.adventofcode.problems2020.days;
 
+import net.lsmith946.adventofcode.problems2020.Adapter;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Day10 implements Puzzle {
 
-    Set<Integer> values;
+    List<Integer> sortedValues;
+    Map<Integer, Adapter> adapters;
 
     public Day10() throws IOException {
+        Set<Integer> temporarySet;
         InputLoader il = new InputLoader();
-        this.values = il.loadToIntSet("/2020/day10_input.txt");
+        // load to an integer set to ensure no duplicates (as this is assumed by other code)
+        temporarySet = il.loadToIntSet("/2020/day10_input.txt");
+        // copy values to a list and sort them
+        sortedValues = new ArrayList<>(temporarySet);
+        Collections.sort(sortedValues);
+    }
+
+    private void loadAdaptors() {
+        adapters = new HashMap<>();
+        for (Integer joltage : sortedValues) {
+            Adapter a = new Adapter(joltage);
+            adapters.put(joltage, a);
+        }
     }
 
     @Override
@@ -32,9 +44,7 @@ public class Day10 implements Puzzle {
         int oneJoltDifferences = 0;
         int threeJoltDifferences = 0;
         int previousAdapterJoltage = 0;
-        List<Integer> sortedValues = new ArrayList<>(values);
-        Collections.sort(sortedValues);
-        for (Integer adaptorJoltage : sortedValues) {
+        for (Integer adaptorJoltage : this.sortedValues) {
             if (adaptorJoltage - previousAdapterJoltage == 1) {
                 oneJoltDifferences++;
             } else if (adaptorJoltage - previousAdapterJoltage == 3) {
@@ -50,6 +60,19 @@ public class Day10 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        loadAdaptors();
+        for (Integer joltage : sortedValues) {
+            Adapter currentAdapter = adapters.get(joltage);
+            for (Integer driveJoltage : currentAdapter.getJoltageCanDrive()) {
+                Adapter drivenAdapter = adapters.get(driveJoltage);
+                if (drivenAdapter != null) {
+                    drivenAdapter.addPathsToReach(currentAdapter.getPathsToReach());
+                }
+            }
+        }
+        // get the number of ways to reach the final outlet
+        Adapter finalAdapter = adapters.get(sortedValues.get(sortedValues.size() - 1));
+        System.out.println("Way to reach the final adapter: " + finalAdapter.getPathsToReach());
+        return finalAdapter.getPathsToReach();
     }
 }
