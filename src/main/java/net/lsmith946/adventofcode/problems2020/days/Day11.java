@@ -30,10 +30,7 @@ public class Day11 implements Puzzle {
 
         for (int row = rowCheck - 1; row <= rowCheck + 1; row++) {
             for (int column = columnCheck - 1; column <= columnCheck + 1; column++) {
-                if (row == rowCheck && column == columnCheck) {
-                    // don't check the current location, only the surrounding ones
-                    continue;
-                } else {
+                if (row != rowCheck || column != columnCheck) {   // don't check the current location, only the surrounding ones
                     try {
                         if (seatingArea[row][column] == '#') {
                             occupiedSeats++;
@@ -41,9 +38,9 @@ public class Day11 implements Puzzle {
                     } catch (ArrayIndexOutOfBoundsException e) {
                         // if access goes out of bounds, we are at the edge of the seating area
                         // we can safely ignore out of bounds accesses
-                        continue;
                     }
                 }
+
             }
         }
         return occupiedSeats;
@@ -61,10 +58,7 @@ public class Day11 implements Puzzle {
             for (int row = 0; row < totalRows; row++) {
                 newSeatingArea[row] = Arrays.copyOf(seatingArea[row], totalColumns);
                 for (int column = 0; column < totalColumns; column++) {
-                    if (seatingArea[row][column] == '.') {
-                        // if this position is the floor, skip it since it never changes
-                        continue;
-                    } else {
+                    if (seatingArea[row][column] != '.') { // if this position is the floor, skip it since it never changes
                         // determine the number of occupied seats around the current seat
                         int occupiedSeats = countOccupiedAdjacentSeats(row, column);
                         if (seatingArea[row][column] == 'L' && occupiedSeats == 0) {
