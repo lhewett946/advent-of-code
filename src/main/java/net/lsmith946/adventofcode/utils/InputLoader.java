@@ -101,4 +101,30 @@ public class InputLoader {
         }
         return input;
     }
+
+    /**
+     * This method loads the contents of the file specified by resourcePath to a 2D character array
+     *
+     * @param resourcePath The path of the file to be read in, under resources
+     * @return
+     * @throws IOException
+     */
+    public char[][] loadTo2DCharArray(String resourcePath) throws IOException {
+        // determine how many lines there are in the file
+        BufferedReader br = openFileForReading(resourcePath);
+        int lines = 0;
+        while (br.readLine() != null) {
+            lines++;
+        }
+        // actually load file content
+        String str;
+        br = openFileForReading(resourcePath);
+        char[][] chars = new char[lines][];
+        int currentLine = 0;
+        while ((str = br.readLine()) != null) {
+            chars[currentLine] = str.toCharArray();
+            currentLine++;
+        }
+        return chars;
+    }
 }
