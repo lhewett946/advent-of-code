@@ -82,8 +82,50 @@ public class Day12 implements Puzzle {
         return manhattanDistance;
     }
 
+
     @Override
     public long solvePartTwo() {
-        return 0;
+        CompassDirections currentlyFacing = CompassDirections.EAST;
+        int waypointNorthSouthPosition = 1, waypointEastWestPosition = 10;
+        int shipNorthSouthPosition = 0, shipEastWestPosition = 0;
+        for (String movement : directions) {
+            // decode the movement into a direction and a number of units to move
+            char[] movementChars = movement.toCharArray();
+            char direction = movementChars[0];
+            int unitsToMove = Integer.parseInt(movement.substring(1));
+            // decode the direction of the movement
+            switch (direction) {
+                case 'N' -> waypointNorthSouthPosition += unitsToMove;
+                case 'S' -> waypointNorthSouthPosition -= unitsToMove;
+                case 'E' -> waypointEastWestPosition += unitsToMove;
+                case 'W' -> waypointEastWestPosition -= unitsToMove;
+                case 'L' -> {
+                    for (int rotations = 0; rotations < unitsToMove / 90; rotations++) {
+                        int tempNorthSouthPosition = waypointEastWestPosition;
+                        int tempEastWestPosition = waypointNorthSouthPosition * -1;
+                        waypointNorthSouthPosition = tempNorthSouthPosition;
+                        waypointEastWestPosition = tempEastWestPosition;
+                    }
+                }
+                case 'R' -> {
+                    for (int rotations = 0; rotations < unitsToMove / 90; rotations++) {
+                        int tempNorthSouthPosition = waypointEastWestPosition * -1;
+                        int tempEastWestPosition = waypointNorthSouthPosition;
+                        waypointNorthSouthPosition = tempNorthSouthPosition;
+                        waypointEastWestPosition = tempEastWestPosition;
+                    }
+                }
+                case 'F' -> {
+                    for (int i = 0; i < unitsToMove; i++) {
+                        shipNorthSouthPosition += waypointNorthSouthPosition;
+                        shipEastWestPosition += waypointEastWestPosition;
+                    }
+                }
+                default -> throw new IllegalStateException("Unexpected value: " + direction);
+            }
+        }
+        int manhattanDistance = Math.abs(shipNorthSouthPosition) + Math.abs(shipEastWestPosition);
+        System.out.println("The Manhattan distance from the start position is: " + manhattanDistance);
+        return manhattanDistance;
     }
 }
