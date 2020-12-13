@@ -1,12 +1,11 @@
 package net.lsmith946.adventofcode.problems2020.days;
 
+import net.lsmith946.adventofcode.utils.ChineseRemainderTheorem;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Day13 implements Puzzle {
 
@@ -47,6 +46,21 @@ public class Day13 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        String[] busStrings = values.get(1).split(",");
+        Map<Long, Long> busNumToOffset = new HashMap<>();
+        long offsetFromStartTime = 0;
+        for (String bus : busStrings) {
+            if (!bus.equals("x")) {
+                long busNumber = Integer.parseInt(bus);
+                // the offset needs to be positive for the maths to work
+                long offset = (busNumber - (offsetFromStartTime % busNumber)) % busNumber;
+                busNumToOffset.put(busNumber, offset);
+            }
+            offsetFromStartTime++;
+        }
+
+        long solution = ChineseRemainderTheorem.solve(busNumToOffset);
+        System.out.println("The first timestamp satisfying the pattern is:" + solution);
+        return solution;
     }
 }
