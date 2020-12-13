@@ -85,7 +85,6 @@ public class Day12 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        CompassDirections currentlyFacing = CompassDirections.EAST;
         int waypointNorthSouthPosition = 1, waypointEastWestPosition = 10;
         int shipNorthSouthPosition = 0, shipEastWestPosition = 0;
         for (String movement : directions) {
