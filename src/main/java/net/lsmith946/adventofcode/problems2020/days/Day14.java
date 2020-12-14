@@ -41,14 +41,14 @@ public class Day14 implements Puzzle {
                         .replace("]", "")
                         .replace("mem", ""));
                 long value = Long.parseLong(instructionSplit[1]);
-                StringBuilder valueToWrite = new StringBuilder(StringUtils.leftPad(Long.toString(value, 2), 36));
+                StringBuilder valueToWrite = new StringBuilder(StringUtils.leftPad(Long.toString(value, 2), 36, "0"));
 
                 for (int i = 0; i < mask.length(); i++) {
                     if (mask.charAt(i) != 'X') {
                         valueToWrite.setCharAt(i, mask.charAt(i));
                     }
                 }
-                memoryContents.put(address, Long.parseLong(valueToWrite.toString().replace(" ", "0"), 2));
+                memoryContents.put(address, Long.parseLong(valueToWrite.toString(), 2));
             }
         }
         long sum = 0;
@@ -61,6 +61,43 @@ public class Day14 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        Map<Long, Long> memoryContents = new HashMap<>();
+        long address;
+        String mask = "";
+        for (String instruction : instructions) {
+            String[] instructionSplit = instruction.split(" = ");
+            if (instructionSplit[0].equals("mask")) {
+                mask = instructionSplit[1];
+            } else {
+                address = Long.parseLong(instructionSplit[0].replace("[", "")
+                        .replace("]", "")
+                        .replace("mem", ""));
+                long value = Long.parseLong(instructionSplit[1]);
+                StringBuilder addressWithFloating = new StringBuilder(StringUtils.leftPad(Long.toString(address, 2), 36, "0"));
+
+                for (int i = 0; i < mask.length(); i++) {
+                    if (mask.charAt(i) != '0') {
+                        addressWithFloating.setCharAt(i, mask.charAt(i));
+                    }
+                }
+
+                // generate all possible addresses based on the floating bits
+                int numberOfFloatingBits = StringUtils.countMatches(addressWithFloating.toString(), "X");
+                for (long i = 0; i < Math.pow(2, numberOfFloatingBits); i++) {
+                    StringBuilder addressToWrite = new StringBuilder(addressWithFloating);
+                    for (int j = 0; j < numberOfFloatingBits; j++) {
+                        String iInBinary = StringUtils.leftPad(Long.toBinaryString(i), numberOfFloatingBits, "0");
+                        addressToWrite.setCharAt(addressToWrite.lastIndexOf("X"), iInBinary.charAt(j));
+                    }
+                    memoryContents.put(Long.parseLong(addressToWrite.toString(), 2), value);
+                }
+            }
+        }
+        long sum = 0;
+        for (Long value : memoryContents.values()) {
+            sum += value;
+        }
+        System.out.println("The sum of the memory contents at the end of the program is:" + sum);
+        return sum;
     }
 }
