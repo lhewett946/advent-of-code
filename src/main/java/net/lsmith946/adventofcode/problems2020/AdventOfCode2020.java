@@ -164,5 +164,8 @@ public class AdventOfCode2020 {
             System.err.println("Unable to read input file for Day 14!");
             System.exit(IO_EXCEPTION_EXIT_CODE);
         }
+
+        Day15 d15 = new Day15();
+        d15.solve();
     }
 }
