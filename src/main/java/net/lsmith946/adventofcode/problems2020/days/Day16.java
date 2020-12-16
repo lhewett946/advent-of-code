@@ -54,21 +54,15 @@ public class Day16 implements Puzzle {
                     ticketFields.add(newField);
                 }
             } else if (!endOfSecondSection) {
-                if (s.equals("your ticket:")) {
-                    // discard this line
-                } else if (s.equals("")) {
+                if (s.equals("")) {
                     // empty string denotes the end of the section
                     endOfSecondSection = true;
-                } else {
+                } else if (!s.equals("your ticket:")) {
                     myTicket = createTicket(s);
                 }
-            } else {
-                if (s.equals("nearby tickets:")) {
-                    // discard this line
-                } else {
-                    // load all the other tickets
-                    nearbyTickets.add(createTicket(s));
-                }
+            } else if (!s.equals("nearby tickets:")) {
+                // load all the other tickets
+                nearbyTickets.add(createTicket(s));
             }
         }
     }
