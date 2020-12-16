@@ -31,7 +31,7 @@ public class Day16 implements Puzzle {
         for (String v : ticketStrings) {
             ticketContents.add(Integer.parseInt(v));
         }
-        return new Ticket(ticketContents);
+        return new Ticket(ticketContents, ticketFields);
     }
 
     private void parseInput() {
@@ -86,15 +86,7 @@ public class Day16 implements Puzzle {
     public long solvePartOne() {
         int errorRate = 0;
         for (Ticket t : nearbyTickets) {
-            for (Integer v : t.getTicketValues()) {
-                boolean validValue = false;
-                for (TicketField f : ticketFields) {
-                    validValue |= f.checkValidValue(v);
-                }
-                if (!validValue) {
-                    errorRate += v;
-                }
-            }
+            errorRate += t.calculateErrorRate();
         }
         System.out.println("The ticket scanning error rate is: " + errorRate);
         return errorRate;

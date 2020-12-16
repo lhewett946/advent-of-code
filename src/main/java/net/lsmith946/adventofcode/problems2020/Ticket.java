@@ -5,12 +5,24 @@ import java.util.List;
 public class Ticket {
 
     List<Integer> ticketValues;
+    List<TicketField> ticketFields;
 
-    public Ticket(List<Integer> ticketValues) {
+    public Ticket(List<Integer> ticketValues, List<TicketField> ticketFields) {
         this.ticketValues = ticketValues;
+        this.ticketFields = ticketFields;
     }
 
-    public List<Integer> getTicketValues() {
-        return ticketValues;
+    public int calculateErrorRate() {
+        int errorRate = 0;
+        for (Integer v : ticketValues) {
+            boolean validValue = false;
+            for (TicketField f : ticketFields) {
+                validValue |= f.checkValidValue(v);
+            }
+            if (!validValue) {
+                errorRate += v;
+            }
+        }
+        return errorRate;
     }
 }
