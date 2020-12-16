@@ -167,5 +167,16 @@ public class AdventOfCode2020 {
 
         Day15 d15 = new Day15();
         d15.solve();
+
+        try {
+            Day16 d16 = new Day16();
+            d16.solve();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to open input data file for Day 16!");
+            System.exit(FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
+        } catch (IOException e) {
+            System.err.println("Unable to read input file for Day 16!");
+            System.exit(IO_EXCEPTION_EXIT_CODE);
+        }
     }
 }
