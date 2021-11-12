@@ -34,8 +34,7 @@ public class Day3 implements Puzzle {
         };
     }
 
-    @Override
-    public long solvePartOne() {
+    private Set<Grid2DCoordinates> getVisitedLocations(char[] instructions) {
         Grid2DCoordinates currentPosition = new Grid2DCoordinates(0, 0);
         Set<Grid2DCoordinates> visitedHouses = new HashSet<>();
         visitedHouses.add(new Grid2DCoordinates(0, 0));
@@ -45,6 +44,12 @@ public class Day3 implements Puzzle {
             visitedHouses.add(newPosition);
             currentPosition = newPosition;
         }
+        return visitedHouses;
+    }
+
+    @Override
+    public long solvePartOne() {
+        Set<Grid2DCoordinates> visitedHouses = getVisitedLocations(input);
         System.out.println("Santa has visited " + visitedHouses.size() + " houses.");
         return visitedHouses.size();
     }
