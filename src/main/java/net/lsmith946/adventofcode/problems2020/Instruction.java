@@ -23,7 +23,6 @@ public class Instruction {
     }
 
     public Instruction copyByValue() {
-        Instruction newInstruction = new Instruction(this.opcode, this.argument);
-        return newInstruction;
+        return new Instruction(this.opcode, this.argument);
     }
 }
