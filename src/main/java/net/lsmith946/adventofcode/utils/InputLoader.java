@@ -127,4 +127,15 @@ public class InputLoader {
         }
         return chars;
     }
+
+    /**
+     * This method loads the contents of the file specified by resourcePath to an array of characters
+     *
+     * @param resourcePath The path to the file to be read in, under resources
+     * @return
+     * @throws IOException
+     */
+    public char[] loadToCharArray(String resourcePath) throws IOException {
+        return loadToString(resourcePath).toCharArray();
+    }
 }
