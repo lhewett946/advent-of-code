@@ -1,8 +1,8 @@
 package net.lsmith946.adventofcode.utils;
 
 import net.lsmith946.adventofcode.utils.InputLoader;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class InputLoaderTest {
         expectedInts.add(675);
         expectedInts.add(1456);
 
-        Assert.assertEquals(expectedInts, loadedInts);
+        Assertions.assertEquals(expectedInts, loadedInts);
     }
 
     @Test
@@ -38,6 +38,6 @@ public class InputLoaderTest {
         expectedStrings.add("1-3 b: cdefg");
         expectedStrings.add("2-9 c: ccccccccc");
 
-        Assert.assertEquals(expectedStrings, loadedStrings);
+        Assertions.assertEquals(expectedStrings, loadedStrings);
     }
 }
