@@ -11,9 +11,6 @@ public class Present {
         this.depth = depth;
     }
 
-    /**
-     * @return the surface area of the present
-     */
     private int calculateSurfaceArea() {
         int surfaceArea = 0;
         surfaceArea += 2 * length * width;
@@ -22,7 +19,7 @@ public class Present {
         return surfaceArea;
     }
 
-    private int findSmallestSide() {
+    private int findSmallestSideArea() {
         int sideArea = length * width;
         if (width * depth < sideArea) {
             sideArea = width * depth;
@@ -34,6 +31,25 @@ public class Present {
     }
 
     public int calculateWrappingPaperNeeded() {
-        return calculateSurfaceArea() + findSmallestSide();
+        return calculateSurfaceArea() + findSmallestSideArea();
+    }
+
+    private int findSmallestSidePerimeter() {
+        int sidePerimeter = (2 * length) + (2 * width);
+        if (((2 * width) + (2 * depth)) < sidePerimeter) {
+            sidePerimeter = (2 * width) + (2 * depth);
+        }
+        if (((2 * depth) + (2 * length)) < sidePerimeter) {
+            sidePerimeter = (2 * depth) + (2 * length);
+        }
+        return sidePerimeter;
+    }
+
+    private int findVolume() {
+        return width * length * depth;
+    }
+
+    public int calculateRibbonLength() {
+        return findSmallestSidePerimeter() + findVolume();
     }
 }

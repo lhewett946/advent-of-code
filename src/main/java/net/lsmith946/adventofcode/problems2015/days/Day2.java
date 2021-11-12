@@ -11,10 +11,27 @@ import java.util.List;
 public class Day2 implements Puzzle {
 
     List<String> input;
+    List<Present> presents;
 
     public Day2() throws IOException {
         InputLoader il = new InputLoader();
         this.input = il.loadToStringList("/2015/day2_input.txt");
+        loadPresents();
+    }
+
+    private void loadPresents() {
+        presents = new ArrayList<>();
+        for (String s : input) {
+            int length;
+            int width;
+            int depth;
+            String[] dimensions = s.split("x");
+            length = Integer.parseInt(dimensions[0]);
+            width = Integer.parseInt(dimensions[1]);
+            depth = Integer.parseInt(dimensions[2]);
+            Present p = new Present(length, width, depth);
+            presents.add(p);
+        }
     }
 
     @Override
@@ -26,18 +43,9 @@ public class Day2 implements Puzzle {
 
     @Override
     public long solvePartOne() {
-        // load the dimensions of the presents and calculate the amount of wrapping paper needed for each
-        // of the presents
+        // calculate the amount of wrapping paper needed for the presents
         long wrappingPaperNeeded = 0;
-        for (String s : input) {
-            int length;
-            int width;
-            int depth;
-            String [] dimensions = s.split("x");
-            length = Integer.parseInt(dimensions[0]);
-            width = Integer.parseInt(dimensions[1]);
-            depth = Integer.parseInt(dimensions[2]);
-            Present p = new Present(length, width, depth);
+        for (Present p : presents) {
             wrappingPaperNeeded += p.calculateWrappingPaperNeeded();
         }
         System.out.println("The elves need to order " + wrappingPaperNeeded + " square feet of wrapping paper");
@@ -46,6 +54,12 @@ public class Day2 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        // calculate the amount of ribbon needed for the presents
+        long ribbonNeeded = 0;
+        for(Present p : presents) {
+            ribbonNeeded += p.calculateRibbonLength();
+        }
+        System.out.println("The elves need to order " + ribbonNeeded + " feet of ribbon");
+        return ribbonNeeded;
     }
 }
