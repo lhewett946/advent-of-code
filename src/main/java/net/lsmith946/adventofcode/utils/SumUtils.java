@@ -6,12 +6,10 @@ import java.util.Set;
 public class SumUtils {
 
     /**
-     * This method takes a set of integers and determines which ones sum to a given targetValue
-     *
      * @param targetValue      The value to which the operands must sum
      * @param numberOfOperands The number of operands in the sum
      * @param inputValues      The set of integers from which the operands can be selected
-     * @return
+     * @return The set of integers from the inputValues which sum to the targetValue
      */
     public static Set<Integer> findUniqueIntsToSumTo(int targetValue, int numberOfOperands, Set<Integer> inputValues) {
         Set<Integer> result = new HashSet<>();
@@ -39,7 +37,7 @@ public class SumUtils {
      * @param targetValue      The value to which the operands must sum
      * @param numberOfOperands The number of operands in the sum
      * @param inputValues      The set of integers from which the operands can be selected
-     * @return
+     * @return The set of integers from the inputValues which sum to the targetValue
      */
     public static Set<Long> findUniqueLongsToSumTo(long targetValue, int numberOfOperands, Set<Long> inputValues) {
         Set<Long> result = new HashSet<>();

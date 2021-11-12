@@ -8,11 +8,8 @@ import java.util.Set;
 public final class ChineseRemainderTheorem {
 
     /**
-     * Solving the Chinese Remainder Theorem returns the lowest possible number which satisfies
-     * the map of divisors to modulos
      * Based on: https://github.com/anujpahade/CRT/blob/master/CRT.java
-     *
-     * @return
+     * @return solving the Chinese Remainder Theorem returns the lowest possible number which satisfies the map of divisors to modulos
      */
     public static long solve(Map<Long, Long> divisorsAndModulos) {
         Set<Long> divisorSet = divisorsAndModulos.keySet();

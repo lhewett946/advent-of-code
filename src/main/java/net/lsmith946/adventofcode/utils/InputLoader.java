@@ -10,11 +10,9 @@ import java.util.Set;
 public class InputLoader {
 
     /**
-     * The method opens the file specified by resourcePath for reading into a program
-     *
      * @param resourcePath The path to the file to be read in, under resources
-     * @return
-     * @throws FileNotFoundException
+     * @return a BufferedReader containing the input file
+     * @throws FileNotFoundException when the resource path does not exist
      */
     private BufferedReader openFileForReading(String resourcePath) throws FileNotFoundException {
         URL u = getClass().getResource(resourcePath);
@@ -27,11 +25,9 @@ public class InputLoader {
     }
 
     /**
-     * This method loads the contents of the file specified by resourcePath to an integer set
-     *
      * @param resourcePath The path to the file to be read in, under resources
-     * @return
-     * @throws IOException
+     * @return a set containing the integers in the input file
+     * @throws IOException if the file does not exist, or the contents cannot be stored to an integer set due to containing non-unique values
      */
     public Set<Integer> loadToIntSet(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
@@ -48,11 +44,9 @@ public class InputLoader {
     }
 
     /**
-     * This method loads the contents of the file specified by resourcePath to an integer list
-     *
      * @param resourcePath The path to the file to be read in, under resources
-     * @return
-     * @throws IOException
+     * @return a list containing the integers in the input file
+     * @throws IOException if the file does not exist
      */
     public List<Long> loadToLongList(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
@@ -67,11 +61,9 @@ public class InputLoader {
     }
 
     /**
-     * This method loads the contents of the file specified by resourcePath to a list of strings
-     *
      * @param resourcePath The path to the file to be read in, under resources
-     * @return
-     * @throws IOException
+     * @return a list containing the strings in the input file
+     * @throws IOException if the file does not exist
      */
     public List<String> loadToStringList(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
@@ -86,11 +78,9 @@ public class InputLoader {
     }
 
     /**
-     * This method loads the contents of the file specified by resourcePath to a single string
-     *
      * @param resourcePath The path to the file to be read in, under resources
-     * @return
-     * @throws IOException
+     * @return a string containing the data in the input file
+     * @throws IOException if the file does not exist
      */
     public String loadToString(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
@@ -103,11 +93,9 @@ public class InputLoader {
     }
 
     /**
-     * This method loads the contents of the file specified by resourcePath to a 2D character array
-     *
      * @param resourcePath The path of the file to be read in, under resources
-     * @return
-     * @throws IOException
+     * @return a 2D char array containing the data in the input file
+     * @throws IOException if the file does not exist
      */
     public char[][] loadTo2DCharArray(String resourcePath) throws IOException {
         // determine how many lines there are in the file
@@ -129,11 +117,9 @@ public class InputLoader {
     }
 
     /**
-     * This method loads the contents of the file specified by resourcePath to an array of characters
-     *
      * @param resourcePath The path to the file to be read in, under resources
-     * @return
-     * @throws IOException
+     * @return a char array containing the data in the input file
+     * @throws IOException if the file does not exist
      */
     public char[] loadToCharArray(String resourcePath) throws IOException {
         return loadToString(resourcePath).toCharArray();
