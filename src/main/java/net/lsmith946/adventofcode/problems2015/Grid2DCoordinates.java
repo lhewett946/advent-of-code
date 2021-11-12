@@ -27,12 +27,13 @@ public class Grid2DCoordinates {
     }
 
     public Grid2DCoordinates move(CompassDirections direction) {
+        Grid2DCoordinates newPosition = new Grid2DCoordinates(x, y);
         switch(direction) {
-            case NORTH -> y++;
-            case SOUTH -> y--;
-            case EAST -> x++;
-            case WEST -> x--;
+            case NORTH -> newPosition.y++;
+            case SOUTH -> newPosition.y--;
+            case EAST -> newPosition.x++;
+            case WEST -> newPosition.x--;
         }
-        return new Grid2DCoordinates(x, y);
+        return newPosition;
     }
 }

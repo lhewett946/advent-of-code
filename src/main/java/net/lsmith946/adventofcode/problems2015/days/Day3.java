@@ -43,6 +43,7 @@ public class Day3 implements Puzzle {
             CompassDirections direction = decodeDirections(c);
             Grid2DCoordinates newPosition = currentPosition.move(direction);
             visitedHouses.add(newPosition);
+            currentPosition = newPosition;
         }
         System.out.println("Santa has visited " + visitedHouses.size() + " houses.");
         return visitedHouses.size();
