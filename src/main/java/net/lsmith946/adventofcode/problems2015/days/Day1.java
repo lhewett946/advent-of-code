@@ -7,11 +7,11 @@ import java.io.IOException;
 
 public class Day1 implements Puzzle {
 
-    String input;
+    char[] input;
 
     public Day1() throws IOException {
         InputLoader il = new InputLoader();
-        this.input = il.loadToString("/2015/day1_input.txt");
+        this.input = il.loadToCharArray("/2015/day1_input.txt");
     }
 
     @Override
@@ -23,9 +23,8 @@ public class Day1 implements Puzzle {
 
     @Override
     public long solvePartOne() {
-        char[] inputAsChars = input.toCharArray();
         int currentFloor = 0;
-        for (Character c : inputAsChars) {
+        for (Character c : input) {
             if (c.equals('(')) {
                 currentFloor++;
             } else {
@@ -38,10 +37,9 @@ public class Day1 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        char[] inputAsChars = input.toCharArray();
         int currentFloor = 0;
-        for (int pos = 0; pos < inputAsChars.length; pos++) {
-            if (inputAsChars[pos] == '(') {
+        for (int pos = 0; pos < input.length; pos++) {
+            if (input[pos] == '(') {
                 currentFloor++;
             } else {
                 currentFloor--;
