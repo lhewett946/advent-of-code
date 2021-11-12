@@ -38,7 +38,7 @@ public class Day3 implements Puzzle {
         Grid2DCoordinates currentPosition = new Grid2DCoordinates(0, 0);
         Set<Grid2DCoordinates> visitedHouses = new HashSet<>();
         visitedHouses.add(new Grid2DCoordinates(0, 0));
-        for(char c : input) {
+        for(char c : instructions) {
             CompassDirections direction = decodeDirections(c);
             Grid2DCoordinates newPosition = currentPosition.move(direction);
             visitedHouses.add(newPosition);
