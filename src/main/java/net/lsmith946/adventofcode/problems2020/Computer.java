@@ -30,19 +30,15 @@ public class Computer {
             instructionPositionsExecuted.add(instructionPointer);
             Instruction currentInstruction = instructions.get(instructionPointer);
             switch (currentInstruction.getOpcode()) {
-                case "nop" -> {
-                    // nop has no effect, but increase the instruction pointer
+                case "nop" -> // nop has no effect, but increase the instruction pointer
                     instructionPointer++;
-                }
                 case "acc" -> {
                     // acc adds the argument to the accumulator and increases the instruction pointer
                     accumulator += currentInstruction.getArgument();
                     instructionPointer++;
                 }
-                case "jmp" -> {
-                    // jmp moves the instruction pointer by the value given as the argument
+                case "jmp" -> // jmp moves the instruction pointer by the value given as the argument
                     instructionPointer += currentInstruction.getArgument();
-                }
                 default -> throw new IllegalStateException("Unexpected opcode: " + currentInstruction.getOpcode());
             }
         }
