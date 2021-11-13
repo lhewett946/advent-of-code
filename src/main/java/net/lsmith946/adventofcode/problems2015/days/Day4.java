@@ -35,6 +35,8 @@ public class Day4 implements Puzzle {
             String hashInput = input + currentNumber;
             currentHashBytes = md5.digest(hashInput.getBytes(StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
+            // performance optimisation, only process the exact number of bytes that we need to in order to
+            // generate enough characters at the start of the hex string
             int bytesToConvert = (int) Math.ceil((double) targetStart.length() / 2.0);
             for(int i = 0; i < bytesToConvert; i++) {
                 sb.append(String.format("%02x", currentHashBytes[i]));
