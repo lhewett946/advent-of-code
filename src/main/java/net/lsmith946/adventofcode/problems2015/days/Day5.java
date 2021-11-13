@@ -57,6 +57,33 @@ public class Day5 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        long niceStrings = 0;
+        for(String s : input) {
+            boolean repeatedPairFound = false;
+            for(int i = 0; i < s.length()-1; i++) {
+                String pair = s.substring(i, i+2);
+                String stripCurrentPair = s.replaceFirst(pair, "  ");
+                if (StringUtils.countMatches(stripCurrentPair, pair) != 0) {
+                    repeatedPairFound = true;
+                    break;
+                }
+            }
+
+            if (!repeatedPairFound) continue;
+
+            boolean repeatOneLetterBetween = false;
+            for(int i = 0; i < s.length()-2; i++) {
+                if (s.charAt(i) == s.charAt(i+2)) {
+                    repeatOneLetterBetween = true;
+                    break;
+                }
+            }
+            if (!repeatOneLetterBetween) continue;
+
+            // increment number of nice strings if all checks pass
+            niceStrings++;
+        }
+        System.out.println("There are " + niceStrings + " nice strings.");
+        return niceStrings;
     }
 }
