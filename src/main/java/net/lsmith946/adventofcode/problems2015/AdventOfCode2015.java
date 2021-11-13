@@ -1,9 +1,6 @@
 package net.lsmith946.adventofcode.problems2015;
 
-import net.lsmith946.adventofcode.problems2015.days.Day1;
-import net.lsmith946.adventofcode.problems2015.days.Day2;
-import net.lsmith946.adventofcode.problems2015.days.Day3;
-import net.lsmith946.adventofcode.problems2015.days.Day4;
+import net.lsmith946.adventofcode.problems2015.days.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -61,6 +58,17 @@ public class AdventOfCode2015 {
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Tried to use an invalid hashing algorithm for Day 4!");
             System.exit(ALGORITHM_EXCEPTION_EXIT_CODE);
+        }
+
+        try {
+            Day5 d5 = new Day5();
+            d5.solve();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to open input data file for Day 5!");
+            System.exit(FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
+        } catch (IOException e) {
+            System.err.println("Unable to read input file for Day 5!");
+            System.exit(IO_EXCEPTION_EXIT_CODE);
         }
     }
 }
