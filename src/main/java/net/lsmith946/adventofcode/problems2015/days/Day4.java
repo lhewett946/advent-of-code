@@ -1,0 +1,52 @@
+package net.lsmith946.adventofcode.problems2015.days;
+
+import net.lsmith946.adventofcode.utils.InputLoader;
+import net.lsmith946.adventofcode.utils.Puzzle;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class Day4 implements Puzzle {
+
+    String input;
+    MessageDigest md5;
+
+    public Day4() throws IOException, NoSuchAlgorithmException {
+        InputLoader il = new InputLoader();
+        this.input = il.loadToString("/2015/day4_input.txt");
+        md5 = MessageDigest.getInstance("MD5");
+    }
+
+    @Override
+    public void solve() {
+        System.out.println("------ DAY 4 ------");
+        solvePartOne();
+        solvePartTwo();
+    }
+
+    @Override
+    public long solvePartOne() {
+        long currentNumber = 0;
+        byte[] currentHashBytes;
+        String currentHash;
+        do {
+            currentNumber++;
+            String hashInput = input + currentNumber;
+            currentHashBytes = md5.digest(hashInput.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for(byte b : currentHashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            currentHash = sb.toString();
+        } while (!currentHash.startsWith("00000"));
+        System.out.println("The lowest number producing a suitable hash is " + currentNumber);
+        return currentNumber;
+    }
+
+    @Override
+    public long solvePartTwo() {
+        return 0;
+    }
+}
