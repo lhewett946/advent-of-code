@@ -64,7 +64,7 @@ public class Day3 implements Puzzle {
         }
         Set<Grid2DCoordinates> visitedHouses = getVisitedLocations(directionsSanta);
         visitedHouses.addAll(getVisitedLocations(directionsRoboSanta));
-        System.out.println("Between, Santa and Robo-Santa have visited " + visitedHouses.size() + " houses.");
+        System.out.println("Between them, Santa and Robo-Santa have visited " + visitedHouses.size() + " houses.");
         return visitedHouses.size();
     }
 }
