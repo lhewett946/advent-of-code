@@ -14,4 +14,9 @@ public class Day4Test {
         Assertions.assertEquals(282749, d4.solvePartOne());
     }
 
+    @Test
+    public void testDay4Part2() throws IOException, NoSuchAlgorithmException {
+        Day4 d4 = new Day4();
+        Assertions.assertEquals(9962624, d4.solvePartTwo());
+    }
 }

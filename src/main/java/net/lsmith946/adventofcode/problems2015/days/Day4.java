@@ -26,8 +26,7 @@ public class Day4 implements Puzzle {
         solvePartTwo();
     }
 
-    @Override
-    public long solvePartOne() {
+    private Long findNumberForHashStartingWith(String targetStart) {
         long currentNumber = 0;
         byte[] currentHashBytes;
         String currentHash;
@@ -36,17 +35,26 @@ public class Day4 implements Puzzle {
             String hashInput = input + currentNumber;
             currentHashBytes = md5.digest(hashInput.getBytes(StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder();
-            for(byte b : currentHashBytes) {
-                sb.append(String.format("%02x", b));
+            int bytesToConvert = (int) Math.ceil((double) targetStart.length() / 2.0);
+            for(int i = 0; i < bytesToConvert; i++) {
+                sb.append(String.format("%02x", currentHashBytes[i]));
             }
             currentHash = sb.toString();
-        } while (!currentHash.startsWith("00000"));
+        } while (!currentHash.startsWith(targetStart));
+        return currentNumber;
+    }
+
+    @Override
+    public long solvePartOne() {
+        Long currentNumber = findNumberForHashStartingWith("00000");
         System.out.println("The lowest number producing a suitable hash is " + currentNumber);
         return currentNumber;
     }
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        Long currentNumber = findNumberForHashStartingWith("000000");
+        System.out.println("The lowest number producing a suitable hash is " + currentNumber);
+        return currentNumber;
     }
 }
