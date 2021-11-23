@@ -17,8 +17,7 @@ public class Day16 implements Puzzle {
     List<Ticket> nearbyTickets;
 
     public Day16() throws IOException {
-        InputLoader il = new InputLoader();
-        inputStrings = il.loadToStringList("/2020/day16_input.txt");
+        inputStrings = InputLoader.loadToStringList("/2020/day16_input.txt");
         ticketFields = new ArrayList<>();
         nearbyTickets = new ArrayList<>();
         parseInput();

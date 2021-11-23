@@ -12,8 +12,7 @@ public class Day13 implements Puzzle {
     List<String> values;
 
     public Day13() throws IOException {
-        InputLoader il = new InputLoader();
-        values = il.loadToStringList("/2020/day13_input.txt");
+        values = InputLoader.loadToStringList("/2020/day13_input.txt");
     }
 
     @Override

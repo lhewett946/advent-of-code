@@ -14,8 +14,7 @@ public class Day3 implements Puzzle {
     char[] input;
 
     public Day3() throws IOException {
-        InputLoader il = new InputLoader();
-        this.input = il.loadToCharArray("/2015/day3_input.txt");
+        this.input = InputLoader.loadToCharArray("/2015/day3_input.txt");
     }
 
     @Override

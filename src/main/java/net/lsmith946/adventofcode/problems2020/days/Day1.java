@@ -12,8 +12,7 @@ public class Day1 implements Puzzle {
     private Set<Integer> values;
 
     public Day1() throws IOException {
-        InputLoader il = new InputLoader();
-        this.values = il.loadToIntSet("/2020/day1_input.txt");
+        this.values = InputLoader.loadToIntSet("/2020/day1_input.txt");
     }
 
     @Override

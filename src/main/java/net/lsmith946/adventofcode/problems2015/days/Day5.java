@@ -15,8 +15,7 @@ public class Day5 implements Puzzle {
     List<String> input;
 
     public Day5() throws IOException {
-        InputLoader il = new InputLoader();
-        this.input = il.loadToStringList("/2015/day5_input.txt");
+        this.input = InputLoader.loadToStringList("/2015/day5_input.txt");
     }
 
     @Override

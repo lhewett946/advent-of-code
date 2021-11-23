@@ -12,8 +12,7 @@ public class Day9 implements Puzzle {
     List<Long> values;
 
     public Day9() throws IOException {
-        InputLoader il = new InputLoader();
-        this.values = il.loadToLongList("/2020/day9_input.txt");
+        this.values = InputLoader.loadToLongList("/2020/day9_input.txt");
     }
 
     @Override

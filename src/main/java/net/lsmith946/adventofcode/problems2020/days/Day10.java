@@ -14,9 +14,8 @@ public class Day10 implements Puzzle {
 
     public Day10() throws IOException {
         Set<Integer> temporarySet;
-        InputLoader il = new InputLoader();
         // load to an integer set to ensure no duplicates (as this is assumed by other code)
-        temporarySet = il.loadToIntSet("/2020/day10_input.txt");
+        temporarySet = InputLoader.loadToIntSet("/2020/day10_input.txt");
         // copy values to a list and sort them
         sortedValues = new ArrayList<>(temporarySet);
         Collections.sort(sortedValues);

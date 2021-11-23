@@ -14,8 +14,8 @@ public class InputLoader {
      * @return a BufferedReader containing the input file
      * @throws FileNotFoundException when the resource path does not exist
      */
-    private BufferedReader openFileForReading(String resourcePath) throws FileNotFoundException {
-        URL u = getClass().getResource(resourcePath);
+    private static BufferedReader openFileForReading(String resourcePath) throws FileNotFoundException {
+        URL u = InputLoader.class.getResource(resourcePath);
         if (u == null) {
             throw new FileNotFoundException();
         }
@@ -29,7 +29,7 @@ public class InputLoader {
      * @return a set containing the integers in the input file
      * @throws IOException if the file does not exist, or the contents cannot be stored to an integer set due to containing non-unique values
      */
-    public Set<Integer> loadToIntSet(String resourcePath) throws IOException {
+    public static Set<Integer> loadToIntSet(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
         Set<Integer> ints = new HashSet<>();
 
@@ -48,7 +48,7 @@ public class InputLoader {
      * @return a list containing the integers in the input file
      * @throws IOException if the file does not exist
      */
-    public List<Long> loadToLongList(String resourcePath) throws IOException {
+    public static List<Long> loadToLongList(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
         List<Long> ints = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class InputLoader {
      * @return a list containing the strings in the input file
      * @throws IOException if the file does not exist
      */
-    public List<String> loadToStringList(String resourcePath) throws IOException {
+    public static List<String> loadToStringList(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
         List<String> strings = new ArrayList<>();
 
@@ -82,7 +82,7 @@ public class InputLoader {
      * @return a string containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public String loadToString(String resourcePath) throws IOException {
+    public static String loadToString(String resourcePath) throws IOException {
         BufferedReader br = openFileForReading(resourcePath);
         String str;
         String input = "";
@@ -97,7 +97,7 @@ public class InputLoader {
      * @return a 2D char array containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public char[][] loadTo2DCharArray(String resourcePath) throws IOException {
+    public static char[][] loadTo2DCharArray(String resourcePath) throws IOException {
         // determine how many lines there are in the file
         BufferedReader br = openFileForReading(resourcePath);
         int lines = 0;
@@ -121,7 +121,7 @@ public class InputLoader {
      * @return a char array containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public char[] loadToCharArray(String resourcePath) throws IOException {
+    public static char[] loadToCharArray(String resourcePath) throws IOException {
         return loadToString(resourcePath).toCharArray();
     }
 }

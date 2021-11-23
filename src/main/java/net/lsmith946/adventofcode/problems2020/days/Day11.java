@@ -13,8 +13,7 @@ public class Day11 implements Puzzle {
     int totalRows, totalColumns;
 
     public Day11() throws IOException {
-        InputLoader il = new InputLoader();
-        currentSeatingArea = il.loadTo2DCharArray("/2020/day11_input.txt");
+        currentSeatingArea = InputLoader.loadTo2DCharArray("/2020/day11_input.txt");
         totalRows = currentSeatingArea.length;
         totalColumns = currentSeatingArea[0].length;
         // copy the loaded seating area to a reference array

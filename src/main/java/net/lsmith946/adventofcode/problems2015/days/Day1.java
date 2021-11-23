@@ -10,8 +10,7 @@ public class Day1 implements Puzzle {
     char[] input;
 
     public Day1() throws IOException {
-        InputLoader il = new InputLoader();
-        this.input = il.loadToCharArray("/2015/day1_input.txt");
+        this.input = InputLoader.loadToCharArray("/2015/day1_input.txt");
     }
 
     @Override

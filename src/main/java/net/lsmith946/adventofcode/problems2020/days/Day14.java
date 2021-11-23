@@ -14,8 +14,7 @@ public class Day14 implements Puzzle {
     List<String> instructions;
 
     public Day14() throws IOException {
-        InputLoader il = new InputLoader();
-        instructions = il.loadToStringList("/2020/day14_input.txt");
+        instructions = InputLoader.loadToStringList("/2020/day14_input.txt");
     }
 
     @Override

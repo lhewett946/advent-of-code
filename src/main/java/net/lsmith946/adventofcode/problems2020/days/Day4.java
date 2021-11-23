@@ -14,8 +14,7 @@ public class Day4 implements Puzzle {
     List<Passport> passports;
 
     public Day4() throws IOException {
-        InputLoader il = new InputLoader();
-        this.values = il.loadToStringList("/2020/day4_input.txt");
+        this.values = InputLoader.loadToStringList("/2020/day4_input.txt");
         this.passports = new ArrayList<>();
         loadPassports();
     }

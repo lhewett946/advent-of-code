@@ -14,8 +14,7 @@ public class Day4 implements Puzzle {
     MessageDigest md5;
 
     public Day4() throws IOException, NoSuchAlgorithmException {
-        InputLoader il = new InputLoader();
-        this.input = il.loadToString("/2015/day4_input.txt");
+        this.input = InputLoader.loadToString("/2015/day4_input.txt");
         md5 = MessageDigest.getInstance("MD5");
     }
 

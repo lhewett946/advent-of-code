@@ -14,8 +14,7 @@ public class Day2 implements Puzzle {
     List<Present> presents;
 
     public Day2() throws IOException {
-        InputLoader il = new InputLoader();
-        this.input = il.loadToStringList("/2015/day2_input.txt");
+        this.input = InputLoader.loadToStringList("/2015/day2_input.txt");
         loadPresents();
     }
 

@@ -15,8 +15,7 @@ public class Day8 implements Puzzle {
     List<Instruction> instructions;
 
     public Day8() throws IOException {
-        InputLoader il = new InputLoader();
-        this.values = il.loadToStringList("/2020/day8_input.txt");
+        this.values = InputLoader.loadToStringList("/2020/day8_input.txt");
         this.instructions = new ArrayList<>();
         loadInstructions();
     }
