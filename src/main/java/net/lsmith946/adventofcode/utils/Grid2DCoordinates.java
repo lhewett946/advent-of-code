@@ -1,6 +1,4 @@
-package net.lsmith946.adventofcode.problems2015;
-
-import net.lsmith946.adventofcode.utils.CompassDirections;
+package net.lsmith946.adventofcode.utils;
 
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.problems2015.days;
 
-import net.lsmith946.adventofcode.problems2015.Grid2DCoordinates;
+import net.lsmith946.adventofcode.utils.Grid2DCoordinates;
 import net.lsmith946.adventofcode.utils.CompassDirections;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
