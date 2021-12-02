@@ -24,14 +24,27 @@ public class Grid2DCoordinates {
         return Objects.hash(x, y);
     }
 
-    public Grid2DCoordinates move(CompassDirections direction) {
+    public Grid2DCoordinates move(CompassDirections direction, int magnitude) {
         Grid2DCoordinates newPosition = new Grid2DCoordinates(x, y);
         switch(direction) {
-            case NORTH -> newPosition.y++;
-            case SOUTH -> newPosition.y--;
-            case EAST -> newPosition.x++;
-            case WEST -> newPosition.x--;
+            case NORTH -> newPosition.y += magnitude;
+            case SOUTH -> newPosition.y -= magnitude;
+            case EAST -> newPosition.x += magnitude;
+            case WEST -> newPosition.x -= magnitude;
         }
         return newPosition;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
     }
 }

@@ -39,7 +39,7 @@ public class Day3 implements Puzzle {
         visitedHouses.add(new Grid2DCoordinates(0, 0));
         for(char c : instructions) {
             CompassDirections direction = decodeDirections(c);
-            Grid2DCoordinates newPosition = currentPosition.move(direction);
+            Grid2DCoordinates newPosition = currentPosition.move(direction, 1);
             visitedHouses.add(newPosition);
             currentPosition = newPosition;
         }
