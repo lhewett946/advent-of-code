@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HexFormat;
 
 public class Day4 implements Puzzle {
 
@@ -31,7 +32,7 @@ public class Day4 implements Puzzle {
             // generate enough characters at the start of the hex string
             int bytesToConvert = (int) Math.ceil((double) targetStart.length() / 2.0);
             for(int i = 0; i < bytesToConvert; i++) {
-                sb.append(String.format("%02x", currentHashBytes[i]));
+                sb.append(HexFormat.of().toHexDigits(currentHashBytes[i]));
             }
             currentHash = sb.toString();
         } while (!currentHash.startsWith(targetStart));
