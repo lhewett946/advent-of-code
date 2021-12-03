@@ -14,8 +14,7 @@ public class InputLoaderTest {
 
     @Test
     public void testLoadingIntsToSet() throws IOException {
-        InputLoader il = new InputLoader();
-        Set<Integer> loadedInts = il.loadToIntSet("/int_loader_test_data.txt");
+        Set<Integer> loadedInts = InputLoader.loadToIntSet("/int_loader_test_data.txt");
         Set<Integer> expectedInts = new HashSet<>();
 
         expectedInts.add(1721);
@@ -30,8 +29,7 @@ public class InputLoaderTest {
 
     @Test
     public void testLoadingStringsToList() throws IOException {
-        InputLoader il = new InputLoader();
-        List<String> loadedStrings = il.loadToStringList("/string_loader_test_data.txt");
+        List<String> loadedStrings = InputLoader.loadToStringList("/string_loader_test_data.txt");
         List<String> expectedStrings = new ArrayList<>();
 
         expectedStrings.add("1-3 a: abcde");
