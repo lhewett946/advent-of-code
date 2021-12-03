@@ -16,14 +16,6 @@ public class Day1 implements Puzzle {
         this.values = InputLoader.loadToLongList("/2021/day1_input.txt");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 1 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
 
     @Override
     public long solvePartOne() {

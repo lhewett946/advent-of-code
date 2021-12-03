@@ -17,14 +17,6 @@ public class Day2 implements Puzzle {
         this.values = InputLoader.loadToStringList("/2021/day2_input.txt");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 2 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
 
     private CompassDirections decodeDirections(String direction) {
         return switch(direction) {

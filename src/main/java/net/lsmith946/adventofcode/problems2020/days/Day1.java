@@ -16,15 +16,6 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 1 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         // part 1 is to find two integers from the list which sum to 2020
         // and then find the product of those two integers

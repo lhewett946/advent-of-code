@@ -24,15 +24,6 @@ public class Day11 implements Puzzle {
         }
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 11 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
     private int countOccupiedAdjacentSeats(int rowCheck, int columnCheck) {
         int occupiedSeats = 0;
 

@@ -29,15 +29,6 @@ public class Day8 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 8 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         Computer comp = new Computer(instructions);
         comp.executeInstructions();

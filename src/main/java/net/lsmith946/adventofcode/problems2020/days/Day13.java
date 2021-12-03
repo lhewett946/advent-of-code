@@ -16,15 +16,6 @@ public class Day13 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 13 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int timestampYouArrive = Integer.parseInt(values.get(0));
         String[] busStrings = values.get(1).split(",");

@@ -15,15 +15,6 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 2 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int validPasswords = 0;
         for (String s : values) {

@@ -16,15 +16,6 @@ public class Day9 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 9 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         List<Long> valuesInWindow = new ArrayList<>();
         for (Long l : values) {

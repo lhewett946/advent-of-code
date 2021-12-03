@@ -67,15 +67,6 @@ public class Day16 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 16 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int errorRate = 0;
         for (Ticket t : nearbyTickets) {

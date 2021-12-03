@@ -34,13 +34,6 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 2 ------");
-        solvePartOne();
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         // calculate the amount of wrapping paper needed for the presents
         long wrappingPaperNeeded = 0;

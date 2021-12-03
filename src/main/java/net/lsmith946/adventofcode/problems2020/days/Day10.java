@@ -30,15 +30,6 @@ public class Day10 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 10 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int oneJoltDifferences = 0;
         int threeJoltDifferences = 0;

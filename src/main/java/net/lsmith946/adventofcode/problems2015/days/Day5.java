@@ -19,13 +19,6 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 5 ------");
-        solvePartOne();
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         long niceStrings = 0;
         for(String s : input) {

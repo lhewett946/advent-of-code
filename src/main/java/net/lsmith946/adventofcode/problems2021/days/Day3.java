@@ -16,15 +16,6 @@ public class Day3 implements Puzzle {
         this.values = InputLoader.loadToStringList("/2021/day3_input.txt");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 3 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
     private char mostCommonBitValue(int column, List<String> vals) {
         int countOnes = 0;
         for (String value : vals) {

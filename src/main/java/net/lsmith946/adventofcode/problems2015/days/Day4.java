@@ -18,13 +18,6 @@ public class Day4 implements Puzzle {
         md5 = MessageDigest.getInstance("MD5");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 4 ------");
-        solvePartOne();
-        solvePartTwo();
-    }
-
     private Long findNumberForHashStartingWith(String targetStart) {
         long currentNumber = 0;
         byte[] currentHashBytes;

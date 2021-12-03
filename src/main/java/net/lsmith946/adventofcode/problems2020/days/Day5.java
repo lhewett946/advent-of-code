@@ -16,15 +16,6 @@ public class Day5 implements Puzzle {
         this.values = InputLoader.loadToStringList("/2020/day5_input.txt");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 5 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
     private int calculateSeatID(String s) {
         int row;
         int column;

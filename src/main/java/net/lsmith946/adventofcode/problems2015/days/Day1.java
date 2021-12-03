@@ -14,13 +14,6 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 1 ------");
-        solvePartOne();
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int currentFloor = 0;
         for (Character c : input) {

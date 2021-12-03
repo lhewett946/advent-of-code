@@ -18,15 +18,6 @@ public class Day14 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 14 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         Map<Long, Long> memoryContents = new HashMap<>();
         long address;

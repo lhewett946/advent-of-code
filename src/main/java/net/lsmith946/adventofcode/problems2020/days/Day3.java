@@ -31,15 +31,6 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 3 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int treesHit = countTreesOnRoute(3, 1);
         System.out.println("Number of trees hit: " + treesHit);

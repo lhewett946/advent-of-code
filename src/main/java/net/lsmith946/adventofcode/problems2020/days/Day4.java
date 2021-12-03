@@ -52,15 +52,6 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public void solve() {
-        System.out.println("------ DAY 4 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
-    @Override
     public long solvePartOne() {
         int validPassports = 0;
         for (Passport p : passports) {

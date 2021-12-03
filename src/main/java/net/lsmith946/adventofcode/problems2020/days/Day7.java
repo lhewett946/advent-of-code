@@ -36,15 +36,6 @@ public class Day7 implements Puzzle {
         }
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 7 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
     private List<Bag> getPossibleBags(String currentBagToCheck) {
         List<Bag> newPossibleBags = new ArrayList<>();
         for (Bag b : bags) {

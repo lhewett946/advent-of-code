@@ -17,13 +17,6 @@ public class Day3 implements Puzzle {
         this.input = InputLoader.loadToCharArray("/2015/day3_input.txt");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 3 ------");
-        solvePartOne();
-        solvePartTwo();
-    }
-
     private CompassDirections decodeDirections(char c) {
         return switch (c) {
             case '^' -> CompassDirections.NORTH;

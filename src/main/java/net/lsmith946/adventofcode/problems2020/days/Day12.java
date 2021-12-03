@@ -15,15 +15,6 @@ public class Day12 implements Puzzle {
         directions = InputLoader.loadToStringList("/2020/day12_input.txt");
     }
 
-    @Override
-    public void solve() {
-        System.out.println("------ DAY 12 ------");
-        System.out.println("--- PART ONE ---");
-        solvePartOne();
-        System.out.println("--- PART TWO ---");
-        solvePartTwo();
-    }
-
     private CompassDirections turnLeft(CompassDirections currentDirection, int degrees) {
         for (int turnsMade = 0; turnsMade < degrees / 90; turnsMade++) {
             switch (currentDirection) {
