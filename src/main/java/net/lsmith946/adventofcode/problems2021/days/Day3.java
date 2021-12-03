@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,10 +27,10 @@ public class Day3 implements Puzzle {
 
     private char mostCommonBitValue(int column, List<String> vals) {
         int countOnes = 0;
-        for (String  value : vals) {
+        for (String value : vals) {
             countOnes += Integer.parseInt((String.valueOf(value.charAt(column))));
         }
-        if (countOnes >= vals.size()/2) {
+        if (countOnes >= Math.ceil((vals.size()/2.0))) {
             return '1';
         } else {
             return '0';
@@ -41,7 +42,7 @@ public class Day3 implements Puzzle {
         for (String value : vals) {
             countOnes += Integer.parseInt((String.valueOf(value.charAt(column))));
         }
-        if (countOnes >= vals.size()/2) {
+        if (countOnes >= Math.ceil((vals.size()/2.0))) {
             return '0';
         } else {
             return '1';
@@ -68,6 +69,44 @@ public class Day3 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        int columns = values.get(0).length();
+        // start by finding the oxygen generator rating
+        int oxygenGeneratorRating;
+        List<String> oxygenGeneratorList = new ArrayList<>(values);
+        for(int c = 0; c < columns; c++) {
+            int column = c;
+            char currentTestChar = mostCommonBitValue(c, oxygenGeneratorList);
+            oxygenGeneratorList = oxygenGeneratorList.stream().filter(x -> x.charAt(column) == currentTestChar).toList();
+            if (oxygenGeneratorList.size() == 1) {
+                break;
+            }
+        }
+        if (oxygenGeneratorList.size() != 1) {
+            throw new IllegalStateException("Expected only 1 value in oxygenGeneratorList, but there were " + oxygenGeneratorList.size());
+        } else {
+            oxygenGeneratorRating = Integer.parseInt(oxygenGeneratorList.get(0), 2);
+            System.out.println("The oxygen generator rating is " + oxygenGeneratorRating);
+        }
+
+        // then find the CO2 scrubber rating
+        int CO2ScrubberRating;
+        List<String> CO2ScrubberList = new ArrayList<>(values);
+        for(int c = 0; c < columns; c++) {
+            int column = c;
+            char currentTestChar = leastCommonBitValue(c, CO2ScrubberList);
+            CO2ScrubberList = CO2ScrubberList.stream().filter(x -> x.charAt(column) == currentTestChar).toList();
+            if (CO2ScrubberList.size() == 1) {
+                break;
+            }
+        }
+        if (CO2ScrubberList.size() != 1) {
+            throw new IllegalStateException("Expected only 1 value in CO2ScrubberList, but there were " + CO2ScrubberList.size());
+        } else {
+            CO2ScrubberRating = Integer.parseInt(CO2ScrubberList.get(0), 2);
+            System.out.println("The CO2 scrubber rating is " + CO2ScrubberRating);
+        }
+        long product = (long) oxygenGeneratorRating * CO2ScrubberRating;
+        System.out.println("The product of the two ratings is " + product);
+        return product;
     }
 }
