@@ -23,24 +23,38 @@ public class Day3 implements Puzzle {
         solvePartTwo();
     }
 
+    private char mostCommonBitValue(int column, char[][] vals) {
+        int countOnes = 0;
+        for (char[] value : values) {
+            countOnes += Integer.parseInt((String.valueOf(value[column])));
+        }
+        if (countOnes > vals.length/2) {
+            return '1';
+        } else {
+            return '0';
+        }
+    }
+
+    private char leastCommonBitValue(int column, char[][] vals) {
+        int countOnes = 0;
+        for (char[] value : values) {
+            countOnes += Integer.parseInt((String.valueOf(value[column])));
+        }
+        if (countOnes > vals.length/2) {
+            return '0';
+        } else {
+            return '1';
+        }
+    }
+
     @Override
     public long solvePartOne() {
-        int rows = values.length;
         int columns = values[0].length;
         char[] mostCommonBitValues = new char[columns];
         char[] leastCommonBitValues = new char[columns];
         for(int c = 0; c < columns; c++) {
-            int countOnes = 0;
-            for (char[] value : values) {
-                countOnes += Integer.parseInt((String.valueOf(value[c])));
-            }
-            if (countOnes > rows/2) {
-                mostCommonBitValues[c] = '1';
-                leastCommonBitValues[c] = '0';
-            } else {
-                mostCommonBitValues[c] = '0';
-                leastCommonBitValues[c] = '1';
-            }
+            mostCommonBitValues[c] = mostCommonBitValue(c, values);
+            leastCommonBitValues[c] = leastCommonBitValue(c, values);
         }
         int gammaRate = Integer.parseInt(new String(mostCommonBitValues), 2);
         int epsilonRate = Integer.parseInt(new String(leastCommonBitValues), 2);
