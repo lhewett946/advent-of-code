@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class Day3 implements Puzzle {
 
@@ -28,7 +29,7 @@ public class Day3 implements Puzzle {
         for (char[] value : values) {
             countOnes += Integer.parseInt((String.valueOf(value[column])));
         }
-        if (countOnes > vals.length/2) {
+        if (countOnes >= vals.length/2) {
             return '1';
         } else {
             return '0';
@@ -40,7 +41,7 @@ public class Day3 implements Puzzle {
         for (char[] value : values) {
             countOnes += Integer.parseInt((String.valueOf(value[column])));
         }
-        if (countOnes > vals.length/2) {
+        if (countOnes >= vals.length/2) {
             return '0';
         } else {
             return '1';
