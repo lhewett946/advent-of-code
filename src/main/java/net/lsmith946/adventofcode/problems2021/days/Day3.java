@@ -60,7 +60,7 @@ public class Day3 implements Puzzle {
         int epsilonRate = Integer.parseInt(new String(leastCommonBitValues), 2);
         System.out.println("The gamma rate is " + gammaRate);
         System.out.println("The epsilon rate is " + epsilonRate);
-        long product = Integer.toUnsignedLong(gammaRate) * Integer.toUnsignedLong(epsilonRate);
+        long product = (long) gammaRate * epsilonRate;
         System.out.println("The product of the two rates is " + product);
         return product;
     }
