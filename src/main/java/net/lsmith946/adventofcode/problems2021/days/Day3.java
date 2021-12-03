@@ -9,10 +9,10 @@ import java.util.List;
 
 public class Day3 implements Puzzle {
 
-    private char[][] values;
+    private List<String> values;
 
     public Day3() throws IOException {
-        this.values = InputLoader.loadTo2DCharArray("/2021/day3_input.txt");
+        this.values = InputLoader.loadToStringList("/2021/day3_input.txt");
     }
 
     @Override
@@ -24,24 +24,24 @@ public class Day3 implements Puzzle {
         solvePartTwo();
     }
 
-    private char mostCommonBitValue(int column, char[][] vals) {
+    private char mostCommonBitValue(int column, List<String> vals) {
         int countOnes = 0;
-        for (char[] value : values) {
-            countOnes += Integer.parseInt((String.valueOf(value[column])));
+        for (String  value : vals) {
+            countOnes += Integer.parseInt((String.valueOf(value.charAt(column))));
         }
-        if (countOnes >= vals.length/2) {
+        if (countOnes >= vals.size()/2) {
             return '1';
         } else {
             return '0';
         }
     }
 
-    private char leastCommonBitValue(int column, char[][] vals) {
+    private char leastCommonBitValue(int column, List<String> vals) {
         int countOnes = 0;
-        for (char[] value : values) {
-            countOnes += Integer.parseInt((String.valueOf(value[column])));
+        for (String value : vals) {
+            countOnes += Integer.parseInt((String.valueOf(value.charAt(column))));
         }
-        if (countOnes >= vals.length/2) {
+        if (countOnes >= vals.size()/2) {
             return '0';
         } else {
             return '1';
@@ -50,7 +50,7 @@ public class Day3 implements Puzzle {
 
     @Override
     public long solvePartOne() {
-        int columns = values[0].length;
+        int columns = values.get(0).length();
         char[] mostCommonBitValues = new char[columns];
         char[] leastCommonBitValues = new char[columns];
         for(int c = 0; c < columns; c++) {
