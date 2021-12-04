@@ -8,6 +8,7 @@ public class BingoCard {
     private boolean [][] called;
     private int rows;
     private int columns;
+    private boolean hasWon;
 
     public BingoCard(int[][] numbers) {
         this.numbers = numbers;
@@ -17,6 +18,7 @@ public class BingoCard {
         for(int r = 0; r < rows; r++) {
             Arrays.fill(called[r], false);
         }
+        hasWon = false;
     }
 
     private void markNumber(int number) {
@@ -43,12 +45,14 @@ public class BingoCard {
         // check for any winning rows
         for(boolean b : winningRow) {
             if (b) {
+                hasWon = true;
                 return b;
             }
         }
         // check for any winning columns
         for(boolean b : winningColumn) {
             if (b) {
+                hasWon = true;
                 return b;
             }
         }
@@ -56,8 +60,13 @@ public class BingoCard {
     }
 
     public boolean processTurn(int number) {
-        markNumber(number);
-        return checkForWin();
+        if (!hasWon) {
+            markNumber(number);
+            return checkForWin();
+        }
+        else {
+            return false;
+        }
     }
 
     public int calculateScore() {

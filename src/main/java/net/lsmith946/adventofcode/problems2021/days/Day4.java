@@ -63,7 +63,7 @@ public class Day4 implements Puzzle {
             for(BingoCard card : cards) {
                 if (card.processTurn(currentNumber)) {
                     long product = (long) currentNumber * card.calculateScore();
-                    System.out.println("The product of the current number and the winning cards score is " + product);
+                    System.out.println("The product of the current number and the first winning cards score is " + product);
                     return product;
                 }
             }
@@ -73,6 +73,19 @@ public class Day4 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        int lastWinnerScore = 0;
+        int lastWinnerNumber = 0;
+        for(Integer currentNumber : numbersToCall) {
+            for(BingoCard card : cards) {
+                if (card.processTurn(currentNumber)) {
+                    lastWinnerScore = card.calculateScore();
+                    lastWinnerNumber = currentNumber;
+                }
+            }
+        }
+
+        long product = (long) lastWinnerNumber * lastWinnerScore;
+        System.out.println("The product of the current number and the last winning cards score is " + product);
+        return product;
     }
 }
