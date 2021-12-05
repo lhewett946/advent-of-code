@@ -43,6 +43,7 @@ public class Grid2DCoordinates {
         return y;
     }
 
+
     @Override
     public String toString() {
         return "(" + x + "," + y + ")";
