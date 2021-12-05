@@ -11,11 +11,9 @@ import java.util.*;
 public class Day5 implements Puzzle {
 
     private List<String> values;
-    private Map<Grid2DCoordinates, Integer> pointsCrossedCount;
 
     public Day5() throws IOException {
         this.values = InputLoader.loadToStringList("/2021/day5_input.txt");
-        this.pointsCrossedCount = new HashMap<>();
     }
 
     private Grid2DCoordinates[] parseCoordinates (String str) {
@@ -51,6 +49,7 @@ public class Day5 implements Puzzle {
 
     @Override
     public long solvePartOne() {
+        Map<Grid2DCoordinates, Integer> pointsCrossedCount = new HashMap<>();
         for(String s : values) {
             Grid2DCoordinates[] startEndPoints = parseCoordinates(s);
             // process line only if horizontal or vertical
@@ -81,6 +80,29 @@ public class Day5 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        Map<Grid2DCoordinates, Integer> pointsCrossedCount = new HashMap<>();
+        for(String s : values) {
+            Grid2DCoordinates[] startEndPoints = parseCoordinates(s);
+            Set<Grid2DCoordinates> coordsCovered = listIntermediateCoords(startEndPoints[0], startEndPoints[1]);
+            for(Grid2DCoordinates pos : coordsCovered) {
+                if (pointsCrossedCount.containsKey(pos)) {
+                    int currentCountAtPos = pointsCrossedCount.get(pos);
+                    currentCountAtPos++;
+                    pointsCrossedCount.replace(pos, currentCountAtPos);
+                } else {
+                    pointsCrossedCount.put(pos, 1);
+                }
+            }
+        }
+
+        // after processing all lines, determine how many points have at least 2 lines crossing them
+        int count = 0;
+        for(Grid2DCoordinates pos : pointsCrossedCount.keySet()) {
+            if (pointsCrossedCount.get(pos) >= 2) {
+                count++;
+            }
+        }
+        System.out.println("The number of points where two or more lines cross is " + count);
+        return count;
     }
 }
