@@ -12,4 +12,10 @@ public class Day6Test {
         Day6 d6 = new Day6();
         Assertions.assertEquals(362740, d6.solvePartOne());
     }
+
+    @Test
+    public void testDay6Part2() throws IOException {
+        Day6 d6 = new Day6();
+        Assertions.assertEquals(1644874076764L, d6.solvePartTwo());
+    }
 }

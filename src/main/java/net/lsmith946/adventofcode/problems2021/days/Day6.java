@@ -9,7 +9,7 @@ import java.util.*;
 public class Day6 implements Puzzle {
 
     private String values;
-    private int[] initialAges;
+    private long[] initialAges;
 
     public Day6() throws IOException {
         this.values = InputLoader.loadToString("/2021/day6_input.txt");
@@ -17,7 +17,7 @@ public class Day6 implements Puzzle {
 
     private void parseInput() {
         String[] ages = values.split(",");
-        initialAges = new int[9];
+        initialAges = new long[9];
         Arrays.fill(initialAges, 0);
         for(String s : ages) {
             initialAges[Integer.parseInt(s)]++;
@@ -26,7 +26,7 @@ public class Day6 implements Puzzle {
 
     @SuppressWarnings("SuspiciousSystemArraycopy")
     private void processDay() {
-        int newLanternfish = initialAges[0];
+        long newLanternfish = initialAges[0];
         System.arraycopy(initialAges, 1, initialAges, 0, 8);
         // each lanternfish that created a new fish now sets its timer to 6
         initialAges[6] += newLanternfish;
@@ -41,13 +41,19 @@ public class Day6 implements Puzzle {
         for(int day = 0; day < 80; day++) {
             processDay();
         }
-        int totalFish = Arrays.stream(initialAges).sum();
+        long totalFish = Arrays.stream(initialAges).sum();
         System.out.println("After 80 days, there are " + totalFish + " lanternfish");
         return totalFish;
     }
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        parseInput();
+        for(int day = 0; day < 256; day++) {
+            processDay();
+        }
+        long totalFish = Arrays.stream(initialAges).sum();
+        System.out.println("After 256 days, there are " + totalFish + " lanternfish");
+        return totalFish;
     }
 }
