@@ -52,6 +52,21 @@ public class Day7 implements Puzzle {
     @Override
     public long solvePartTwo() {
         parseInput();
-        return 0;
+        int minFuelUsed = Integer.MAX_VALUE;
+        Set<Integer> allPositions = crabSubmarinesAtPosition.keySet();
+        int startPositionTest = Collections.min(allPositions);
+        int stopPositionTest = Collections.max(allPositions);
+        for(int target = startPositionTest; target <= stopPositionTest; target++) {
+            int totalFuelUsed = 0;
+            for(Integer pos : allPositions) {
+                int delta = Math.abs(target - pos);
+                totalFuelUsed += ((delta * (delta+1)) / 2) * crabSubmarinesAtPosition.get(pos);
+            }
+            if (totalFuelUsed < minFuelUsed) {
+                minFuelUsed = totalFuelUsed;
+            }
+        }
+        System.out.println("The minimum fuel needed to align the submarines is " + minFuelUsed);
+        return minFuelUsed;
     }
 }
