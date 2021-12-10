@@ -1,5 +1,6 @@
 package net.lsmith946.adventofcode.problems2021.days;
 
+import net.lsmith946.adventofcode.utils.Grid2DCoordinates;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
@@ -14,27 +15,27 @@ public class Day9 implements Puzzle {
         this.values = InputLoader.loadTo2DIntArray("/2021/day9_input.txt");
     }
 
-    private boolean isLowPoint(int row, int column) {
+    private boolean isLowPoint(Grid2DCoordinates location) {
         int rows = values.length;
         int columns = values[0].length;
         boolean lowPoint = true;
-        if (row-1 >= 0) {
-            if (values[row][column] >= values[row-1][column]) {
+        if (location.getX()-1 >= 0) {
+            if (values[location.getX()][location.getY()] >= values[location.getX()-1][location.getY()]) {
                 lowPoint = false;
             }
         }
-        if (row+1 < rows) {
-            if (values[row][column] >= values[row+1][column]) {
+        if (location.getX()+1 < rows) {
+            if (values[location.getX()][location.getY()] >= values[location.getX()+1][location.getY()]) {
                 lowPoint = false;
             }
         }
-        if (column-1 >= 0) {
-            if (values[row][column] >= values[row][column - 1]) {
+        if (location.getY()-1 >= 0) {
+            if (values[location.getX()][location.getY()] >= values[location.getX()][location.getY() - 1]) {
                 lowPoint = false;
             }
         }
-        if (column+1 < columns) {
-            if (values[row][column] >= values[row][column+1]) {
+        if (location.getY()+1 < columns) {
+            if (values[location.getX()][location.getY()] >= values[location.getX()][location.getY()+1]) {
                 lowPoint = false;
             }
         }
@@ -48,7 +49,7 @@ public class Day9 implements Puzzle {
         int columns = values[0].length;
         for(int r = 0; r < rows; r++) {
             for(int c = 0; c < columns; c++) {
-                if (isLowPoint(r, c)) {
+                if (isLowPoint(new Grid2DCoordinates(r, c))) {
                     riskSum += values[r][c] + 1;
                 }
             }
