@@ -117,6 +117,34 @@ public class InputLoader {
     }
 
     /**
+     * @param resourcePath The path of the file to be read in, under resources
+     * @return a 2D char array containing the data in the input file
+     * @throws IOException if the file does not exist
+     */
+    public static int[][] loadTo2DIntArray(String resourcePath) throws IOException {
+        // determine how many lines there are in the file
+        BufferedReader br = openFileForReading(resourcePath);
+        int lines = 0;
+        while (br.readLine() != null) {
+            lines++;
+        }
+        // actually load file content
+        String str;
+        br = openFileForReading(resourcePath);
+        int[][] ints = new int[lines][];
+        int currentLine = 0;
+        while ((str = br.readLine()) != null) {
+            char[] currentLineChars = str.toCharArray();
+            ints[currentLine] = new int[currentLineChars.length];
+            for(int i = 0; i < currentLineChars.length; i++) {
+                ints[currentLine][i] = Integer.parseInt(String.valueOf(currentLineChars[i]));
+            }
+            currentLine++;
+        }
+        return ints;
+    }
+
+    /**
      * @param resourcePath The path to the file to be read in, under resources
      * @return a char array containing the data in the input file
      * @throws IOException if the file does not exist
