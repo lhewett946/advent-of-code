@@ -18,6 +18,9 @@ public class Day2 implements Puzzle {
     public Day2() throws IOException {
         this.values = InputLoader.loadTo2DCharArray("/2022/day2_input.txt");
         this.rounds = new Moves[2][values.length];
+    }
+
+    private void decodeInputPart1() {
         for(int round = 0; round < values.length; round++) {
             switch (values[round][0]) {
                 case 'A' -> rounds[0][round] = Moves.ROCK;
@@ -32,7 +35,6 @@ public class Day2 implements Puzzle {
             }
         }
     }
-
     private long scoreRound(Moves theirMove, Moves myMove) {
         long score = 0;
         // score for the move I am using
@@ -51,7 +53,6 @@ public class Day2 implements Puzzle {
                 (myMove == Moves.SCISSORS && theirMove == Moves.PAPER)) {
             score += 6;            
         }
-        System.out.println(score);
         return score;
     }
     
@@ -59,6 +60,7 @@ public class Day2 implements Puzzle {
     public long solvePartOne() {
         // part 1 is to find your score
         long score = 0;
+        decodeInputPart1();
         for (int round = 0; round < rounds[0].length; round++) {
             score += scoreRound(rounds[0][round], rounds[1][round]);
         }
