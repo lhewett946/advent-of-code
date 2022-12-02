@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.problems2022;
 
-import net.lsmith946.adventofcode.problems2022.days.Day1;
+import net.lsmith946.adventofcode.problems2022.days.*;
 import net.lsmith946.adventofcode.utils.ExitCodes;
 
 import java.io.FileNotFoundException;
@@ -17,6 +17,17 @@ public class AdventOfCode2022 {
             System.exit(ExitCodes.FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
         } catch (IOException e) {
             System.err.println("Unable to read input file for Day 1!");
+            System.exit(ExitCodes.IO_EXCEPTION_EXIT_CODE);
+        }
+
+        try {
+            Day2 d2 = new Day2();
+            d2.solve();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to open input data file for Day 2!");
+            System.exit(ExitCodes.FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
+        } catch (IOException e) {
+            System.err.println("Unable to read input file for Day 2!");
             System.exit(ExitCodes.IO_EXCEPTION_EXIT_CODE);
         }
     }
