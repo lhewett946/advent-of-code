@@ -11,8 +11,6 @@ import java.util.Set;
 
 public class Day3 implements Puzzle {
 
-    enum Moves { ROCK, PAPER, SCISSORS }
-
     private List<Rucksack> sacks;
 
     public Day3() throws IOException {
