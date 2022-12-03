@@ -1,22 +1,26 @@
 package net.lsmith946.adventofcode.problems2022.days;
 
+import net.lsmith946.adventofcode.problems2022.Rucksack;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Day3 implements Puzzle {
 
     enum Moves { ROCK, PAPER, SCISSORS }
 
     private List<String> values;
+    private List<Rucksack> sacks;
 
     public Day3() throws IOException {
         this.values = InputLoader.loadToStringList("/2022/day3_input.txt");
+        sacks = new ArrayList<>();
+        for(String s : values) {
+            Rucksack sack = new Rucksack(s);
+            sacks.add(sack);
+        }
     }
 
     private long convertToPriorityValue(Character item) {
@@ -59,24 +63,8 @@ public class Day3 implements Puzzle {
     public long solvePartOne() {
         long prioritiesSum = 0;
         // find the item that exists in both compartments of the rucksack
-        for(String s : values) {
-            char sharedItem = 0;
-            String firstCompartment = s.substring(0, (s.length()/2));
-            String secondCompartment = s.substring(s.length()/2);
-            // load the items in the first compartment into the set
-            Set<Character> firstCompartmentItems = new HashSet<>();
-            for(int i = 0; i < firstCompartment.length(); i++) {
-                firstCompartmentItems.add(firstCompartment.charAt(i));
-            }
-
-            // check the items in the second compartment to see if they are already in the first compartment
-            for(int i = 0; i < secondCompartment.length(); i++) {
-                if (firstCompartmentItems.contains(secondCompartment.charAt(i))) {
-                    sharedItem = secondCompartment.charAt(i);
-                    break; // break on first match since we know only one item is common
-                }
-            }
-
+        for(Rucksack sack : sacks) {
+            char sharedItem = sack.findItemInBothCompartments();
             prioritiesSum += convertToPriorityValue(sharedItem);
         }
         System.out.println("The sum of the priorities of all the items is " + prioritiesSum);
