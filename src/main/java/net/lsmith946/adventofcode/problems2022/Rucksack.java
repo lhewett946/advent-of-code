@@ -1,5 +1,7 @@
 package net.lsmith946.adventofcode.problems2022;
 
+import net.lsmith946.adventofcode.utils.FormatConverter;
+
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -16,10 +18,7 @@ public class Rucksack {
         String firstCompartment = contents.substring(0, (contents.length()/2));
         String secondCompartment = contents.substring(contents.length()/2);
         // load the items in the first compartment into the set
-        Set<Character> firstCompartmentItems = new HashSet<>();
-        for(int i = 0; i < firstCompartment.length(); i++) {
-            firstCompartmentItems.add(firstCompartment.charAt(i));
-        }
+        Set<Character> firstCompartmentItems = FormatConverter.stringToCharSet(firstCompartment);
 
         // check the items in the second compartment to see if they are already in the first compartment
         for(int i = 0; i < secondCompartment.length(); i++) {
