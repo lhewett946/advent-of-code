@@ -11,11 +11,10 @@ public class Day3 implements Puzzle {
 
     enum Moves { ROCK, PAPER, SCISSORS }
 
-    private List<String> values;
     private List<Rucksack> sacks;
 
     public Day3() throws IOException {
-        this.values = InputLoader.loadToStringList("/2022/day3_input.txt");
+        List<String> values = InputLoader.loadToStringList("/2022/day3_input.txt");
         sacks = new ArrayList<>();
         for(String s : values) {
             Rucksack sack = new Rucksack(s);
