@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Day3 implements Puzzle {
 
-    private List<Rucksack> sacks;
+    private final List<Rucksack> sacks;
 
     public Day3() throws IOException {
         List<String> values = InputLoader.loadToStringList("/2022/day3_input.txt");

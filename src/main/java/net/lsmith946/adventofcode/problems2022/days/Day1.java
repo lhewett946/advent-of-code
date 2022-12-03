@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Day1 implements Puzzle {
+public final class Day1 implements Puzzle {
 
-    private List<String> values;
-    private List<Long> perElfCalories;
+    private final List<String> values;
+    private final List<Long> perElfCalories;
 
     private void calculateElfCalories() {
         long elfCalories = 0;

@@ -5,12 +5,12 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
 
-public class Day2 implements Puzzle {
+public final class Day2 implements Puzzle {
 
     enum Moves { ROCK, PAPER, SCISSORS }
 
-    private char [][] values;
-    private Moves [][] rounds;
+    private final char [][] values;
+    private final Moves [][] rounds;
 
     public Day2() throws IOException {
         this.values = InputLoader.loadTo2DCharArray("/2022/day2_input.txt");
