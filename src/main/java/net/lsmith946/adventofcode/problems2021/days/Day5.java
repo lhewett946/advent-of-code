@@ -18,15 +18,15 @@ public class Day5 implements Puzzle {
 
     private Grid2DCoordinates[] parseCoordinates (String str) {
         Grid2DCoordinates[] startEndPoints = new Grid2DCoordinates[2];
-        String[] coords = str.split(" -> ");
-        String[] startCoord = coords[0].split(",");
-        startEndPoints[0] = new Grid2DCoordinates(Integer.parseInt(startCoord[0]), Integer.parseInt(startCoord[1]));
-        String[] endCoord = coords[1].split(",");
-        startEndPoints[1] = new Grid2DCoordinates(Integer.parseInt(endCoord[0]), Integer.parseInt(endCoord[1]));
+        String[] coordinates = str.split(" -> ");
+        String[] startCoordinate = coordinates[0].split(",");
+        startEndPoints[0] = new Grid2DCoordinates(Integer.parseInt(startCoordinate[0]), Integer.parseInt(startCoordinate[1]));
+        String[] endCoordinate = coordinates[1].split(",");
+        startEndPoints[1] = new Grid2DCoordinates(Integer.parseInt(endCoordinate[0]), Integer.parseInt(endCoordinate[1]));
         return startEndPoints;
     }
 
-    private Set<Grid2DCoordinates> listIntermediateCoords(Grid2DCoordinates startPoint, Grid2DCoordinates endPoint) {
+    private Set<Grid2DCoordinates> listIntermediateCoordinates(Grid2DCoordinates startPoint, Grid2DCoordinates endPoint) {
         Grid2DCoordinates currentPosition = startPoint;
         Set<Grid2DCoordinates> intermediatePoints = new HashSet<>();
         intermediatePoints.add(startPoint);
@@ -55,8 +55,8 @@ public class Day5 implements Puzzle {
             // process line only if horizontal or vertical
             if (startEndPoints[0].getX() == startEndPoints[1].getX() ||
                 startEndPoints[0].getY() == startEndPoints[1].getY()) {
-                Set<Grid2DCoordinates> coordsCovered = listIntermediateCoords(startEndPoints[0], startEndPoints[1]);
-                for(Grid2DCoordinates pos : coordsCovered) {
+                Set<Grid2DCoordinates> coordinatesCovered = listIntermediateCoordinates(startEndPoints[0], startEndPoints[1]);
+                for(Grid2DCoordinates pos : coordinatesCovered) {
                     if (pointsCrossedCount.containsKey(pos)) {
                         int currentCountAtPos = pointsCrossedCount.get(pos);
                         currentCountAtPos++;
@@ -83,8 +83,8 @@ public class Day5 implements Puzzle {
         Map<Grid2DCoordinates, Integer> pointsCrossedCount = new HashMap<>();
         for(String s : values) {
             Grid2DCoordinates[] startEndPoints = parseCoordinates(s);
-            Set<Grid2DCoordinates> coordsCovered = listIntermediateCoords(startEndPoints[0], startEndPoints[1]);
-            for(Grid2DCoordinates pos : coordsCovered) {
+            Set<Grid2DCoordinates> coordinatesCovered = listIntermediateCoordinates(startEndPoints[0], startEndPoints[1]);
+            for(Grid2DCoordinates pos : coordinatesCovered) {
                 if (pointsCrossedCount.containsKey(pos)) {
                     int currentCountAtPos = pointsCrossedCount.get(pos);
                     currentCountAtPos++;

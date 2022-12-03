@@ -64,7 +64,7 @@ public class Day11 implements Puzzle {
                             changeMade = true;
                         } else if (currentSeatingArea[row][column] == '#' && occupiedSeats >= 4) {
                             // if the seat is currently occupied, along with at least 4 of the surrounding seats
-                            // if will become unoccupied
+                            // it will become unoccupied
                             newSeatingArea[row][column] = 'L';
                             changeMade = true;
                         }
@@ -144,7 +144,7 @@ public class Day11 implements Puzzle {
                             changeMade = true;
                         } else if (currentSeatingArea[row][column] == '#' && occupiedSeats >= 5) {
                             // if the seat is currently occupied, along with at least 5 of the visible seats
-                            // if will become unoccupied
+                            // it will become unoccupied
                             newSeatingArea[row][column] = 'L';
                             changeMade = true;
                         }

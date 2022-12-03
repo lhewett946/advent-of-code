@@ -16,24 +16,24 @@ public class Day3 implements Puzzle {
         this.values = InputLoader.loadToStringList("/2021/day3_input.txt");
     }
 
-    private char mostCommonBitValue(int column, List<String> vals) {
+    private char mostCommonBitValue(int column, List<String> values) {
         int countOnes = 0;
-        for (String value : vals) {
+        for (String value : values) {
             countOnes += Integer.parseInt((String.valueOf(value.charAt(column))));
         }
-        if (countOnes >= Math.ceil((vals.size()/2.0))) {
+        if (countOnes >= Math.ceil((values.size()/2.0))) {
             return '1';
         } else {
             return '0';
         }
     }
 
-    private char leastCommonBitValue(int column, List<String> vals) {
+    private char leastCommonBitValue(int column, List<String> values) {
         int countOnes = 0;
-        for (String value : vals) {
+        for (String value : values) {
             countOnes += Integer.parseInt((String.valueOf(value.charAt(column))));
         }
-        if (countOnes >= Math.ceil((vals.size()/2.0))) {
+        if (countOnes >= Math.ceil((values.size()/2.0))) {
             return '0';
         } else {
             return '1';

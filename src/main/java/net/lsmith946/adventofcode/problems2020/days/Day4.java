@@ -31,7 +31,7 @@ public class Day4 implements Puzzle {
                 String[] fieldsInString = s.split(" ");
                 // check for each field appearing in the string
                 // fields are not presented in a consistent order
-                // so any field could be anywhere within each passports data
+                // so any field could be anywhere within each passport's data
                 for (String field : fieldsInString) {
                     String[] fieldAndValue = field.split(":");
                     switch (fieldAndValue[0]) {
