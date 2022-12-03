@@ -13,4 +13,10 @@ public class Day3Test {
         Day3 d3 = new Day3();
         Assertions.assertEquals(7746, d3.solvePartOne());
     }
+
+    @Test
+    public void testDay3Part2() throws IOException {
+        Day3 d3 = new Day3();
+        Assertions.assertEquals(2604, d3.solvePartTwo());
+    }
 }

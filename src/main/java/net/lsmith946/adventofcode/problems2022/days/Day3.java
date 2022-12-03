@@ -72,6 +72,23 @@ public class Day3 implements Puzzle {
 
     @Override
     public long solvePartTwo() {
-        return 0;
+        long prioritiesSum = 0;
+        // split the rucksacks into groups of 3 and find the common items in each of the three sacks
+        List<Rucksack> sacksInGroup = new ArrayList<>();
+        for(Rucksack sack : sacks) {
+            sacksInGroup.add(sack);
+            if (sacksInGroup.size() == 3) {
+                Set<Character> commonContents = Rucksack.findCommonContents(sacksInGroup);
+                if (commonContents.size() != 1) {
+                    throw new IllegalStateException("More than one item was common to all of the rucksacks!");
+                } else {
+                    List<Character> badge = new ArrayList<>(commonContents);
+                    prioritiesSum += convertToPriorityValue(badge.get(0));
+                }
+                sacksInGroup.clear();
+            }
+        }
+        System.out.println("The sum of the priorities of all the badges is " + prioritiesSum);
+        return prioritiesSum;
     }
 }

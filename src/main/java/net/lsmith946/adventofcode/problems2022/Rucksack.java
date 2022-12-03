@@ -2,8 +2,7 @@ package net.lsmith946.adventofcode.problems2022;
 
 import net.lsmith946.adventofcode.utils.FormatConverter;
 
-import java.util.HashSet;
-import java.util.NoSuchElementException;
+import java.util.List;
 import java.util.Set;
 
 public class Rucksack {
@@ -30,5 +29,20 @@ public class Rucksack {
         // if we get here, we didn't find a common item for some reason, and we should have done
         // so throw an exception and complain about this
         throw new IllegalStateException("Did not find any common item in both compartments of the rucksack!");
+    }
+
+    public Set<Character> getContentsAsSet() {
+        return FormatConverter.stringToCharSet(contents);
+    }
+    public static Set<Character> findCommonContents(List<Rucksack> sacks) {
+        Set<Character> commonContents = sacks.get(0).getContentsAsSet();
+        sacks.remove(0);
+        for(Rucksack sack : sacks) {
+            commonContents.retainAll(sack.getContentsAsSet());
+        }
+        if (commonContents.size() == 0) {
+            throw new IllegalStateException("Did not find any common item in all of the provided rucksacks!");
+        }
+        return commonContents;
     }
 }
