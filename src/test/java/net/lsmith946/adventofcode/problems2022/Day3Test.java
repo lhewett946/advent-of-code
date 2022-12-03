@@ -9,7 +9,7 @@ import java.io.IOException;
 public class Day3Test {
 
     @Test
-    public void testDay2Part1() throws IOException {
+    public void testDay3Part1() throws IOException {
         Day3 d3 = new Day3();
         Assertions.assertEquals(7746, d3.solvePartOne());
     }
