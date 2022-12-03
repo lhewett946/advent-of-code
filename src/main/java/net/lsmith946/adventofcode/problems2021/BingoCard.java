@@ -46,17 +46,17 @@ public class BingoCard {
         for(boolean b : winningRow) {
             if (b) {
                 hasWon = true;
-                return b;
+                break;
             }
         }
         // check for any winning columns
         for(boolean b : winningColumn) {
             if (b) {
                 hasWon = true;
-                return b;
+                break;
             }
         }
-        return false;
+        return hasWon;
     }
 
     public boolean processTurn(int number) {
