@@ -5,9 +5,6 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class Day5 implements Puzzle {

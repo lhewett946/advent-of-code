@@ -1,6 +1,5 @@
 package net.lsmith946.adventofcode.utils;
 
-import net.lsmith946.adventofcode.utils.InputLoader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

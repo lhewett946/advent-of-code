@@ -5,7 +5,6 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Day9 implements Puzzle {
 

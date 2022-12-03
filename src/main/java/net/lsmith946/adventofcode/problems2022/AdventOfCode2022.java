@@ -1,6 +1,8 @@
 package net.lsmith946.adventofcode.problems2022;
 
-import net.lsmith946.adventofcode.problems2022.days.*;
+import net.lsmith946.adventofcode.problems2022.days.Day1;
+import net.lsmith946.adventofcode.problems2022.days.Day2;
+import net.lsmith946.adventofcode.problems2022.days.Day3;
 import net.lsmith946.adventofcode.utils.ExitCodes;
 
 import java.io.FileNotFoundException;

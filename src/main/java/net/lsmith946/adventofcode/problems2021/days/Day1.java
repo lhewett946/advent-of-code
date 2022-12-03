@@ -2,11 +2,9 @@ package net.lsmith946.adventofcode.problems2021.days;
 
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
-import net.lsmith946.adventofcode.utils.SumUtils;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Set;
 
 public class Day1 implements Puzzle {
 
