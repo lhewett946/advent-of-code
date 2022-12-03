@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Rucksack {
 
-    private String contents;
+    private final String contents;
 
     public Rucksack(String contents) {
         this.contents = contents;
