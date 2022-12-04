@@ -6,6 +6,8 @@ import java.util.Set;
 public class SumUtils {
 
     /**
+     * This method takes a set of integers and determines which ones sum to a given targetValue
+     *
      * @param targetValue      The value to which the operands must sum
      * @param numberOfOperands The number of operands in the sum
      * @param inputValues      The set of integers from which the operands can be selected
@@ -32,7 +34,7 @@ public class SumUtils {
     }
 
     /**
-     * This method takes a set of integers and determines which ones sum to a given targetValue
+     * This method takes a set of longs and determines which ones sum to a given targetValue
      *
      * @param targetValue      The value to which the operands must sum
      * @param numberOfOperands The number of operands in the sum
