@@ -2,6 +2,7 @@ package net.lsmith946.adventofcode.problems2022.days;
 
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
+import net.lsmith946.adventofcode.utils.RangeUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,7 +25,7 @@ public class Day4 implements Puzzle {
                 zones[i] = Integer.parseInt(elfAssignments[i]);
             }
 
-            if (((zones[0] <= zones[2]) && (zones[1] >= zones[3])) || ((zones[2] <= zones[0]) && (zones[3] >= zones[1]))) {
+            if (RangeUtils.rangesFullyContained(zones[0], zones[1], zones[2], zones[3])) {
                 overlappedPairs++;
             }
         }
@@ -42,8 +43,7 @@ public class Day4 implements Puzzle {
                 zones[i] = Integer.parseInt(elfAssignments[i]);
             }
 
-            if (((zones[0] <= zones[2]) && (zones[1] >= zones[2])) || ((zones[0] <= zones[3]) && (zones[1] >= zones[3])) ||
-                    ((zones[2] <= zones[0]) && (zones[3] >= zones[0])) || ((zones[2] <= zones[1]) && (zones[3] >= zones[1]))) {
+            if (RangeUtils.rangesOverlap(zones[0], zones[1], zones[2], zones[3])) {
                 overlappedPairs++;
             }
         }
