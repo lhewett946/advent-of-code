@@ -18,7 +18,7 @@ public class Day4 implements Puzzle {
     public long solvePartOne() {
         long overlappedPairs = 0;
         for(String s : values) {
-            String[] elfAssignments = s.split(",|-");
+            String[] elfAssignments = s.split("[,\\-]");
             int [] zones = new int[4];
             for(int i =0; i < 4; i++) {
                 zones[i] = Integer.parseInt(elfAssignments[i]);
@@ -36,7 +36,7 @@ public class Day4 implements Puzzle {
     public long solvePartTwo() {
         long overlappedPairs = 0;
         for(String s : values) {
-            String[] elfAssignments = s.split(",|-");
+            String[] elfAssignments = s.split("[,\\-]");
             int [] zones = new int[4];
             for(int i =0; i < 4; i++) {
                 zones[i] = Integer.parseInt(elfAssignments[i]);
