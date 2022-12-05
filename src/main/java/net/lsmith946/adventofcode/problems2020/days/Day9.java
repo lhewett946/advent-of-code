@@ -7,7 +7,7 @@ import net.lsmith946.adventofcode.utils.SumUtils;
 import java.io.IOException;
 import java.util.*;
 
-public class Day9 implements Puzzle {
+public class Day9 implements Puzzle<Long> {
 
     List<Long> values;
 
@@ -16,7 +16,7 @@ public class Day9 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         List<Long> valuesInWindow = new ArrayList<>();
         for (Long l : values) {
             if (valuesInWindow.size() < 25) {
@@ -32,11 +32,11 @@ public class Day9 implements Puzzle {
                 }
             }
         }
-        return -1;
+        return (long) -1;
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         long targetValue = solvePartOne();
         for (int i = 0; i < values.size(); i++) {
             long runningTotal = values.get(i);
@@ -54,6 +54,6 @@ public class Day9 implements Puzzle {
                 }
             }
         }
-        return -1;
+        return (long) -1;
     }
 }

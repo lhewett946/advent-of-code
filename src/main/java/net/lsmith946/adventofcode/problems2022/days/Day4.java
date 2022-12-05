@@ -7,7 +7,7 @@ import net.lsmith946.adventofcode.utils.RangeUtils;
 import java.io.IOException;
 import java.util.List;
 
-public class Day4 implements Puzzle {
+public class Day4 implements Puzzle<Long> {
 
     List <String> values;
 
@@ -16,7 +16,7 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         long overlappedPairs = 0;
         for(String s : values) {
             String[] elfAssignments = s.split("[,\\-]");
@@ -34,7 +34,7 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         long overlappedPairs = 0;
         for(String s : values) {
             String[] elfAssignments = s.split("[,\\-]");

@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Day11 implements Puzzle {
+public class Day11 implements Puzzle<Integer> {
 
     char[][] currentSeatingArea;
     char[][] originalSeatingArea;
@@ -46,7 +46,7 @@ public class Day11 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         char[][] newSeatingArea = new char[totalRows][totalColumns];
         boolean changeMade;
         do {
@@ -122,7 +122,7 @@ public class Day11 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         // reload original seating area
         for (int row = 0; row < totalRows; row++) {
             currentSeatingArea[row] = Arrays.copyOf(originalSeatingArea[row], totalColumns);

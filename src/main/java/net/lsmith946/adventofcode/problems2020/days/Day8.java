@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day8 implements Puzzle {
+public class Day8 implements Puzzle<Integer> {
 
     List<String> values;
     List<Instruction> instructions;
@@ -29,7 +29,7 @@ public class Day8 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         Computer comp = new Computer(instructions);
         comp.executeInstructions();
         System.out.println("The value of the accumulator just before an instruction is executed for the second time is: " + comp.getAccumulator());
@@ -37,7 +37,7 @@ public class Day8 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         for (int i = 0; i < instructions.size(); i++) {
             if (instructions.get(i).getOpcode().equals("nop") || instructions.get(i).getOpcode().equals("jmp")) {
                 List<Instruction> modifiedInstructions = new ArrayList<>(instructions.size());

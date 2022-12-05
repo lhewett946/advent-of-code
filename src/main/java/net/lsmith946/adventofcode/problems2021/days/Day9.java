@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
 
-public class Day9 implements Puzzle {
+public class Day9 implements Puzzle<Integer> {
 
     private int[][] values;
 
@@ -42,7 +42,7 @@ public class Day9 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int riskSum = 0;
         int rows = values.length;
         int columns = values[0].length;
@@ -58,7 +58,7 @@ public class Day9 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         return 0;
     }
 }

@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Day6 implements Puzzle {
+public class Day6 implements Puzzle<Long> {
 
     private String values;
     private long[] initialAges;
@@ -36,7 +36,7 @@ public class Day6 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         parseInput();
         for(int day = 0; day < 80; day++) {
             processDay();
@@ -47,7 +47,7 @@ public class Day6 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         parseInput();
         for(int day = 0; day < 256; day++) {
             processDay();

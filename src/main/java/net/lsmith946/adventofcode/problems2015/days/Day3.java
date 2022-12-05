@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Day3 implements Puzzle {
+public class Day3 implements Puzzle<Integer> {
 
     char[] input;
 
@@ -40,14 +40,14 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         Set<Grid2DCoordinates> visitedHouses = getVisitedLocations(input);
         System.out.println("Santa has visited " + visitedHouses.size() + " houses.");
         return visitedHouses.size();
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         char[] directionsSanta = new char[input.length/2];
         char[] directionsRoboSanta = new char[input.length/2];
         for(int i = 0; i < input.length/2; i++) {

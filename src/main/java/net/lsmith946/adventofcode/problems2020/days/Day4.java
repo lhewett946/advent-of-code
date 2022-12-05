@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day4 implements Puzzle {
+public class Day4 implements Puzzle<Integer> {
 
     List<String> values;
     List<Passport> passports;
@@ -52,7 +52,7 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int validPassports = 0;
         for (Passport p : passports) {
             if (p.checkFieldsPresent()) {
@@ -64,7 +64,7 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int validPassports = 0;
         for (Passport p : passports) {
             if (p.checkPassportValidity()) {

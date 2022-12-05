@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day4 implements Puzzle {
+public class Day4 implements Puzzle<Long> {
 
     private List<String> values;
     private List<BingoCard> cards;
@@ -58,7 +58,7 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         for(Integer currentNumber : numbersToCall) {
             for(BingoCard card : cards) {
                 if (card.processTurn(currentNumber)) {
@@ -68,11 +68,11 @@ public class Day4 implements Puzzle {
                 }
             }
         }
-        return 0; // should never get here
+        return (long) 0; // should never get here
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         int lastWinnerScore = 0;
         int lastWinnerNumber = 0;
         for(Integer currentNumber : numbersToCall) {

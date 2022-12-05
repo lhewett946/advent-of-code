@@ -7,7 +7,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.List;
 
-public class Day12 implements Puzzle {
+public class Day12 implements Puzzle<Integer> {
 
     List<String> directions;
 
@@ -40,7 +40,7 @@ public class Day12 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         CompassDirections currentlyFacing = CompassDirections.EAST;
         int northSouthPosition = 0, eastWestPosition = 0;
         for (String movement : directions) {
@@ -74,7 +74,7 @@ public class Day12 implements Puzzle {
 
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int waypointNorthSouthPosition = 1, waypointEastWestPosition = 10;
         int shipNorthSouthPosition = 0, shipEastWestPosition = 0;
         for (String movement : directions) {

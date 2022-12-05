@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.List;
 
-public class Day2 implements Puzzle {
+public class Day2 implements Puzzle<Integer> {
 
     List<String> values;
 
@@ -15,7 +15,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int validPasswords = 0;
         for (String s : values) {
             // decode the data from the input file
@@ -42,7 +42,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int validPasswords = 0;
         for (String s: values) {
             // decode the data from the input file

@@ -7,7 +7,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.*;
 
-public class Day13 implements Puzzle {
+public class Day13 implements Puzzle<Long> {
 
     List<String> values;
 
@@ -16,7 +16,7 @@ public class Day13 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         int timestampYouArrive = Integer.parseInt(values.get(0));
         String[] busStrings = values.get(1).split(",");
         List<Integer> busWaitTimes = new ArrayList<>();
@@ -29,13 +29,13 @@ public class Day13 implements Puzzle {
         }
         int waitMinutes = Collections.min(busWaitTimes);
         int busNumber = Integer.parseInt(busStrings[busWaitTimes.indexOf(waitMinutes)]);
-        int product = waitMinutes * busNumber;
+        long product = (long) waitMinutes * busNumber;
         System.out.println("The bus number multiplied by the wait in minutes is: " + product);
         return product;
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         String[] busStrings = values.get(1).split(",");
         Map<Long, Long> busNumToOffset = new HashMap<>();
         long offsetFromStartTime = 0;

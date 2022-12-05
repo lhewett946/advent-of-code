@@ -7,7 +7,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.*;
 
-public class Day10 implements Puzzle {
+public class Day10 implements Puzzle<Long> {
 
     List<Integer> sortedValues;
     Map<Integer, Adapter> adapters;
@@ -30,7 +30,7 @@ public class Day10 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         int oneJoltDifferences = 0;
         int threeJoltDifferences = 0;
         int previousAdapterJoltage = 0;
@@ -49,7 +49,7 @@ public class Day10 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         loadAdaptors();
         for (Integer joltage : sortedValues) {
             Adapter currentAdapter = adapters.get(joltage);

@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day6 implements Puzzle {
+public class Day6 implements Puzzle<Integer> {
 
     List<String> values;
 
@@ -18,7 +18,7 @@ public class Day6 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int totalTrueAnswers = 0;
         Set<Character> uniqueChars = new HashSet<>();
         for (String s : values) {
@@ -50,7 +50,7 @@ public class Day6 implements Puzzle {
         return trueAnswersInGroup;
     }
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int totalTrueAnswers = 0;
         String combinedString = "";
         int peopleInGroup = 0;

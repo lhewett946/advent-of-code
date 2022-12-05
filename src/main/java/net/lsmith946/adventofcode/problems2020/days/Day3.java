@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.List;
 
-public class Day3 implements Puzzle {
+public class Day3 implements Puzzle<Long> {
 
     List<String> values;
 
@@ -31,14 +31,14 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         int treesHit = countTreesOnRoute(3, 1);
         System.out.println("Number of trees hit: " + treesHit);
-        return treesHit;
+        return (long) treesHit;
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         long product = 1;
         product *= countTreesOnRoute(1, 1);
         product *= countTreesOnRoute(3, 1);

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day14 implements Puzzle {
+public class Day14 implements Puzzle<Long> {
 
     List<String> instructions;
 
@@ -18,7 +18,7 @@ public class Day14 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         Map<Long, Long> memoryContents = new HashMap<>();
         long address;
         String mask = "";
@@ -50,7 +50,7 @@ public class Day14 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         Map<Long, Long> memoryContents = new HashMap<>();
         long address;
         String mask = "";

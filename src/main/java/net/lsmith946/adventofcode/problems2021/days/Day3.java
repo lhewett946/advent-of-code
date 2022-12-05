@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day3 implements Puzzle {
+public class Day3 implements Puzzle<Long> {
 
     private List<String> values;
 
@@ -40,7 +40,7 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         int columns = values.get(0).length();
         char[] mostCommonBitValues = new char[columns];
         char[] leastCommonBitValues = new char[columns];
@@ -58,7 +58,7 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         int columns = values.get(0).length();
         // start by finding the oxygen generator rating
         int oxygenGeneratorRating;

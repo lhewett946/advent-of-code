@@ -7,7 +7,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.*;
 
-public class Day7 implements Puzzle {
+public class Day7 implements Puzzle<Integer> {
 
     List<String> values;
     List<Bag> bags;
@@ -47,7 +47,7 @@ public class Day7 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         Set<Bag> possibleBags = new HashSet<>();
         // first find all the bags that could contain a shiny gold bag
         List<Bag> newPossibleBags = getPossibleBags("shiny gold");
@@ -66,7 +66,7 @@ public class Day7 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int numberOfBags = 0;
         Map<String, Integer> bagTypeAndCount = new HashMap<>();
         bagTypeAndCount.put("shiny gold", 1);

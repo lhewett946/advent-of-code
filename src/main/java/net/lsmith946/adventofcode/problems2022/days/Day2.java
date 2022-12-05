@@ -5,7 +5,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
 
-public final class Day2 implements Puzzle {
+public final class Day2 implements Puzzle<Long> {
 
     enum Moves { ROCK, PAPER, SCISSORS }
 
@@ -85,7 +85,7 @@ public final class Day2 implements Puzzle {
     }
     
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         // part 1 is to find your score based on one way of decoding the input
         long score = 0;
         decodeInputPart1();
@@ -97,7 +97,7 @@ public final class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         // part 2 is to find your score based on another way of decoding the input
         long score = 0;
         decodeInputPart2();

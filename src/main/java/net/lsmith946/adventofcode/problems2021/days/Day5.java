@@ -8,7 +8,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.*;
 
-public class Day5 implements Puzzle {
+public class Day5 implements Puzzle<Long> {
 
     private List<String> values;
 
@@ -48,7 +48,7 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         Map<Grid2DCoordinates, Integer> pointsCrossedCount = new HashMap<>();
         for(String s : values) {
             Grid2DCoordinates[] startEndPoints = parseCoordinates(s);
@@ -68,7 +68,7 @@ public class Day5 implements Puzzle {
             }
         }
         // after processing all lines, determine how many points have at least 2 lines crossing them
-        int count = 0;
+        long count = 0;
         for(Grid2DCoordinates pos : pointsCrossedCount.keySet()) {
             if (pointsCrossedCount.get(pos) >= 2) {
                 count++;
@@ -79,7 +79,7 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         Map<Grid2DCoordinates, Integer> pointsCrossedCount = new HashMap<>();
         for(String s : values) {
             Grid2DCoordinates[] startEndPoints = parseCoordinates(s);
@@ -96,7 +96,7 @@ public class Day5 implements Puzzle {
         }
 
         // after processing all lines, determine how many points have at least 2 lines crossing them
-        int count = 0;
+        long count = 0;
         for(Grid2DCoordinates pos : pointsCrossedCount.keySet()) {
             if (pointsCrossedCount.get(pos) >= 2) {
                 count++;

@@ -5,7 +5,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
 
-public class Day1 implements Puzzle {
+public class Day1 implements Puzzle<Integer> {
 
     char[] input;
 
@@ -14,7 +14,7 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int currentFloor = 0;
         for (Character c : input) {
             if (c.equals('(')) {
@@ -28,7 +28,7 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int currentFloor = 0;
         for (int pos = 0; pos < input.length; pos++) {
             if (input[pos] == '(') {

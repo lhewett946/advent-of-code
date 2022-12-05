@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.List;
 
-public class Day1 implements Puzzle {
+public class Day1 implements Puzzle<Integer> {
 
     private List<Long> values;
 
@@ -16,7 +16,7 @@ public class Day1 implements Puzzle {
 
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int timesIncreased = 0;
         long previousValue = values.get(0);
         for(Long l : values) {
@@ -29,7 +29,7 @@ public class Day1 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         int timesIncreased = 0;
         long previousSum = values.get(0) + values.get(1) + values.get(2);
         for(int i = 2; i < values.size(); i++) {

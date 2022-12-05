@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 import java.util.List;
 
-public class Day5 implements Puzzle {
+public class Day5 implements Puzzle<Long> {
 
     List<String> input;
 
@@ -16,7 +16,7 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         long niceStrings = 0;
         for(String s : input) {
             int vowelsInString = StringUtils.countMatches(s, 'a') +
@@ -45,7 +45,7 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         long niceStrings = 0;
         for(String s : input) {
             boolean repeatedPairFound = false;

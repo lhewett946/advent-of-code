@@ -9,7 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
 
-public class Day4 implements Puzzle {
+public class Day4 implements Puzzle<Long> {
 
     String input;
     MessageDigest md5;
@@ -40,14 +40,14 @@ public class Day4 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         Long currentNumber = findNumberForHashStartingWith("00000");
         System.out.println("The lowest number producing a suitable hash is " + currentNumber);
         return currentNumber;
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         Long currentNumber = findNumberForHashStartingWith("000000");
         System.out.println("The lowest number producing a suitable hash is " + currentNumber);
         return currentNumber;

@@ -6,7 +6,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.util.List;
 
-public class Day8 implements Puzzle {
+public class Day8 implements Puzzle<Integer> {
 
     private List<String> values;
 
@@ -16,7 +16,7 @@ public class Day8 implements Puzzle {
 
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int count = 0;
         for(String s : values) {
             String[] inputParts = s.split(" \\| ");
@@ -32,7 +32,7 @@ public class Day8 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         return 0;
     }
 }

@@ -5,10 +5,10 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Day15 implements Puzzle {
+public class Day15 implements Puzzle<Integer> {
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         Map<Integer, Integer> previousValues = new HashMap<>();
         previousValues.put(1, 1);
         previousValues.put(2, 2);
@@ -31,7 +31,7 @@ public class Day15 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         Map<Integer, Integer> previousValues = new HashMap<>();
         previousValues.put(1, 1);
         previousValues.put(2, 2);

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class Day3 implements Puzzle {
+public class Day3 implements Puzzle<Long> {
 
     private final List<Rucksack> sacks;
 
@@ -59,7 +59,7 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         long prioritiesSum = 0;
         // find the item that exists in both compartments of the rucksack
         for(Rucksack sack : sacks) {
@@ -71,7 +71,7 @@ public class Day3 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         long prioritiesSum = 0;
         // split the rucksacks into groups of 3 and find the common items in each of the three sacks
         List<Rucksack> sacksInGroup = new ArrayList<>();

@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.utils;
 
-public interface Puzzle {
+public interface Puzzle <T> {
 
     default void solve() {
         // solves both parts of the puzzle and prints to terminal
@@ -11,7 +11,7 @@ public interface Puzzle {
         solvePartTwo();
     }
 
-    long solvePartOne(); // solves only the first part of the puzzle and returns the solution
+    T solvePartOne(); // solves only the first part of the puzzle and returns the solution
 
-    long solvePartTwo(); // solves only the second part of the puzzle and returns the solution
+    T solvePartTwo(); // solves only the second part of the puzzle and returns the solution
 }

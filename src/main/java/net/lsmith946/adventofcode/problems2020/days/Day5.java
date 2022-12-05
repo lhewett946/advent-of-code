@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day5 implements Puzzle {
+public class Day5 implements Puzzle<Integer> {
 
     List<String> values;
 
@@ -30,7 +30,7 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int highestSeatID = 0;
         for (String s : values) {
             highestSeatID = Math.max(highestSeatID, calculateSeatID(s));
@@ -40,7 +40,7 @@ public class Day5 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         Set<Integer> seatIDs = new HashSet<>();
         for(String s : values) {
             seatIDs.add(calculateSeatID(s));

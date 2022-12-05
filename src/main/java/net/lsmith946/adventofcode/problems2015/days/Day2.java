@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day2 implements Puzzle {
+public class Day2 implements Puzzle<Long> {
 
     List<String> input;
     List<Present> presents;
@@ -34,7 +34,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         // calculate the amount of wrapping paper needed for the presents
         long wrappingPaperNeeded = 0;
         for (Present p : presents) {
@@ -45,7 +45,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         // calculate the amount of ribbon needed for the presents
         long ribbonNeeded = 0;
         for(Present p : presents) {

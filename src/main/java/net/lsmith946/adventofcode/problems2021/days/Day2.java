@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-public class Day2 implements Puzzle {
+public class Day2 implements Puzzle<Long> {
 
     private List<String> values;
 
@@ -27,7 +27,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         Grid2DCoordinates currentPosition = new Grid2DCoordinates(0, 0);
         for(String s : values) {
             String[] splitString = s.split(" ");
@@ -42,7 +42,7 @@ public class Day2 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         Grid2DCoordinates currentPosition = new Grid2DCoordinates(0, 0);
         int aim = 0;
         for(String s : values) {

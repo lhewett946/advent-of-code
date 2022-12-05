@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Day16 implements Puzzle {
+public class Day16 implements Puzzle<Integer> {
 
     List<String> inputStrings;
     List<TicketField> ticketFields;
@@ -67,7 +67,7 @@ public class Day16 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Integer solvePartOne() {
         int errorRate = 0;
         for (Ticket t : nearbyTickets) {
             errorRate += t.calculateErrorRate();
@@ -77,7 +77,7 @@ public class Day16 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Integer solvePartTwo() {
         return 0;
     }
 }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class Day7 implements Puzzle {
+public class Day7 implements Puzzle<Long> {
 
     private String values;
     private Map<Integer, Integer> crabSubmarinesAtPosition;
@@ -33,9 +33,9 @@ public class Day7 implements Puzzle {
     }
 
     @Override
-    public long solvePartOne() {
+    public Long solvePartOne() {
         parseInput();
-        int minFuelUsed = Integer.MAX_VALUE;
+        long minFuelUsed = Integer.MAX_VALUE;
         Set<Integer> allPositions = crabSubmarinesAtPosition.keySet();
         int startPositionTest = Collections.min(allPositions);
         int stopPositionTest = Collections.max(allPositions);
@@ -53,9 +53,9 @@ public class Day7 implements Puzzle {
     }
 
     @Override
-    public long solvePartTwo() {
+    public Long solvePartTwo() {
         parseInput();
-        int minFuelUsed = Integer.MAX_VALUE;
+        long minFuelUsed = Integer.MAX_VALUE;
         Set<Integer> allPositions = crabSubmarinesAtPosition.keySet();
         int startPositionTest = Collections.min(allPositions);
         int stopPositionTest = Collections.max(allPositions);
