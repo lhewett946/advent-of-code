@@ -16,10 +16,14 @@ public class Day5 implements Puzzle<String> {
 
     public Day5() throws IOException {
         values = InputLoader.loadToStringList("/2022/day5_input.txt");
-        decodeInput();
     }
 
     private void decodeInput() {
+        try {
+            values = InputLoader.loadToStringList("/2022/day5_input.txt");
+        } catch (IOException e) {
+
+        }
         // start by populating the stacks
         int inputLineNumber = 0;
 
@@ -61,6 +65,7 @@ public class Day5 implements Puzzle<String> {
 
     @Override
     public String solvePartOne() {
+        decodeInput();
         // process the moves
         for(CraneMove move : moves) {
             char crateMoving;
@@ -81,6 +86,27 @@ public class Day5 implements Puzzle<String> {
 
     @Override
     public String solvePartTwo() {
-        return "";
+        decodeInput();
+        // process the moves
+        for(CraneMove move : moves) {
+            List<Character> cratesMoving = new ArrayList<>();
+            for(int count = 0; count < move.cratesToMove; count++) {
+                cratesMoving.add(stacks.get(move.fromStack-1).pop());
+            }
+
+            Collections.reverse(cratesMoving);
+
+            for(int count = 0; count < move.cratesToMove; count++) {
+                stacks.get(move.toStack-1).push(cratesMoving.get(count));
+            }
+        }
+
+        // build the string from the top crate in each stack
+        StringBuilder topCrates = new StringBuilder();
+        for(Stack<Character> stack : stacks) {
+            topCrates.append(stack.peek());
+        }
+        System.out.println("The message to pass to the elves is " + topCrates);
+        return topCrates.toString();
     }
 }
