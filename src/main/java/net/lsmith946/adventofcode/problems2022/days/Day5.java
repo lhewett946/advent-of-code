@@ -10,31 +10,17 @@ import java.util.*;
 
 public class Day5 implements Puzzle<String> {
 
-    List <String> values;
+    final List <String> values;
+    List<String> stackContents;
     List<Stack<Character>> stacks;
     List<CraneMove> moves;
 
     public Day5() throws IOException {
         values = InputLoader.loadToStringList("/2022/day5_input.txt");
+        decodeInput();
     }
 
-    private void decodeInput() {
-        try {
-            values = InputLoader.loadToStringList("/2022/day5_input.txt");
-        } catch (IOException e) {
-
-        }
-        // start by populating the stacks
-        int inputLineNumber = 0;
-
-        String inputString = "dummy"; // dummy the first string to ensure we enter the while loop
-        while (!inputString.isEmpty()) {
-            inputString = values.get(inputLineNumber);
-            inputLineNumber++;
-        }
-        List<String> stackContents = values.subList(0, inputLineNumber-1);
-        Collections.reverse(stackContents);
-
+    private void loadStacks() {
         // first line tells you how many stacks there are
         int numberOfStacks = stackContents.get(0).split(" {3}").length;
         stacks = new ArrayList<>();
@@ -52,6 +38,19 @@ public class Day5 implements Puzzle<String> {
                 }
             }
         }
+    }
+    private void decodeInput() {
+        // start by populating the stacks
+        int inputLineNumber = 0;
+
+        String inputString = "dummy"; // dummy the first string to ensure we enter the while loop
+        while (!inputString.isEmpty()) {
+            inputString = values.get(inputLineNumber);
+            inputLineNumber++;
+        }
+        // take a copy of the sublist to avoid modifying the underlying values array
+        stackContents = new ArrayList<>(values.subList(0, inputLineNumber-1));
+        Collections.reverse(stackContents);
 
         // then decode the moves
         moves = new ArrayList<>();
@@ -65,7 +64,7 @@ public class Day5 implements Puzzle<String> {
 
     @Override
     public String solvePartOne() {
-        decodeInput();
+        loadStacks();
         // process the moves
         for(CraneMove move : moves) {
             char crateMoving;
@@ -86,7 +85,7 @@ public class Day5 implements Puzzle<String> {
 
     @Override
     public String solvePartTwo() {
-        decodeInput();
+        loadStacks();
         // process the moves
         for(CraneMove move : moves) {
             List<Character> cratesMoving = new ArrayList<>();
