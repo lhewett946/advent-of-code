@@ -19,6 +19,9 @@ public class AdventOfCode2015 {
         } catch (IOException e) {
             System.err.println("Unable to read input file for Day 1!");
             System.exit(ExitCodes.IO_EXCEPTION_EXIT_CODE);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.exit(ExitCodes.UNKNOWN_ERROR_EXIT_CODE);
         }
 
         try {

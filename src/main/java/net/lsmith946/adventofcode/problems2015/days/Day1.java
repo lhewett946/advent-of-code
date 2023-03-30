@@ -1,5 +1,7 @@
 package net.lsmith946.adventofcode.problems2015.days;
 
+import net.lsmith946.adventofcode.utils.Counter;
+import net.lsmith946.adventofcode.utils.CounterOperations;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
@@ -15,32 +17,32 @@ public class Day1 implements Puzzle<Integer> {
 
     @Override
     public Integer solvePartOne() {
-        int currentFloor = 0;
+        Counter currentFloor = new Counter();
         for (Character c : input) {
             if (c.equals('(')) {
-                currentFloor++;
+                currentFloor.modifyCounter(CounterOperations.INCREMENT, 1);
             } else {
-                currentFloor--;
+                currentFloor.modifyCounter(CounterOperations.DECREMENT, 1);
             }
         }
-        System.out.println("Santa is taken to floor: " + currentFloor);
-        return currentFloor;
+        System.out.println("Santa is taken to floor: " + currentFloor.getCurrentValue());
+        return currentFloor.getCurrentValue();
     }
 
     @Override
     public Integer solvePartTwo() {
-        int currentFloor = 0;
+        Counter currentFloor = new Counter();
         for (int pos = 0; pos < input.length; pos++) {
             if (input[pos] == '(') {
-                currentFloor++;
+                currentFloor.modifyCounter(CounterOperations.INCREMENT, 1);
             } else {
-                currentFloor--;
+                currentFloor.modifyCounter(CounterOperations.DECREMENT, 1);
             }
-            if (currentFloor == -1) {
+            if (currentFloor.getCurrentValue() == -1) {
                 System.out.println("Santa is taken to the basement by the character at position: " + (pos + 1));
                 return pos + 1;
             }
         }
-        return -1;
+        throw new IllegalStateException("Santa never enters the basement!");
     }
 }
