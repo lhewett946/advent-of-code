@@ -1,15 +1,6 @@
 package net.lsmith946.adventofcode.problems2015;
 
-public class Present {
-    private int length;
-    private int width;
-    private int depth;
-
-    public Present(int length, int width, int depth) {
-        this.length = length;
-        this.width = width;
-        this.depth = depth;
-    }
+public record Present (int length, int width, int depth) {
 
     private int calculateSurfaceArea() {
         int surfaceArea = 0;
