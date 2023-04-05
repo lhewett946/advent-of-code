@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.problems2020.days;
 
-import net.lsmith946.adventofcode.utils.CompassDirections;
+import net.lsmith946.adventofcode.utils.CompassDirection;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
@@ -15,25 +15,25 @@ public class Day12 implements Puzzle<Integer> {
         directions = InputLoader.loadToStringList("/2020/day12_input.txt");
     }
 
-    private CompassDirections turnLeft(CompassDirections currentDirection, int degrees) {
+    private CompassDirection turnLeft(CompassDirection currentDirection, int degrees) {
         for (int turnsMade = 0; turnsMade < degrees / 90; turnsMade++) {
             switch (currentDirection) {
-                case EAST -> currentDirection = CompassDirections.NORTH;
-                case WEST -> currentDirection = CompassDirections.SOUTH;
-                case NORTH -> currentDirection = CompassDirections.WEST;
-                case SOUTH -> currentDirection = CompassDirections.EAST;
+                case EAST -> currentDirection = CompassDirection.NORTH;
+                case WEST -> currentDirection = CompassDirection.SOUTH;
+                case NORTH -> currentDirection = CompassDirection.WEST;
+                case SOUTH -> currentDirection = CompassDirection.EAST;
             }
         }
         return currentDirection;
     }
 
-    private CompassDirections turnRight(CompassDirections currentDirection, int degrees) {
+    private CompassDirection turnRight(CompassDirection currentDirection, int degrees) {
         for (int turnsMade = 0; turnsMade < degrees / 90; turnsMade++) {
             switch (currentDirection) {
-                case EAST -> currentDirection = CompassDirections.SOUTH;
-                case WEST -> currentDirection = CompassDirections.NORTH;
-                case NORTH -> currentDirection = CompassDirections.EAST;
-                case SOUTH -> currentDirection = CompassDirections.WEST;
+                case EAST -> currentDirection = CompassDirection.SOUTH;
+                case WEST -> currentDirection = CompassDirection.NORTH;
+                case NORTH -> currentDirection = CompassDirection.EAST;
+                case SOUTH -> currentDirection = CompassDirection.WEST;
             }
         }
         return currentDirection;
@@ -41,7 +41,7 @@ public class Day12 implements Puzzle<Integer> {
 
     @Override
     public Integer solvePartOne() {
-        CompassDirections currentlyFacing = CompassDirections.EAST;
+        CompassDirection currentlyFacing = CompassDirection.EAST;
         int northSouthPosition = 0, eastWestPosition = 0;
         for (String movement : directions) {
             // decode the movement into a direction and a number of units to move

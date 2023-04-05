@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.utils;
 
-public enum CompassDirections {
+public enum CompassDirection {
     NORTH,
     SOUTH,
     EAST,

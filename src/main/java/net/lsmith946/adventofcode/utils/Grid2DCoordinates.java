@@ -24,7 +24,7 @@ public class Grid2DCoordinates {
         return Objects.hash(x, y);
     }
 
-    public Grid2DCoordinates move(CompassDirections direction, int magnitude) {
+    public Grid2DCoordinates move(CompassDirection direction, int magnitude) {
         Grid2DCoordinates newPosition = new Grid2DCoordinates(x, y);
         switch(direction) {
             case NORTH -> newPosition.y += magnitude;

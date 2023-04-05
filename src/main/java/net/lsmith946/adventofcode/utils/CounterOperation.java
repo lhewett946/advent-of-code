@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.utils;
 
-public enum CounterOperations {
+public enum CounterOperation {
     INCREMENT,
     DECREMENT,
     RESET

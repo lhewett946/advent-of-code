@@ -1,6 +1,6 @@
 package net.lsmith946.adventofcode.problems2021.days;
 
-import net.lsmith946.adventofcode.utils.CompassDirections;
+import net.lsmith946.adventofcode.utils.CompassDirection;
 import net.lsmith946.adventofcode.utils.Grid2DCoordinates;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
@@ -32,15 +32,15 @@ public class Day5 implements Puzzle<Long> {
         intermediatePoints.add(startPoint);
         while(!currentPosition.equals(endPoint)) {
             if (currentPosition.getX() < endPoint.getX()) {
-                currentPosition = currentPosition.move(CompassDirections.EAST, 1);
+                currentPosition = currentPosition.move(CompassDirection.EAST, 1);
             } else if (currentPosition.getX() > endPoint.getX()) {
-                currentPosition = currentPosition.move(CompassDirections.WEST, 1);
+                currentPosition = currentPosition.move(CompassDirection.WEST, 1);
             }
 
             if (currentPosition.getY() < endPoint.getY()) {
-                currentPosition = currentPosition.move(CompassDirections.NORTH, 1);
+                currentPosition = currentPosition.move(CompassDirection.NORTH, 1);
             } else if (currentPosition.getY() > endPoint.getY()) {
-                currentPosition = currentPosition.move(CompassDirections.SOUTH, 1);
+                currentPosition = currentPosition.move(CompassDirection.SOUTH, 1);
             }
             intermediatePoints.add(currentPosition);
         }

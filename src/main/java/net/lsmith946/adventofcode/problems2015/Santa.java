@@ -1,8 +1,8 @@
 package net.lsmith946.adventofcode.problems2015;
 
-import net.lsmith946.adventofcode.utils.CompassDirections;
+import net.lsmith946.adventofcode.utils.CompassDirection;
 import net.lsmith946.adventofcode.utils.Counter;
-import net.lsmith946.adventofcode.utils.CounterOperations;
+import net.lsmith946.adventofcode.utils.CounterOperation;
 import net.lsmith946.adventofcode.utils.Grid2DCoordinates;
 
 import java.util.HashSet;
@@ -36,23 +36,23 @@ public class Santa {
 
     public void changeFloors(char direction) {
         if (direction == '(') {
-            currentFloor.modifyCounter(CounterOperations.INCREMENT, 1);
+            currentFloor.modifyCounter(CounterOperation.INCREMENT, 1);
         }  else {
-            currentFloor.modifyCounter(CounterOperations.DECREMENT, 1);
+            currentFloor.modifyCounter(CounterOperation.DECREMENT, 1);
         }
     }
 
-    private CompassDirections decodeDirections(char c) {
+    private CompassDirection decodeDirections(char c) {
         return switch (c) {
-            case '^' -> CompassDirections.NORTH;
-            case 'v' -> CompassDirections.SOUTH;
-            case '>' -> CompassDirections.EAST;
-            default -> CompassDirections.WEST;
+            case '^' -> CompassDirection.NORTH;
+            case 'v' -> CompassDirection.SOUTH;
+            case '>' -> CompassDirection.EAST;
+            default -> CompassDirection.WEST;
         };
     }
 
     public void addHouseLocation(char dir) {
-        CompassDirections direction = decodeDirections(dir);
+        CompassDirection direction = decodeDirections(dir);
         Grid2DCoordinates newPosition = currentPosition.move(direction, 1);
         housesVisited.add(newPosition);
         currentPosition = newPosition;

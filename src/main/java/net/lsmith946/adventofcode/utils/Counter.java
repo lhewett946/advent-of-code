@@ -15,7 +15,7 @@ public class Counter {
         this.currentValue = currentValue;
     }
 
-    public void modifyCounter(CounterOperations op, int magnitude) throws IllegalArgumentException {
+    public void modifyCounter(CounterOperation op, int magnitude) throws IllegalArgumentException {
         switch (op) {
             case INCREMENT -> currentValue += magnitude;
             case DECREMENT -> currentValue -= magnitude;
@@ -23,8 +23,8 @@ public class Counter {
         }
     }
 
-    public void modifyCounter(CounterOperations op) throws IllegalArgumentException {
-        if (op.equals(CounterOperations.RESET)) {
+    public void modifyCounter(CounterOperation op) throws IllegalArgumentException {
+        if (op.equals(CounterOperation.RESET)) {
             currentValue = 0;
         } else {
             throw new IllegalArgumentException("Cannot modify counter in this way without a magnitude!");
