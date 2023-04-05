@@ -5,7 +5,7 @@ import net.lsmith946.adventofcode.utils.CounterOperations;
 
 public class Santa {
 
-    private Counter currentFloor;
+    private final Counter currentFloor;
 
     public int getCurrentFloor() {
         return currentFloor.getCurrentValue();
