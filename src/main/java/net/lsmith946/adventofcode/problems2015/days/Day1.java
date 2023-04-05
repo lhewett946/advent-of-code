@@ -1,5 +1,6 @@
 package net.lsmith946.adventofcode.problems2015.days;
 
+import net.lsmith946.adventofcode.problems2015.Santa;
 import net.lsmith946.adventofcode.utils.Counter;
 import net.lsmith946.adventofcode.utils.CounterOperations;
 import net.lsmith946.adventofcode.utils.InputLoader;
@@ -17,28 +18,21 @@ public class Day1 implements Puzzle<Integer> {
 
     @Override
     public Integer solvePartOne() {
-        Counter currentFloor = new Counter();
-        for (Character c : input) {
-            if (c.equals('(')) {
-                currentFloor.modifyCounter(CounterOperations.INCREMENT, 1);
-            } else {
-                currentFloor.modifyCounter(CounterOperations.DECREMENT, 1);
-            }
+        Santa santa = new Santa();
+        santa.setCurrentFloor(0); // Santa starts from floor 0
+        for(char c : input) {
+            santa.changeFloors(c);
         }
-        System.out.println("Santa is taken to floor: " + currentFloor.getCurrentValue());
-        return currentFloor.getCurrentValue();
+        System.out.println("Santa is taken to floor: " + santa.getCurrentFloor());
+        return santa.getCurrentFloor();
     }
 
     @Override
     public Integer solvePartTwo() {
-        Counter currentFloor = new Counter();
+        Santa santa = new Santa();
         for (int pos = 0; pos < input.length; pos++) {
-            if (input[pos] == '(') {
-                currentFloor.modifyCounter(CounterOperations.INCREMENT, 1);
-            } else {
-                currentFloor.modifyCounter(CounterOperations.DECREMENT, 1);
-            }
-            if (currentFloor.getCurrentValue() == -1) {
+            santa.changeFloors(input[pos]);
+            if (santa.getCurrentFloor() == -1) {
                 System.out.println("Santa is taken to the basement by the character at position: " + (pos + 1));
                 return pos + 1;
             }
