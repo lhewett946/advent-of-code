@@ -55,9 +55,9 @@ public class AdventOfCode2015 {
         } catch (IOException e) {
             System.err.println("Unable to read input file for Day 4!");
             System.exit(ExitCodes.IO_EXCEPTION_EXIT_CODE);
-        } catch (NoSuchAlgorithmException e) {
+        } catch (IllegalStateException e) {
             System.err.println("Tried to use an invalid hashing algorithm for Day 4!");
-            System.exit(ExitCodes.ALGORITHM_EXCEPTION_EXIT_CODE);
+            System.exit(ExitCodes.ILLEGAL_STATE_EXCEPTION_EXIT_CODE);
         }
 
         try {
