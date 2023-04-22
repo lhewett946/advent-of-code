@@ -3,7 +3,6 @@ package net.lsmith946.adventofcode.problems2015.days;
 import net.lsmith946.adventofcode.problems2015.Santa;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.util.List;

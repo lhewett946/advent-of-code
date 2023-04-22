@@ -9,13 +9,13 @@ import java.security.NoSuchAlgorithmException;
 public class Day4Test {
 
     @Test
-    public void testDay4Part1() throws IOException, NoSuchAlgorithmException {
+    public void testDay4Part1() throws IOException {
         Day4 d4 = new Day4();
         Assertions.assertEquals(282749, d4.solvePartOne());
     }
 
     @Test
-    public void testDay4Part2() throws IOException, NoSuchAlgorithmException {
+    public void testDay4Part2() throws IOException {
         Day4 d4 = new Day4();
         Assertions.assertEquals(9962624, d4.solvePartTwo());
     }

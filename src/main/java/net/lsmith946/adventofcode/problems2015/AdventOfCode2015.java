@@ -5,7 +5,6 @@ import net.lsmith946.adventofcode.utils.ExitCodes;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 
 public class AdventOfCode2015 {
 
