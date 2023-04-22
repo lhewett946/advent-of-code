@@ -63,7 +63,7 @@ public class Santa {
             for(int i = 0; i < s.length()-1; i++) {
                 String pair = s.substring(i, i+2);
                 String stripCurrentPair = s.replaceFirst(pair, "  ");
-                if (StringUtils.countMatches(stripCurrentPair, pair) != 0) {
+                if (stripCurrentPair.contains(pair)) {
                     repeatedPairFound = true;
                     break;
                 }
