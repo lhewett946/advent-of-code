@@ -12,15 +12,15 @@ import java.util.List;
 public class Day6 implements Puzzle<Long> {
 
     List<String> input;
+    Lamp[][] lamps;
 
     public Day6() throws IOException {
         this.input = InputLoader.loadToStringList("/2015/day6_input.txt");
+        setUpLamps();
     }
 
-    @Override
-    public Long solvePartOne() {
-        Lamp[][] lamps = new Lamp[1000][1000];
-
+    private void setUpLamps() {
+        this.lamps = new Lamp[1000][1000];
         // create all the lamps
         for(int i = 0; i < 1000; i++) {
             for(int j = 0; j < 1000; j++) {
@@ -50,9 +50,12 @@ public class Day6 implements Puzzle<Long> {
                 }
             }
         }
+    }
 
+    @Override
+    public Long solvePartOne() {
         // count how many lamps are turned on
-        Long lampsOn = 0L;
+        long lampsOn = 0L;
         for(int i = 0; i < 1000; i++) {
             for(int j = 0; j < 1000; j++) {
                 if (lamps[i][j].isLit()) {
@@ -67,6 +70,15 @@ public class Day6 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        // count how many lamps are turned on
+        long totalBrightness = 0L;
+        for(int i = 0; i < 1000; i++) {
+            for(int j = 0; j < 1000; j++) {
+                totalBrightness += lamps[i][j].getBrightness();
+            }
+        }
+
+        System.out.println("The total brightness of all the lamps is " + totalBrightness);
+        return totalBrightness;
     }
 }

@@ -16,6 +16,6 @@ public class Day6Test {
     @Test
     public void testDay6Part2() throws IOException {
         Day6 d6 = new Day6();
-        Assertions.assertEquals(0, d6.solvePartTwo());
+        Assertions.assertEquals(17836115, d6.solvePartTwo());
     }
 }
