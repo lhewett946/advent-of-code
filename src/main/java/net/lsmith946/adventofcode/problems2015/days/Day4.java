@@ -1,5 +1,6 @@
 package net.lsmith946.adventofcode.problems2015.days;
 
+import net.lsmith946.adventofcode.problems2015.AdventCoin;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 

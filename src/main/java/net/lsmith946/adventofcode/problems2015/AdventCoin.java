@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode.problems2015.days;
+package net.lsmith946.adventofcode.problems2015;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
