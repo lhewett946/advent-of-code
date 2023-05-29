@@ -26,8 +26,7 @@ public class Day7 implements Puzzle<Long> {
         }
     }
 
-    @Override
-    public Long solvePartOne() {
+    private void processInstructions() {
         LinkedList<String> unprocessed = new LinkedList<>(input);
 
         do {
@@ -62,17 +61,37 @@ public class Day7 implements Puzzle<Long> {
                 continue;
             }
 
-            // add the wire into the list
-            Wire newWire = new Wire(wireValue);
-            wires.put(wireID, newWire);
+            // add the wire into the list, as long as it doesn't already exist
+            if (!wires.containsKey(wireID)) {
+                Wire newWire = new Wire(wireValue);
+                wires.put(wireID, newWire);
+            }
         } while(!unprocessed.isEmpty());
+    }
 
+    @Override
+    public Long solvePartOne() {
+        processInstructions();
         System.out.println("The signal value on wire a is " + wires.get("a").getSignalValue());
         return wires.get("a").getSignalValue();
     }
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        // take the value on wire a from part 1
+        long wireValue = solvePartOne();
+
+        // reset all the wires
+        wires.clear();
+
+        // override wire b with the value from part 1
+        Wire b = new Wire(wireValue);
+        wires.put("b", b);
+
+        // rerun the circuit again
+        processInstructions();
+
+        System.out.println("The signal value on wire a is " + wires.get("a").getSignalValue());
+        return wires.get("a").getSignalValue();
     }
 }
