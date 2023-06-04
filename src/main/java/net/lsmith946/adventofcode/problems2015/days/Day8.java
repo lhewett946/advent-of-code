@@ -45,6 +45,16 @@ public class Day8 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        long originalCharacters = 0;
+        long encodedCharacters = 0;
+        for(String s : input) {
+            originalCharacters += s.length();
+            s = s.replaceAll("(\\\\|\")", "\\\\$1");
+            s = "\"" + s + "\"";
+            encodedCharacters += s.length();
+        }
+        long difference = encodedCharacters - originalCharacters;
+        System.out.println("The difference between the original characters and the encoded characters is " + difference);
+        return difference;
     }
 }
