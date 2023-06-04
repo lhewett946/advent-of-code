@@ -49,7 +49,7 @@ public class Day8 implements Puzzle<Long> {
         long encodedCharacters = 0;
         for(String s : input) {
             originalCharacters += s.length();
-            s = s.replaceAll("(\\\\|\")", "\\\\$1");
+            s = s.replaceAll("([\\\\\"])", "\\\\$1");
             s = "\"" + s + "\"";
             encodedCharacters += s.length();
         }
