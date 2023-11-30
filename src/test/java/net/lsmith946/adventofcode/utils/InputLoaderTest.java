@@ -31,11 +31,8 @@ public class InputLoaderTest {
         List<String> loadedStrings = InputLoader.loadToStringList("/string_loader_test_data.txt");
         List<String> expectedStrings = new ArrayList<>();
 
-        //noinspection SpellCheckingInspection
         expectedStrings.add("1-3 a: abcde");
-        //noinspection SpellCheckingInspection
         expectedStrings.add("1-3 b: cdefg");
-        //noinspection SpellCheckingInspection
         expectedStrings.add("2-9 c: ccccccccc");
 
         Assertions.assertEquals(expectedStrings, loadedStrings);
