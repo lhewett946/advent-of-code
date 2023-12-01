@@ -35,10 +35,10 @@ public final class Day1 implements Puzzle<Long> {
 
     @Override
     public Long solvePartOne() {
-        Long sum = 0L;
+        long sum = 0L;
         for(String s : values) {
             String onlyDigits = s.replaceAll("[^0-9]", "");
-            String selectedDigits = String.valueOf(onlyDigits.charAt(0)) + String.valueOf(onlyDigits.charAt(onlyDigits.length()-1));
+            String selectedDigits = onlyDigits.charAt(0) + String.valueOf(onlyDigits.charAt(onlyDigits.length()-1));
             sum += Long.parseLong(selectedDigits);
         }
         System.out.println("The sum of all the calibration values is " + sum);
@@ -47,11 +47,11 @@ public final class Day1 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        Long sum = 0L;
+        long sum = 0L;
         Pattern findThese = Pattern.compile("[0-9]|one|two|three|four|five|six|seven|eight|nine");
         for(String s : values) {
             String processingString = s;
-            String selectedDigits = "";
+            String selectedDigits;
             String firstDigit = "", lastDigit = "";
             while(!processingString.isEmpty()) {
                 Matcher matcher = findThese.matcher(processingString);
