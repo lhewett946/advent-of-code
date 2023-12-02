@@ -1,4 +1,4 @@
-package net.lsmith946.adventofcode.problems2022;
+package net.lsmith946.adventofcode.problems2022.days;
 
 import net.lsmith946.adventofcode.problems2022.days.Day4;
 import org.junit.jupiter.api.Assertions;
