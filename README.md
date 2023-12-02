@@ -1,29 +1,15 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This repository stores my solutions to the puzzles set as part of the [Advent of Code](https://adventofcode.com/) suite
+of programming challenges. I am taking part for fun and to learn more about programming.
 
-### How do I get set up? ###
+### How do I run this code? ###
+To get started with running this code, you will need to extract your session cookie from the Advent of Code
+website and copy the hexadecimal part of it into a file named session_cookie which you place in the repository root.
+The contents of this file are private to you, so DO NOT commit it ANYWHERE. This will allow the code to automatically
+obtain your versions of the input files, which it will then cache locally to avoid increasing load on the Advent of Code
+server.
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
