@@ -28,4 +28,4 @@ hs_err_pid*
 /.idea/uiDesigner.xml
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/inspectionProfiles/profiles_settings.xml
-*/resources/session_cookie
+/session_cookie
