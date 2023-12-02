@@ -1,13 +1,66 @@
 package net.lsmith946.adventofcode.utils;
 
 import java.io.*;
-import java.net.URL;
+import java.net.*;
+import java.net.http.*;
+import java.nio.file.FileAlreadyExistsException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class InputLoader {
+
+    /**
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws URISyntaxException
+     */
+    public static void downloadInput(int year, int day) throws IOException, InterruptedException, URISyntaxException {
+        String sessionCookieStr = InputLoader.loadToString("/session_cookie");
+        // configure the session cookie to authenticate with Advent of Code website
+        CookieHandler.setDefault(new CookieManager());
+        HttpCookie sessionCookie = new HttpCookie("session", sessionCookieStr);
+        sessionCookie.setPath("/");
+        sessionCookie.setVersion(0);
+
+        ((CookieManager) CookieHandler.getDefault()).getCookieStore().add(new URI("https://adventofcode.com"),
+                sessionCookie);
+
+        // construct the client and the request
+        HttpClient client = HttpClient.newBuilder()
+                .cookieHandler(CookieHandler.getDefault())
+                .connectTimeout(Duration.ofSeconds(10))
+                .build();
+
+
+        String requestURL = "https://adventofcode.com/" + year + "/day/" + day + "/input";
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(requestURL))
+                .GET()
+                .build();
+
+        // send the request and accept the response
+        String response = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
+
+        // construct the file path to write the response to and write it out to disk
+        String fileName = "/" + year + "_day" + day + "_input.txt";
+        String dir = System.getProperty("user.dir");
+        File file = new File(dir + fileName);
+
+        if (file.createNewFile()) {
+            FileWriter writer = new FileWriter(file);
+            writer.write(response);
+        }
+        else {
+            throw new FileAlreadyExistsException("Downloaded input that was already cached");
+        }
+    }
 
     /**
      * @param resourcePath The path to the file to be read in, under resources

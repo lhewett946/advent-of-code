@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -36,5 +37,10 @@ public class InputLoaderTest {
         expectedStrings.add("2-9 c: ccccccccc");
 
         Assertions.assertEquals(expectedStrings, loadedStrings);
+    }
+
+    @Test
+    public void testDownload() throws IOException, InterruptedException, URISyntaxException {
+        InputLoader.downloadInput(2023, 2);
     }
 }
