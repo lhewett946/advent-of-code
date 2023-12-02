@@ -59,6 +59,39 @@ public final class Day2 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        long totalPower = 0L;
+        for (String game : values) {
+            int redCubes = 0, blueCubes = 0, greenCubes = 0;
+            int bagRedCubes = 0, bagBlueCubes = 0, bagGreenCubes = 0;
+            int gamePower;
+            String[] seperateTurns = game.split(":|;");
+            for (String turn: seperateTurns) {
+                if (!(turn.contains("Game")))  {
+                    String[] cubes = turn.split(",");
+                    // extract the number of cubes of each colour
+                    for (String cubeType : cubes) {
+                        if (cubeType.contains("blue")) {
+                            blueCubes = Integer.parseInt(cubeType.split(" ")[1]);
+                        }
+                        if (cubeType.contains("red")) {
+                            redCubes = Integer.parseInt(cubeType.split(" ")[1]);
+                        }
+                        if (cubeType.contains("green")) {
+                            greenCubes = Integer.parseInt(cubeType.split(" ")[1]);
+                        }
+                    }
+
+                    // test against the known bag contents and update them if needed
+                    bagRedCubes = Math.max(bagRedCubes, redCubes);
+                    bagBlueCubes= Math.max(bagBlueCubes, blueCubes);
+                    bagGreenCubes= Math.max(bagGreenCubes, greenCubes);
+                }
+            }
+
+            gamePower = bagRedCubes * bagBlueCubes * bagGreenCubes;
+            totalPower += gamePower;
+        }
+        System.out.println("The total power of the possible game IDs is " + totalPower);
+        return totalPower;
     }
 }
