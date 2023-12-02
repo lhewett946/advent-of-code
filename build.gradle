@@ -5,6 +5,8 @@ plugins {
 group 'net.lsmith946.adventofcode'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = 17
+
 repositories {
     mavenCentral()
 }
