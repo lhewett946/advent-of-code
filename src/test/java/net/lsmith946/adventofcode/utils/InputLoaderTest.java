@@ -3,6 +3,7 @@ package net.lsmith946.adventofcode.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -43,6 +44,11 @@ public class InputLoaderTest {
 
     @Test
     public void testDownload() throws IOException, InterruptedException, URISyntaxException {
+        String filePath = InputLoader.constructFilePath(2023, 2);
+        File f = new File(filePath);
+        if (f.exists()) {
+            Assertions.assertTrue(f.delete()); // make sure we were able to delete the file
+        }
         InputLoader.downloadInput(2023, 2);
     }
 }
