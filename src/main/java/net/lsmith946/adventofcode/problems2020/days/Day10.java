@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 public class Day10 implements Puzzle<Long> {
@@ -12,10 +13,10 @@ public class Day10 implements Puzzle<Long> {
     List<Integer> sortedValues;
     Map<Integer, Adapter> adapters;
 
-    public Day10() throws IOException {
+    public Day10() throws IOException, URISyntaxException, InterruptedException {
         Set<Integer> temporarySet;
         // load to an integer set to ensure no duplicates (as this is assumed by other code)
-        temporarySet = InputLoader.loadToIntSet("/2020/day10_input.txt");
+        temporarySet = InputLoader.loadToIntSet(2020, 10);
         // copy values to a list and sort them
         sortedValues = new ArrayList<>(temporarySet);
         Collections.sort(sortedValues);

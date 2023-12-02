@@ -13,6 +13,12 @@ import java.util.regex.Pattern;
 
 public class InputLoader {
 
+    private static String constructFilePath(int year, int day) {
+        String fileName = "/" + year + "_day" + day + "_input.txt";
+        String dir = System.getProperty("user.dir");
+        return dir + fileName;
+    }
+
     /**
      * @param year The year for which we are trying to get the input
      * @param day The day for which we are trying to get the input
@@ -21,7 +27,7 @@ public class InputLoader {
      * @throws URISyntaxException
      */
     public static void downloadInput(int year, int day) throws IOException, InterruptedException, URISyntaxException {
-        String sessionCookieStr = InputLoader.loadToString("/session_cookie");
+        String sessionCookieStr = InputLoader.loadToString(System.getProperty("user.dir") + "/session_cookie");
         // configure the session cookie to authenticate with Advent of Code website
         CookieHandler.setDefault(new CookieManager());
         HttpCookie sessionCookie = new HttpCookie("session", sessionCookieStr);
@@ -49,13 +55,12 @@ public class InputLoader {
         String response = client.send(request, HttpResponse.BodyHandlers.ofString()).body();
 
         // construct the file path to write the response to and write it out to disk
-        String fileName = "/" + year + "_day" + day + "_input.txt";
-        String dir = System.getProperty("user.dir");
-        File file = new File(dir + fileName);
+        File file = new File(constructFilePath(year, day));
 
         if (file.createNewFile()) {
             FileWriter writer = new FileWriter(file);
             writer.write(response);
+            writer.close();
         }
         else {
             throw new FileAlreadyExistsException("Downloaded input that was already cached");
@@ -63,27 +68,45 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path to the file to be read in, under resources
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a BufferedReader containing the input file
      * @throws FileNotFoundException when the resource path does not exist
      */
-    private static BufferedReader openFileForReading(String resourcePath) throws FileNotFoundException {
-        URL u = InputLoader.class.getResource(resourcePath);
-        if (u == null) {
-            throw new FileNotFoundException();
+    private static BufferedReader openFileForReading(int year, int day) throws IOException, URISyntaxException, InterruptedException {
+        File file = new File(constructFilePath(year, day));
+        if (file.exists()) {
+            return new BufferedReader(new FileReader(file));
         }
-        String filePath = u.getFile();
-        File file = new File(filePath);
-        return new BufferedReader(new FileReader(file));
+        else {
+            downloadInput(year, day);
+            return new BufferedReader(new FileReader(file));
+        }
     }
 
     /**
-     * @param resourcePath The path to the file to be read in, under resources
+     * @param filePath The path to the file to be opened
+     * @return a BufferedReader containing the input file
+     * @throws FileNotFoundException when the resource path does not exist
+     */
+    private static BufferedReader openFileForReading(String filePath) throws IOException, URISyntaxException, InterruptedException {
+        File file = new File(filePath);
+        if (file.exists()) {
+            return new BufferedReader(new FileReader(file));
+        }
+        else {
+            throw new FileNotFoundException();
+        }
+    }
+
+    /**
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a set containing the integers in the input file
      * @throws IOException if the file does not exist, or the contents cannot be stored to an integer set due to containing non-unique values
      */
-    public static Set<Integer> loadToIntSet(String resourcePath) throws IOException {
-        BufferedReader br = openFileForReading(resourcePath);
+    public static Set<Integer> loadToIntSet(int year, int day) throws IOException, URISyntaxException, InterruptedException {
+        BufferedReader br = openFileForReading(year, day);
         Set<Integer> ints = new HashSet<>();
 
         String str;
@@ -97,12 +120,13 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path to the file to be read in, under resources
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a list containing the integers in the input file
      * @throws IOException if the file does not exist
      */
-    public static List<Long> loadToLongList(String resourcePath) throws IOException {
-        BufferedReader br = openFileForReading(resourcePath);
+    public static List<Long> loadToLongList(int year, int day) throws IOException, URISyntaxException, InterruptedException {
+        BufferedReader br = openFileForReading(year, day);
         List<Long> ints = new ArrayList<>();
 
         String str;
@@ -114,12 +138,13 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path to the file to be read in, under resources
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a list containing the strings in the input file
      * @throws IOException if the file does not exist
      */
-    public static List<String> loadToStringList(String resourcePath) throws IOException {
-        BufferedReader br = openFileForReading(resourcePath);
+    public static List<String> loadToStringList(int year, int day) throws IOException, URISyntaxException, InterruptedException {
+        BufferedReader br = openFileForReading(year, day);
         List<String> strings = new ArrayList<>();
 
         String str;
@@ -131,12 +156,13 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path to the file to be read in, under resources
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a string containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public static String loadToString(String resourcePath) throws IOException {
-        BufferedReader br = openFileForReading(resourcePath);
+    public static String loadToString(int year, int day) throws IOException, URISyntaxException, InterruptedException {
+        BufferedReader br = openFileForReading(year, day);
         String str;
         String input = "";
         while ((str = br.readLine()) != null) {
@@ -146,20 +172,36 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path of the file to be read in, under resources
+     * @param filePath The path to the file that we are loading
+     * @return a string containing the data in the input file
+     * @throws IOException if the file does not exist
+     */
+    public static String loadToString(String filePath) throws IOException, URISyntaxException, InterruptedException {
+        BufferedReader br = openFileForReading(filePath);
+        String str;
+        String input = "";
+        while ((str = br.readLine()) != null) {
+            input = input.concat(str);
+        }
+        return input;
+    }
+
+    /**
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a 2D char array containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public static char[][] loadTo2DCharArray(String resourcePath) throws IOException {
+    public static char[][] loadTo2DCharArray(int year, int day) throws IOException, URISyntaxException, InterruptedException {
         // determine how many lines there are in the file
-        BufferedReader br = openFileForReading(resourcePath);
+        BufferedReader br = openFileForReading(year, day);
         int lines = 0;
         while (br.readLine() != null) {
             lines++;
         }
         // actually load file content
         String str;
-        br = openFileForReading(resourcePath);
+        br = openFileForReading(year, day);
         char[][] chars = new char[lines][];
         int currentLine = 0;
         while ((str = br.readLine()) != null) {
@@ -170,20 +212,21 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path of the file to be read in, under resources
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a 2D char array containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public static int[][] loadTo2DIntArray(String resourcePath) throws IOException {
+    public static int[][] loadTo2DIntArray(int year, int day) throws IOException, URISyntaxException, InterruptedException {
         // determine how many lines there are in the file
-        BufferedReader br = openFileForReading(resourcePath);
+        BufferedReader br = openFileForReading(year, day);
         int lines = 0;
         while (br.readLine() != null) {
             lines++;
         }
         // actually load file content
         String str;
-        br = openFileForReading(resourcePath);
+        br = openFileForReading(year, day);
         int[][] ints = new int[lines][];
         int currentLine = 0;
         while ((str = br.readLine()) != null) {
@@ -198,11 +241,12 @@ public class InputLoader {
     }
 
     /**
-     * @param resourcePath The path to the file to be read in, under resources
+     * @param year The year for which we are trying to get the input
+     * @param day The day for which we are trying to get the input
      * @return a char array containing the data in the input file
      * @throws IOException if the file does not exist
      */
-    public static char[] loadToCharArray(String resourcePath) throws IOException {
-        return loadToString(resourcePath).toCharArray();
+    public static char[] loadToCharArray(int year, int day) throws IOException, URISyntaxException, InterruptedException {
+        return loadToString(year, day).toCharArray();
     }
 }

@@ -5,13 +5,14 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Day1 implements Puzzle<Integer> {
 
     char[] input;
 
-    public Day1() throws IOException {
-        this.input = InputLoader.loadToCharArray("/2015/day1_input.txt");
+    public Day1() throws IOException, URISyntaxException, InterruptedException {
+        this.input = InputLoader.loadToCharArray(2015, 1);
     }
 
     @Override

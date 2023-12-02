@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +14,8 @@ public class Day14 implements Puzzle<Long> {
 
     List<String> instructions;
 
-    public Day14() throws IOException {
-        instructions = InputLoader.loadToStringList("/2020/day14_input.txt");
+    public Day14() throws IOException, URISyntaxException, InterruptedException {
+        instructions = InputLoader.loadToStringList(2020, 14);
     }
 
     @Override

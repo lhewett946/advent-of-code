@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,8 +15,8 @@ public class Day7 implements Puzzle<Long> {
     private String values;
     private Map<Integer, Integer> crabSubmarinesAtPosition;
 
-    public Day7() throws IOException {
-        this.values = InputLoader.loadToString("/2021/day7_input.txt");
+    public Day7() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToString(2021, 7);
     }
 
     private void parseInput() {

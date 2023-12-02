@@ -6,14 +6,15 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 public class Day5 implements Puzzle<Long> {
 
     private List<String> values;
 
-    public Day5() throws IOException {
-        this.values = InputLoader.loadToStringList("/2021/day5_input.txt");
+    public Day5() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToStringList(2021, 5);
     }
 
     private Grid2DCoordinates[] parseCoordinates (String str) {

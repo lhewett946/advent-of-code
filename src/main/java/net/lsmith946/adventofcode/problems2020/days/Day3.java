@@ -4,14 +4,15 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class Day3 implements Puzzle<Long> {
 
     List<String> values;
 
-    public Day3() throws IOException {
-        this.values = InputLoader.loadToStringList("/2020/day3_input.txt");
+    public Day3() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToStringList(2020, 3);
     }
 
     private int countTreesOnRoute(int horizontalChange, int verticalChange) {

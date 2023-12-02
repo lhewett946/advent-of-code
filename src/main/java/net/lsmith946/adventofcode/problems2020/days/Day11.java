@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 public class Day11 implements Puzzle<Integer> {
@@ -12,8 +13,8 @@ public class Day11 implements Puzzle<Integer> {
     char[][] originalSeatingArea;
     int totalRows, totalColumns;
 
-    public Day11() throws IOException {
-        currentSeatingArea = InputLoader.loadTo2DCharArray("/2020/day11_input.txt");
+    public Day11() throws IOException, URISyntaxException, InterruptedException {
+        currentSeatingArea = InputLoader.loadTo2DCharArray(2020, 11);
         totalRows = currentSeatingArea.length;
         totalColumns = currentSeatingArea[0].length;
         // copy the loaded seating area to a reference array

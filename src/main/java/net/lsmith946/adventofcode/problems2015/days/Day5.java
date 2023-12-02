@@ -5,14 +5,15 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class Day5 implements Puzzle<Long> {
 
     List<String> input;
 
-    public Day5() throws IOException {
-        this.input = InputLoader.loadToStringList("/2015/day5_input.txt");
+    public Day5() throws IOException, URISyntaxException, InterruptedException {
+        this.input = InputLoader.loadToStringList(2015, 5);
     }
 
     @Override

@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -13,9 +14,9 @@ public final class Day1 implements Puzzle<Long> {
 
     List<String> values;
 
-    public Day1() throws IOException {
+    public Day1() throws IOException, URISyntaxException, InterruptedException {
         values = new ArrayList<>();
-        this.values = InputLoader.loadToStringList("/2023/day1_input.txt");
+        this.values = InputLoader.loadToStringList(2023, 1);
     }
 
     private String toDigits (String str) {

@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public final class Day2 implements Puzzle<Long> {
 
@@ -12,8 +13,8 @@ public final class Day2 implements Puzzle<Long> {
     private final char [][] values;
     private final Moves [][] rounds;
 
-    public Day2() throws IOException {
-        this.values = InputLoader.loadTo2DCharArray("/2022/day2_input.txt");
+    public Day2() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadTo2DCharArray(2022, 2);
         this.rounds = new Moves[2][values.length];
     }
 

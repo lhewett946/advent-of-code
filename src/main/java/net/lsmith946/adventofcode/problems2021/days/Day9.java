@@ -5,13 +5,14 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Day9 implements Puzzle<Integer> {
 
     private int[][] values;
 
-    public Day9() throws IOException {
-        this.values = InputLoader.loadTo2DIntArray("/2021/day9_input.txt");
+    public Day9() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadTo2DIntArray(2021, 9);
     }
 
     private boolean isLowPoint(Grid2DCoordinates location) {

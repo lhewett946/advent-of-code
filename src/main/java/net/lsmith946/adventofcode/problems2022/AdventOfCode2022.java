@@ -5,10 +5,11 @@ import net.lsmith946.adventofcode.utils.ExitCodes;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class AdventOfCode2022 {
 
-    public static void main (String [] args) {
+    public static void main (String [] args) throws URISyntaxException, InterruptedException {
         try {
             Day1 d1 = new Day1();
             d1.solve();

@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +14,8 @@ public class Day6 implements Puzzle<Integer> {
 
     List<String> values;
 
-    public Day6() throws IOException {
-        this.values = InputLoader.loadToStringList("/2020/day6_input.txt");
+    public Day6() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToStringList(2020, 6);
     }
 
     @Override

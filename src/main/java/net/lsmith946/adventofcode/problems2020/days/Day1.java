@@ -5,14 +5,15 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import net.lsmith946.adventofcode.utils.SumUtils;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Set;
 
 public class Day1 implements Puzzle<Long> {
 
     private Set<Integer> values;
 
-    public Day1() throws IOException {
-        this.values = InputLoader.loadToIntSet("/2020/day1_input.txt");
+    public Day1() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToIntSet(2020, 1);
     }
 
     @Override

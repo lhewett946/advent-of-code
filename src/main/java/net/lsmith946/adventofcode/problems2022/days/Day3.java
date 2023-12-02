@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +14,8 @@ public class Day3 implements Puzzle<Long> {
 
     private final List<Rucksack> sacks;
 
-    public Day3() throws IOException {
-        List<String> values = InputLoader.loadToStringList("/2022/day3_input.txt");
+    public Day3() throws IOException, URISyntaxException, InterruptedException {
+        List<String> values = InputLoader.loadToStringList(2022, 3);
         sacks = new ArrayList<>();
         for(String s : values) {
             Rucksack sack = new Rucksack(s);

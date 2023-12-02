@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 public class Day6 implements Puzzle<Long> {
@@ -11,8 +12,8 @@ public class Day6 implements Puzzle<Long> {
     private String values;
     private long[] initialAges;
 
-    public Day6() throws IOException {
-        this.values = InputLoader.loadToString("/2021/day6_input.txt");
+    public Day6() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToString(2021, 6);
     }
 
     private void parseInput() {

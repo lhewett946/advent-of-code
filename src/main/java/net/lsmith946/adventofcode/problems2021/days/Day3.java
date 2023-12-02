@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class Day3 implements Puzzle<Long> {
 
     private List<String> values;
 
-    public Day3() throws IOException {
-        this.values = InputLoader.loadToStringList("/2021/day3_input.txt");
+    public Day3() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToStringList(2021, 3);
     }
 
     private char mostCommonBitValue(int column, List<String> values) {

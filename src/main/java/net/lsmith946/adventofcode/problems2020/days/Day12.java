@@ -5,14 +5,15 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class Day12 implements Puzzle<Integer> {
 
     List<String> directions;
 
-    public Day12() throws IOException {
-        directions = InputLoader.loadToStringList("/2020/day12_input.txt");
+    public Day12() throws IOException, URISyntaxException, InterruptedException {
+        directions = InputLoader.loadToStringList(2020, 12);
     }
 
     private CompassDirection turnLeft(CompassDirection currentDirection, int degrees) {

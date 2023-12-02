@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class Day4 implements Puzzle<Integer> {
     List<String> values;
     List<Passport> passports;
 
-    public Day4() throws IOException {
-        this.values = InputLoader.loadToStringList("/2020/day4_input.txt");
+    public Day4() throws IOException, URISyntaxException, InterruptedException {
+        this.values = InputLoader.loadToStringList(2020, 4);
         this.passports = new ArrayList<>();
         loadPassports();
     }

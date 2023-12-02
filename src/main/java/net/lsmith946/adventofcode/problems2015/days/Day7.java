@@ -5,6 +5,7 @@ import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 public class Day7 implements Puzzle<Long> {
@@ -12,8 +13,8 @@ public class Day7 implements Puzzle<Long> {
     List<String> input;
     Map<String,Wire> wires = new HashMap<>();
 
-    public Day7() throws IOException {
-        this.input = InputLoader.loadToStringList("/2015/day7_input.txt");
+    public Day7() throws IOException, URISyntaxException, InterruptedException {
+        this.input = InputLoader.loadToStringList(2015, 7);
     }
 
     private long getOperandValue(String operand) {

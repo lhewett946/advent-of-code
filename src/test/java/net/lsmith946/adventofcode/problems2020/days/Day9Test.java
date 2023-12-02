@@ -4,16 +4,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Day9Test {
     @Test
-    public void testDay9Part1() throws IOException {
+    public void testDay9Part1() throws IOException, URISyntaxException, InterruptedException {
         Day9 d9 = new Day9();
         Assertions.assertEquals(27911108, d9.solvePartOne());
     }
 
     @Test
-    public void testDay9Part2() throws IOException {
+    public void testDay9Part2() throws IOException, URISyntaxException, InterruptedException {
         Day9 d9 = new Day9();
         Assertions.assertEquals(4023754, d9.solvePartTwo());
     }
