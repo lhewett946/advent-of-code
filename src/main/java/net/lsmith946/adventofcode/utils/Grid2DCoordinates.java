@@ -60,8 +60,8 @@ public class Grid2DCoordinates {
         return coords;
     }
 
-    public boolean hasNegativeCoords() {
-        return (x < 0 || y < 0);
+    public boolean hasInRangeCoords(int xMin, int xMax, int yMin, int yMax) {
+        return (x >= xMin && x <= xMax && y >= yMin && y <= yMax);
     }
 
     @Override
