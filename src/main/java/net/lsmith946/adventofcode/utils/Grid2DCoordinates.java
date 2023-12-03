@@ -60,6 +60,10 @@ public class Grid2DCoordinates {
         return coords;
     }
 
+    public boolean hasNegativeCoords() {
+        return (x < 0 || y < 0);
+    }
+
     @Override
     public String toString() {
         return "(" + x + "," + y + ")";
