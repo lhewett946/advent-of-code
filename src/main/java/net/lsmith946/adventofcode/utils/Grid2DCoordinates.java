@@ -1,5 +1,7 @@
 package net.lsmith946.adventofcode.utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Grid2DCoordinates {
@@ -43,6 +45,20 @@ public class Grid2DCoordinates {
         return y;
     }
 
+    public List<Grid2DCoordinates> getAdjacentCoords(boolean includeDiagonals) {
+        List<Grid2DCoordinates> coords = new ArrayList<>();
+        coords.add(new Grid2DCoordinates(x, y-1));
+        coords.add(new Grid2DCoordinates(x, y+1));
+        coords.add(new Grid2DCoordinates(x+1, y));
+        coords.add(new Grid2DCoordinates(x-1, y));
+        if (includeDiagonals) {
+            coords.add(new Grid2DCoordinates(x-1, y-1));
+            coords.add(new Grid2DCoordinates(x-1, y+1));
+            coords.add(new Grid2DCoordinates(x+1, y-1));
+            coords.add(new Grid2DCoordinates(x+1, y+1));
+        }
+        return coords;
+    }
 
     @Override
     public String toString() {
