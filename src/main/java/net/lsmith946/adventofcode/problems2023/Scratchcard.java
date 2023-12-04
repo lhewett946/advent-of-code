@@ -38,4 +38,11 @@ public class Scratchcard {
             return 0;
         }
     }
+
+    public long getNumberOfMatches() {
+        Set<Integer> matchingNumbers = new HashSet<>();
+        matchingNumbers.addAll(cardNumbers);
+        matchingNumbers.retainAll(winningNumbers);
+        return matchingNumbers.size();
+    }
 }

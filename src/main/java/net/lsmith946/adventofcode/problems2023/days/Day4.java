@@ -7,8 +7,10 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.LongStream;
 
 public final class Day4 implements Puzzle<Long> {
 
@@ -31,6 +33,17 @@ public final class Day4 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        long[] cardCopies = new long[values.size()];
+        for(int card = 0; card < values.size(); card++) {
+            cardCopies[card]++;
+            Scratchcard currentCard = new Scratchcard(values.get(card));
+            long score = currentCard.getNumberOfMatches();
+            for(int i = 1; i <= score; i++) {
+                cardCopies[card+i] += cardCopies[card];
+            }
+        }
+        long totalCards = LongStream.of(cardCopies).sum();
+        System.out.println("The total number of scratchcards the elf has is " + totalCards);
+        return totalCards;
     }
 }
