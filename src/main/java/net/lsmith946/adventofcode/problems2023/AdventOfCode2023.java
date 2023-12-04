@@ -42,5 +42,16 @@ public class AdventOfCode2023 {
             System.err.println("Unable to read input file for Day 3!");
             System.exit(ExitCodes.IO_EXCEPTION_EXIT_CODE);
         }
+
+        try {
+            Day4 d4 = new Day4();
+            d4.solve();
+        } catch (FileNotFoundException e) {
+            System.err.println("Unable to open input data file for Day 4!");
+            System.exit(ExitCodes.FILE_NOT_FOUND_EXCEPTION_EXIT_CODE);
+        } catch (IOException e) {
+            System.err.println("Unable to read input file for Day 4!");
+            System.exit(ExitCodes.IO_EXCEPTION_EXIT_CODE);
+        }
     }
 }
