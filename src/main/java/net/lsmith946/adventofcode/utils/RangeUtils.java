@@ -33,7 +33,7 @@ public class RangeUtils {
     }
 
     /**
-     * This functions checks two ranges to see if one of the ranges is fully contained within the other
+     * This function checks two ranges to see if one of the ranges is fully contained within the other
      * @param startRange1 The start index of the first range
      * @param endRange1 The end index of the first range
      * @param startRange2 The start index of the second range
@@ -46,7 +46,7 @@ public class RangeUtils {
     }
 
     /**
-     * This functions checks two ranges to see if one of the ranges is fully contained within the other
+     * This function checks two ranges to see if one of the ranges is fully contained within the other
      * @param startRange1 The start index of the first range
      * @param endRange1 The end index of the first range
      * @param startRange2 The start index of the second range
