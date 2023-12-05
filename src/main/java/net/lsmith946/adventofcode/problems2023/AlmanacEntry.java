@@ -3,6 +3,7 @@ package net.lsmith946.adventofcode.problems2023;
 public class AlmanacEntry {
 
     private long seed;
+    private long range;
     private long soil;
     private long fertilizer;
     private long water;
@@ -11,8 +12,9 @@ public class AlmanacEntry {
     private long humidity;
     private long location;
 
-    public AlmanacEntry(long seed) {
+    public AlmanacEntry(long seed, long range) {
         this.seed = seed;
+        this.range = range;
     }
 
     public long getSeed() {
@@ -21,6 +23,14 @@ public class AlmanacEntry {
 
     public void setSeed(long seed) {
         this.seed = seed;
+    }
+
+    public long getRange() {
+        return range;
+    }
+
+    public void setRange(long range) {
+        this.range = range;
     }
 
     public long getSoil() {

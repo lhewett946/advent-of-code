@@ -3,6 +3,7 @@ package net.lsmith946.adventofcode.problems2023.days;
 import net.lsmith946.adventofcode.problems2023.AlmanacEntry;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
+import net.lsmith946.adventofcode.utils.RangeUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -83,6 +84,7 @@ public final class Day5 implements Puzzle<Long> {
             int currentInputLine = findMapStart(mapName);
             long destValue = 0;
             long srcValue = determineSrcValue(mapName, seed);
+            long seedRangeSize = seed.getRange();
 
             while (!values.get(currentInputLine).isEmpty() && currentInputLine != values.size()-1) {
                 String[] mapEntry = StringUtils.split(values.get(currentInputLine));
@@ -90,7 +92,7 @@ public final class Day5 implements Puzzle<Long> {
                 long srcRangeStart = Long.parseLong(mapEntry[1]);
                 long rangeSize = Long.parseLong(mapEntry[2]);
 
-                if (srcValue >= srcRangeStart && srcValue < srcRangeStart + rangeSize) {
+                if (RangeUtils.rangesFullyContained(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize)) {
                     long distIntoRange = srcValue - srcRangeStart;
                     destValue = destRangeStart + distIntoRange;
                     matchingRangeFound = true;
@@ -127,7 +129,7 @@ public final class Day5 implements Puzzle<Long> {
         List<AlmanacEntry> seedEntries = new ArrayList<>();
         for(String s : seeds) {
             if (!s.startsWith("seeds")) {
-                AlmanacEntry entry = new AlmanacEntry(Long.parseLong(s));
+                AlmanacEntry entry = new AlmanacEntry(Long.parseLong(s), 1);
                 seedEntries.add(entry);
             }
         }
