@@ -82,8 +82,8 @@ public final class Day5 implements Puzzle<Long> {
         while(seedEntries.size() != 0) {
             AlmanacEntry seed = seedEntries.remove(0);
             boolean matchingRangeFound = false;
+            boolean rangeSplitPerformed = false;
             int currentInputLine = findMapStart(mapName);
-            long destValue = 0;
             long srcValue = determineSrcValue(mapName, seed);
             long seedRangeSize = seed.getRange();
 
@@ -93,18 +93,19 @@ public final class Day5 implements Puzzle<Long> {
                 long srcRangeStart = Long.parseLong(mapEntry[1]);
                 long rangeSize = Long.parseLong(mapEntry[2]);
 
-                if (RangeUtils.range2InsideRange1(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize)) {
+                if (RangeUtils.range2InsideRange1(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1)) {
                     long distIntoRange = srcValue - srcRangeStart;
-                    destValue = destRangeStart + distIntoRange;
+                    updateDestValue(mapName, seed, destRangeStart + distIntoRange);
+                    newSeedEntries.add(seed);
                     matchingRangeFound = true;
                     break;
                 }
-                else if (RangeUtils.rangesOverlap(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize)) {
+                else if (RangeUtils.rangesOverlap(srcRangeStart, srcRangeStart + rangeSize - 1 , srcValue, srcValue + seedRangeSize - 1)) {
                     // split the range represented by this entry up and push both new ranges back into the queue to be processed
                     AlmanacEntry newSeedRange1 = new AlmanacEntry(seed);
                     AlmanacEntry newSeedRange2 = new AlmanacEntry(seed);
-                    RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapDirection(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize);
-                    long overlapPoint = RangeUtils.findOverlapStartEnd(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize);
+                    RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapDirection(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
+                    long overlapPoint = RangeUtils.findOverlapStartEnd(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
                     if (overlapType == RangeUtils.RangeOverlapType.TOP) {
                         newSeedRange1.setRange(overlapPoint - srcValue + 1);
                         updateSrcValue(mapName, newSeedRange2, overlapPoint+1);
@@ -115,17 +116,18 @@ public final class Day5 implements Puzzle<Long> {
                         updateSrcValue(mapName, newSeedRange2, overlapPoint);
                         newSeedRange2.setRange(seed.getRange() - newSeedRange1.getRange());
                     }
-                    newSeedEntries.add(newSeedRange1);
-                    newSeedEntries.add(newSeedRange2);
+                    seedEntries.add(newSeedRange1);
+                    seedEntries.add(newSeedRange2);
+                    rangeSplitPerformed = true;
+                    break;
                 }
                 currentInputLine++;
             }
 
-            if (!matchingRangeFound) {
-                destValue = srcValue;
+            if (!matchingRangeFound && !rangeSplitPerformed) {
+                updateDestValue(mapName, seed, srcValue);
+                newSeedEntries.add(seed);
             }
-            updateDestValue(mapName, seed, destValue);
-            newSeedEntries.add(seed);
         }
         seedEntries.addAll(newSeedEntries);
     }
