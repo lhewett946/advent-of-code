@@ -39,6 +39,27 @@ public final class Day6 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        String[] raceTimes = StringUtils.split(values.get(0));
+        String[] raceDistances = StringUtils.split(values.get(1));
+        String raceDurationStr = "";
+        String raceDistanceStr = "";
+        long product = 1;
+        long waysToWin = 0;
+        for(int portion = 1; portion < raceTimes.length; portion++) {
+            raceDurationStr = raceDurationStr.concat(raceTimes[portion]);
+        }
+        for(int portion = 1; portion < raceDistances.length; portion++) {
+            raceDistanceStr = raceDistanceStr.concat(raceDistances[portion]);
+        }
+        long raceDuration = Long.parseLong(raceDurationStr);
+        long recordDistance = Long.parseLong(raceDistanceStr);
+        for(long buttonHold = 0; buttonHold < raceDuration; buttonHold++) {
+            long distanceCovered = buttonHold * (raceDuration - buttonHold);
+            if (distanceCovered > recordDistance) {
+                waysToWin++;
+            }
+        }
+        System.out.println("The number of ways to win the race is " + waysToWin);
+        return waysToWin;
     }
 }
