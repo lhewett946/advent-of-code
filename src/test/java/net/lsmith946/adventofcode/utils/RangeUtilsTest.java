@@ -7,11 +7,17 @@ class RangeUtilsTest {
 
     @Test
     void testFindOverlapStartEnd() {
-        long overlapPoint = RangeUtils.findOverlapStartEnd(0, 20, 10, 25);
+        long overlapPoint = RangeUtils.findOverlapPoint(0, 20, 10, 25);
         Assertions.assertEquals(10, overlapPoint);
 
-        overlapPoint = RangeUtils.findOverlapStartEnd(10, 25, 0, 20);
+        overlapPoint = RangeUtils.findOverlapPoint(10, 25, 0, 20);
         Assertions.assertEquals(10, overlapPoint);
+
+        overlapPoint = RangeUtils.findOverlapPoint(10, 50, 10, 20);
+        Assertions.assertEquals(20, overlapPoint);
+
+        overlapPoint = RangeUtils.findOverlapPoint(10, 50, 30, 50);
+        Assertions.assertEquals(30, overlapPoint);
     }
 
     @Test

@@ -80,8 +80,14 @@ public class RangeUtils {
      * @param endRange2 The end index of the second range
      * @return the value at which the ranges start or stop overlapping
      */
-    public static long findOverlapStartEnd(long startRange1, long endRange1, long startRange2, long endRange2) {
-        if ((startRange1 >= startRange2) && (startRange1 <= endRange2)) {
+    public static long findOverlapPoint(long startRange1, long endRange1, long startRange2, long endRange2) {
+        if (startRange1 == startRange2) {
+            return Math.min(endRange1, endRange2);
+        }
+        else if (endRange1 == endRange2) {
+            return Math.max(startRange1, startRange2);
+        }
+        else if ((startRange1 >= startRange2) && (startRange1 <= endRange2)) {
             return startRange1;
         }
         else if ((endRange1 >= startRange2) && (endRange1 <= endRange2)) {
