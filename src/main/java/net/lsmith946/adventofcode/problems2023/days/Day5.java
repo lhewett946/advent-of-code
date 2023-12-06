@@ -78,7 +78,9 @@ public final class Day5 implements Puzzle<Long> {
     }
 
     private void processMapping(String mapName, List<AlmanacEntry> seedEntries) {
-        for (AlmanacEntry seed : seedEntries) {
+        List<AlmanacEntry> newSeedEntries = new ArrayList<>();
+        while(seedEntries.size() != 0) {
+            AlmanacEntry seed = seedEntries.remove(0);
             boolean matchingRangeFound = false;
             int currentInputLine = findMapStart(mapName);
             long destValue = 0;
@@ -113,8 +115,8 @@ public final class Day5 implements Puzzle<Long> {
                         updateSrcValue(mapName, newSeedRange2, overlapPoint);
                         newSeedRange2.setRange(seed.getRange() - newSeedRange1.getRange());
                     }
-                    seedEntries.add(newSeedRange1);
-                    seedEntries.add(newSeedRange2);
+                    newSeedEntries.add(newSeedRange1);
+                    newSeedEntries.add(newSeedRange2);
                 }
                 currentInputLine++;
             }
@@ -123,7 +125,9 @@ public final class Day5 implements Puzzle<Long> {
                 destValue = srcValue;
             }
             updateDestValue(mapName, seed, destValue);
+            newSeedEntries.add(seed);
         }
+        seedEntries.addAll(newSeedEntries);
     }
 
     private long findLowestLocation(List<AlmanacEntry> seeds) {
