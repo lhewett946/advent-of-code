@@ -53,54 +53,26 @@ public final class Day5 implements Puzzle<Long> {
 
     private void updateSrcValue(String mapName, AlmanacEntry seed, long srcValue) {
         switch (mapName) {
-            case "seed-to-soil map:" -> {
-                seed.setSeed(srcValue);
-            }
-            case "soil-to-fertilizer map:" -> {
-                seed.setSoil(srcValue);
-            }
-            case "fertilizer-to-water map:" -> {
-                seed.setFertilizer(srcValue);
-            }
-            case "water-to-light map:" -> {
-                seed.setWater(srcValue);
-            }
-            case "light-to-temperature map:" -> {
-                seed.setLight(srcValue);
-            }
-            case "temperature-to-humidity map:" -> {
-                seed.setTemperature(srcValue);
-            }
-            case "humidity-to-location map:" -> {
-                seed.setHumidity(srcValue);
-            }
+            case "seed-to-soil map:" -> seed.setSeed(srcValue);
+            case "soil-to-fertilizer map:" -> seed.setSoil(srcValue);
+            case "fertilizer-to-water map:" -> seed.setFertilizer(srcValue);
+            case "water-to-light map:" -> seed.setWater(srcValue);
+            case "light-to-temperature map:" -> seed.setLight(srcValue);
+            case "temperature-to-humidity map:" -> seed.setTemperature(srcValue);
+            case "humidity-to-location map:" -> seed.setHumidity(srcValue);
             default -> throw new IllegalStateException("Unexpected value: " + mapName);
         }
     }
 
     private void updateDestValue(String mapName, AlmanacEntry seed, long destValue) {
         switch (mapName) {
-            case "seed-to-soil map:" -> {
-                seed.setSoil(destValue);
-            }
-            case "soil-to-fertilizer map:" -> {
-                seed.setFertilizer(destValue);
-            }
-            case "fertilizer-to-water map:" -> {
-                seed.setWater(destValue);
-            }
-            case "water-to-light map:" -> {
-                seed.setLight(destValue);
-            }
-            case "light-to-temperature map:" -> {
-                seed.setTemperature(destValue);
-            }
-            case "temperature-to-humidity map:" -> {
-                seed.setHumidity(destValue);
-            }
-            case "humidity-to-location map:" -> {
-                seed.setLocation(destValue);
-            }
+            case "seed-to-soil map:" -> seed.setSoil(destValue);
+            case "soil-to-fertilizer map:" -> seed.setFertilizer(destValue);
+            case "fertilizer-to-water map:" -> seed.setWater(destValue);
+            case "water-to-light map:" -> seed.setLight(destValue);
+            case "light-to-temperature map:" -> seed.setTemperature(destValue);
+            case "temperature-to-humidity map:" -> seed.setHumidity(destValue);
+            case "humidity-to-location map:" -> seed.setLocation(destValue);
             default -> throw new IllegalStateException("Unexpected value: " + mapName);
         }
     }
