@@ -61,6 +61,18 @@ public class RangeUtils {
     }
 
     /**
+     * This function checks two ranges to see if Range 2 is fully contained within Range 1
+     * @param startRange1 The start index of the first range
+     * @param endRange1 The end index of the first range
+     * @param startRange2 The start index of the second range
+     * @param endRange2 The end index of the second range
+     * @return true if range 2 is fully contained within range 1, otherwise false
+     */
+    public static boolean range2InsideRange1(long startRange1, long endRange1, long startRange2, long endRange2) {
+        return ((startRange2 >= startRange1) && (endRange2 <= endRange1));
+    }
+
+    /**
      * This function determines the point at which two ranges start or stop overlapping
      * @param startRange1 The start index of the first range
      * @param endRange1 The end index of the first range
