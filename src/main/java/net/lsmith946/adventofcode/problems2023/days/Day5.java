@@ -51,6 +51,33 @@ public final class Day5 implements Puzzle<Long> {
         throw new IllegalStateException("No matching map type found");
     }
 
+    private void updateSrcValue(String mapName, AlmanacEntry seed, long srcValue) {
+        switch (mapName) {
+            case "seed-to-soil map:" -> {
+                seed.setSeed(srcValue);
+            }
+            case "soil-to-fertilizer map:" -> {
+                seed.setSoil(srcValue);
+            }
+            case "fertilizer-to-water map:" -> {
+                seed.setFertilizer(srcValue);
+            }
+            case "water-to-light map:" -> {
+                seed.setWater(srcValue);
+            }
+            case "light-to-temperature map:" -> {
+                seed.setLight(srcValue);
+            }
+            case "temperature-to-humidity map:" -> {
+                seed.setTemperature(srcValue);
+            }
+            case "humidity-to-location map:" -> {
+                seed.setHumidity(srcValue);
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + mapName);
+        }
+    }
+
     private void updateDestValue(String mapName, AlmanacEntry seed, long destValue) {
         switch (mapName) {
             case "seed-to-soil map:" -> {
@@ -92,11 +119,30 @@ public final class Day5 implements Puzzle<Long> {
                 long srcRangeStart = Long.parseLong(mapEntry[1]);
                 long rangeSize = Long.parseLong(mapEntry[2]);
 
-                if (RangeUtils.rangesFullyContained(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize)) {
+                if (RangeUtils.range2InsideRange1(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize)) {
                     long distIntoRange = srcValue - srcRangeStart;
                     destValue = destRangeStart + distIntoRange;
                     matchingRangeFound = true;
                     break;
+                }
+                else if (RangeUtils.rangesOverlap(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize)) {
+                    // split the range represented by this entry up and push both new ranges back into the queue to be processed
+                    AlmanacEntry newSeedRange1 = new AlmanacEntry(seed);
+                    AlmanacEntry newSeedRange2 = new AlmanacEntry(seed);
+                    RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapDirection(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize);
+                    long overlapPoint = RangeUtils.findOverlapStartEnd(srcRangeStart, srcRangeStart + rangeSize, srcValue, srcValue + seedRangeSize);
+                    if (overlapType == RangeUtils.RangeOverlapType.TOP) {
+                        newSeedRange1.setRange(overlapPoint - srcValue + 1);
+                        updateSrcValue(mapName, newSeedRange2, overlapPoint+1);
+                        newSeedRange2.setRange(seed.getRange() - newSeedRange1.getRange());
+                    }
+                    else {
+                        newSeedRange1.setRange(overlapPoint - srcValue);
+                        updateSrcValue(mapName, newSeedRange2, overlapPoint);
+                        newSeedRange2.setRange(seed.getRange() - newSeedRange1.getRange());
+                    }
+                    seedEntries.add(newSeedRange1);
+                    seedEntries.add(newSeedRange2);
                 }
                 currentInputLine++;
             }
@@ -104,7 +150,6 @@ public final class Day5 implements Puzzle<Long> {
             if (!matchingRangeFound) {
                 destValue = srcValue;
             }
-
             updateDestValue(mapName, seed, destValue);
         }
     }
@@ -149,6 +194,23 @@ public final class Day5 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        String[] seeds = StringUtils.split(values.get(0));
+        List<AlmanacEntry> seedEntries = new ArrayList<>();
+        for(int i = 1; i < seeds.length; i=i+2) {
+            AlmanacEntry entry = new AlmanacEntry(Long.parseLong(seeds[i]), Long.parseLong(seeds[i+1]));
+            seedEntries.add(entry);
+        }
+
+        processMapping("seed-to-soil map:", seedEntries);
+        processMapping("soil-to-fertilizer map:", seedEntries);
+        processMapping("fertilizer-to-water map:", seedEntries);
+        processMapping("water-to-light map:", seedEntries);
+        processMapping("light-to-temperature map:", seedEntries);
+        processMapping("temperature-to-humidity map:", seedEntries);
+        processMapping("humidity-to-location map:", seedEntries);
+
+        long lowestLocation = findLowestLocation(seedEntries);
+        System.out.println("The lowest location corresponding to the initial seeds is " + lowestLocation);
+        return lowestLocation;
     }
 }

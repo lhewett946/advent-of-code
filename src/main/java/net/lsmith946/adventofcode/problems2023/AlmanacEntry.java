@@ -17,6 +17,18 @@ public class AlmanacEntry {
         this.range = range;
     }
 
+    public AlmanacEntry(AlmanacEntry original) {
+        this.seed = original.seed;
+        this.range = original.range;
+        this.soil = original.soil;
+        this.fertilizer = original.fertilizer;
+        this.water = original.water;
+        this.light = original.light;
+        this.temperature = original.temperature;
+        this.humidity = original.humidity;
+        this.location = original.location;
+    }
+
     public long getSeed() {
         return seed;
     }
