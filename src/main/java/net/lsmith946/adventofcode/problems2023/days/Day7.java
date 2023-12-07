@@ -13,19 +13,22 @@ import java.util.List;
 
 public final class Day7 implements Puzzle<Long> {
 
-    private List<CamelClassHand> hands = new ArrayList<>();
+    private List<String> values = new ArrayList<>();
 
     public Day7() throws IOException, URISyntaxException, InterruptedException {
-        List<String> values = InputLoader.loadToStringList(2023, 7);
-        for(String s : values) {
-            String[] handStr = StringUtils.split(s);
-            CamelClassHand hand = new CamelClassHand(handStr[0], Integer.parseInt(handStr[1]));
-            this.hands.add(hand);
-        }
+        values = InputLoader.loadToStringList(2023, 7);
+
     }
 
     @Override
     public Long solvePartOne() {
+        List<CamelClassHand> hands = new ArrayList<>();
+        for(String s : values) {
+            String[] handStr = StringUtils.split(s);
+            CamelClassHand hand = new CamelClassHand(handStr[0], Integer.parseInt(handStr[1]));
+            hands.add(hand);
+        }
+
         long totalWinnings = 0;
         Collections.sort(hands);
         for(int rank = 0; rank < hands.size(); rank++) {
