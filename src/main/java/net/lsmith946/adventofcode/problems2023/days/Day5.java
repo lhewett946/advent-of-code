@@ -105,7 +105,7 @@ public final class Day5 implements Puzzle<Long> {
                     AlmanacEntry newSeedRange1 = new AlmanacEntry(seed);
                     AlmanacEntry newSeedRange2 = new AlmanacEntry(seed);
                     RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapDirection(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
-                    long overlapPoint = RangeUtils.findOverlapStartEnd(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
+                    long overlapPoint = RangeUtils.findOverlapPoint(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
                     if (overlapType == RangeUtils.RangeOverlapType.TOP) {
                         newSeedRange1.setRange(overlapPoint - srcValue + 1);
                         updateSrcValue(mapName, newSeedRange2, overlapPoint+1);
