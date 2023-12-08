@@ -4,6 +4,7 @@ import net.lsmith946.adventofcode.problems2023.MapNetworkNode;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.math3.util.ArithmeticUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -85,6 +86,28 @@ public final class Day8 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        List<MapNetworkNode> currentNodes;
+        long allNodesStepsTaken = 1;
+
+        // get the starting node
+        currentNodes = findNodes("A");
+
+        for(MapNetworkNode currentNode : currentNodes) {
+            long stepsTaken = 0;
+            int nextInstruction = 0;
+            while (!currentNode.getNodeName().endsWith("Z")) {
+                if (directions[nextInstruction] == 'L') {
+                    currentNode = currentNode.getLeftNode();
+                } else {
+                    currentNode = currentNode.getRightNode();
+                }
+                stepsTaken++;
+                nextInstruction = (int) stepsTaken % directions.length;
+            }
+            allNodesStepsTaken = ArithmeticUtils.lcm(allNodesStepsTaken, stepsTaken);
+        }
+
+        System.out.println("The number of steps taken to reach ZZZ is " + allNodesStepsTaken);
+        return allNodesStepsTaken;
     }
 }

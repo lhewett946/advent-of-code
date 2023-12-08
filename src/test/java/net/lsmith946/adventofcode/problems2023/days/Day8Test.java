@@ -13,4 +13,10 @@ public class Day8Test {
         Day8 d8 = new Day8();
         Assertions.assertEquals(11309, d8.solvePartOne());
     }
+
+    @Test
+    public void testDay8Part2() throws IOException, URISyntaxException, InterruptedException {
+        Day8 d8 = new Day8();
+        Assertions.assertEquals(13740108158591L, d8.solvePartTwo());
+    }
 }
