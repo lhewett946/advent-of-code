@@ -172,7 +172,7 @@ public final class Day5 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        String[] seeds = StringUtils.split(values.get(0));
+        /*String[] seeds = StringUtils.split(values.get(0));
         List<AlmanacEntry> seedEntries = new ArrayList<>();
         for(int i = 1; i < seeds.length; i=i+2) {
             AlmanacEntry entry = new AlmanacEntry(Long.parseLong(seeds[i]), Long.parseLong(seeds[i+1]));
@@ -190,5 +190,7 @@ public final class Day5 implements Puzzle<Long> {
         long lowestLocation = findLowestLocation(seedEntries);
         System.out.println("The lowest location corresponding to the initial seeds is " + lowestLocation);
         return lowestLocation;
+        */
+        return 0L;
     }
 }
