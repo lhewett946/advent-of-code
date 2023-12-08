@@ -35,41 +35,49 @@ public final class Day8 implements Puzzle<Long> {
             String leftConnectedNode = nodeStr[2].substring(1, 4);
             String rightConnectedNode = nodeStr[3].substring(0, 3);
 
-            currentNode= findNode(nodeStr[0]);
-            MapNetworkNode leftNode = findNode(leftConnectedNode);
-            MapNetworkNode rightNode = findNode(rightConnectedNode);
+            currentNode= findNodes(nodeStr[0]).get(0);
+            MapNetworkNode leftNode = findNodes(leftConnectedNode).get(0);
+            MapNetworkNode rightNode = findNodes(rightConnectedNode).get(0);
 
             currentNode.addConnectedNodes(leftNode, rightNode);
         }
     }
 
-    private MapNetworkNode findNode(String nodeName) {
+    private List<MapNetworkNode> findNodes(String nodeNameEnding) {
+        List<MapNetworkNode> matchingNodes = new ArrayList<>();
         for(MapNetworkNode node : nodes) {
-            if (node.getNodeName().endsWith(nodeName)) {
-                return node;
+            if (node.getNodeName().endsWith(nodeNameEnding)) {
+                matchingNodes.add(node);
             }
         }
-        throw new IllegalStateException("Tried to find a node that did not exist");
+
+        if (matchingNodes.isEmpty()) {
+            throw new IllegalStateException("Did not find any matching nodes!");
+        }
+        else {
+            return matchingNodes;
+        }
     }
 
     @Override
     public Long solvePartOne() {
-        MapNetworkNode currentNode;
+        List<MapNetworkNode> currentNodes;
 
         // get the starting node
-        currentNode = findNode("AAA");
+        currentNodes = findNodes("AAA");
         long stepsTaken = 0;
         int nextInstruction = 0;
 
-        while(!currentNode.getNodeName().equals("ZZZ")) {
-            if (directions[nextInstruction] == 'L') {
-                currentNode = currentNode.getLeftNode();
+        for(MapNetworkNode currentNode : currentNodes) {
+            while (!currentNode.getNodeName().equals("ZZZ")) {
+                if (directions[nextInstruction] == 'L') {
+                    currentNode = currentNode.getLeftNode();
+                } else {
+                    currentNode = currentNode.getRightNode();
+                }
+                stepsTaken++;
+                nextInstruction = (int) stepsTaken % directions.length;
             }
-            else {
-                currentNode = currentNode.getRightNode();
-            }
-            stepsTaken++;
-            nextInstruction = (int) stepsTaken % directions.length;
         }
         System.out.println("The number of steps taken to reach ZZZ is " + stepsTaken);
         return stepsTaken;
