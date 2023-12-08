@@ -45,7 +45,7 @@ public final class Day8 implements Puzzle<Long> {
 
     private MapNetworkNode findNode(String nodeName) {
         for(MapNetworkNode node : nodes) {
-            if (node.getNodeName().equals(nodeName)) {
+            if (node.getNodeName().endsWith(nodeName)) {
                 return node;
             }
         }
