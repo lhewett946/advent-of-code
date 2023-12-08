@@ -3,13 +3,12 @@ package net.lsmith946.adventofcode.problems2023;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 public class CamelClassHand implements Comparable<CamelClassHand> {
 
-    private char[] cardsInHand;
+    protected char[] cardsInHand;
     private int    bid;
-    private CamelCardHandTypes handType;
+    protected CamelCardHandTypes handType;
 
     public char[] getCardsInHand() {
         return cardsInHand;
@@ -29,7 +28,7 @@ public class CamelClassHand implements Comparable<CamelClassHand> {
         determineHandType();
     }
 
-    public void determineHandType() {
+    protected void determineHandType() {
         Map<Character, Integer> countChars = new HashMap<>();
         for(Character c : cardsInHand) {
             if (countChars.containsKey(c)) {
@@ -77,7 +76,7 @@ public class CamelClassHand implements Comparable<CamelClassHand> {
         }
     }
 
-    private int cardToValue(char card) {
+    protected int cardToValue(char card) {
         switch(card) {
             case 'A' -> {
                 return 14;
@@ -99,6 +98,7 @@ public class CamelClassHand implements Comparable<CamelClassHand> {
             }
         }
     }
+
     @Override
     public int compareTo(CamelClassHand otherCard) {
         if (this.handType != otherCard.getHandType()) {
