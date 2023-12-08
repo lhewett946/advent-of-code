@@ -21,10 +21,25 @@ public final class Day8 implements Puzzle<Long> {
         this.nodes = new ArrayList<>();
         directions = values.remove(0).toCharArray();
         values.remove(0); // delete the empty string between the directions and the node list
+        // generate all of the nodes
         for(String s : values) {
             String[] nodeStr = StringUtils.split(s);
             MapNetworkNode newNode = new MapNetworkNode(nodeStr[0]);
             nodes.add(newNode);
+        }
+
+        MapNetworkNode currentNode;
+
+        for(String s : values) {
+            String[] nodeStr = StringUtils.split(s);
+            String leftConnectedNode = nodeStr[2].substring(1, 4);
+            String rightConnectedNode = nodeStr[3].substring(0, 3);
+
+            currentNode= findNode(nodeStr[0]);
+            MapNetworkNode leftNode = findNode(leftConnectedNode);
+            MapNetworkNode rightNode = findNode(rightConnectedNode);
+
+            currentNode.addConnectedNodes(leftNode, rightNode);
         }
     }
 
@@ -40,18 +55,6 @@ public final class Day8 implements Puzzle<Long> {
     @Override
     public Long solvePartOne() {
         MapNetworkNode currentNode;
-
-        for(String s : values) {
-            String[] nodeStr = StringUtils.split(s);
-            String leftConnectedNode = nodeStr[2].substring(1, 4);
-            String rightConnectedNode = nodeStr[3].substring(0, 3);
-
-            currentNode= findNode(nodeStr[0]);
-            MapNetworkNode leftNode = findNode(leftConnectedNode);
-            MapNetworkNode rightNode = findNode(rightConnectedNode);
-
-            currentNode.addConnectedNodes(leftNode, rightNode);
-        }
 
         // get the starting node
         currentNode = findNode("AAA");
