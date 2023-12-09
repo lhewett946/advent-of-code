@@ -1,5 +1,6 @@
 package net.lsmith946.adventofcode.problems2023.days;
 
+import net.lsmith946.adventofcode.problems2023.ExtrapolationDirection;
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
 import org.apache.commons.lang3.StringUtils;
@@ -26,7 +27,7 @@ public final class Day9 implements Puzzle<Long> {
         return true;
     }
 
-    private long extrapolate(Long[] existingValues) {
+    private long extrapolate(Long[] existingValues, ExtrapolationDirection direction) {
         Long[] valuesDeltas =  new Long[existingValues.length-1];
         for(int i = 0; i < valuesDeltas.length; i++) {
             valuesDeltas[i] = existingValues[i+1] - existingValues[i];
@@ -36,7 +37,13 @@ public final class Day9 implements Puzzle<Long> {
             return existingValues[0];
         }
         else {
-            long nextDelta = existingValues[existingValues.length-1] + extrapolate(valuesDeltas);
+            long nextDelta;
+            if (direction == ExtrapolationDirection.FORWARD) {
+                nextDelta = existingValues[existingValues.length - 1] + extrapolate(valuesDeltas, ExtrapolationDirection.FORWARD);
+            }
+            else {
+                nextDelta = existingValues[0] - extrapolate(valuesDeltas, ExtrapolationDirection.BACKWARD);
+            }
             return nextDelta;
         }
     }
@@ -52,7 +59,7 @@ public final class Day9 implements Puzzle<Long> {
             }
 
             // extrapolate the next value and add it to the list
-            long nextValue = extrapolate(measurements);
+            long nextValue = extrapolate(measurements, ExtrapolationDirection.FORWARD);
             extrapolatedValuesSum += nextValue;
         }
         System.out.println("The sum of the extrapolated values is " + extrapolatedValuesSum);
@@ -61,6 +68,19 @@ public final class Day9 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        Long extrapolatedValuesSum = 0L;
+        for(String s : values) {
+            String[] measurementsStr = StringUtils.split(s);
+            Long[] measurements = new Long[measurementsStr.length];
+            for(int i = 0; i < measurements.length; i++) {
+                measurements[i] = Long.parseLong(measurementsStr[i]);
+            }
+
+            // extrapolate the next value and add it to the list
+            long nextValue = extrapolate(measurements, ExtrapolationDirection.BACKWARD);
+            extrapolatedValuesSum += nextValue;
+        }
+        System.out.println("The sum of the extrapolated values is " + extrapolatedValuesSum);
+        return extrapolatedValuesSum;
     }
 }
