@@ -39,9 +39,9 @@ public class Day5 implements Puzzle<Long> {
             }
 
             if (currentPosition.getY() < endPoint.getY()) {
-                currentPosition = currentPosition.move(CompassDirection.NORTH, 1);
-            } else if (currentPosition.getY() > endPoint.getY()) {
                 currentPosition = currentPosition.move(CompassDirection.SOUTH, 1);
+            } else if (currentPosition.getY() > endPoint.getY()) {
+                currentPosition = currentPosition.move(CompassDirection.NORTH, 1);
             }
             intermediatePoints.add(currentPosition);
         }

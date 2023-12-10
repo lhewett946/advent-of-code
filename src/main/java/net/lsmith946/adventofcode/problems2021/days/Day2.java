@@ -22,8 +22,8 @@ public class Day2 implements Puzzle<Long> {
     private CompassDirection decodeDirections(String direction) {
         return switch(direction) {
             case "forward" -> CompassDirection.EAST;
-            case "up" -> CompassDirection.SOUTH; // up is south because up decreases depth, and down (the default) will increase it
-            default -> CompassDirection.NORTH;
+            case "up" -> CompassDirection.NORTH;
+            default -> CompassDirection.SOUTH;
         };
     }
 
@@ -56,7 +56,7 @@ public class Day2 implements Puzzle<Long> {
             if (Objects.equals(splitString[0], "forward")) {
                 int depthChange = aim * magnitude;
                 currentPosition = currentPosition.move(direction, magnitude);
-                currentPosition = currentPosition.move(CompassDirection.NORTH, depthChange);
+                currentPosition = currentPosition.move(CompassDirection.SOUTH, depthChange);
             } else {
                 if (Objects.equals(splitString[0], "up")) {
                     aim -= magnitude;

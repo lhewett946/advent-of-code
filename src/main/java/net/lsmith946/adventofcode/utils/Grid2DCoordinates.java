@@ -29,8 +29,8 @@ public class Grid2DCoordinates {
     public Grid2DCoordinates move(CompassDirection direction, int magnitude) {
         Grid2DCoordinates newPosition = new Grid2DCoordinates(x, y);
         switch(direction) {
-            case NORTH -> newPosition.y += magnitude;
-            case SOUTH -> newPosition.y -= magnitude;
+            case NORTH -> newPosition.y -= magnitude;
+            case SOUTH -> newPosition.y += magnitude;
             case EAST -> newPosition.x += magnitude;
             case WEST -> newPosition.x -= magnitude;
         }
