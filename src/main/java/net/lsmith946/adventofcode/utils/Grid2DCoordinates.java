@@ -64,6 +64,12 @@ public class Grid2DCoordinates {
         return (x >= xMin && x <= xMax && y >= yMin && y <= yMax);
     }
 
+    public int getManhattanDistanceTo(Grid2DCoordinates endPoint) {
+        int manhattanDistance = Math.abs(this.x - endPoint.getX());
+        manhattanDistance += Math.abs(this.y - endPoint.getY());
+        return manhattanDistance;
+    }
+
     @Override
     public String toString() {
         return "(" + x + "," + y + ")";
