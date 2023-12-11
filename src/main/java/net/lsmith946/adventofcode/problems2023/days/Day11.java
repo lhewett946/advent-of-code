@@ -97,6 +97,32 @@ public final class Day11 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        long totalDistance = 0L;
+        for(int i = 0; i < galaxyLocations.size(); i++) {
+            for(int j = i+1; j < galaxyLocations.size(); j++) {
+                totalDistance += galaxyLocations.get(i).getManhattanDistanceTo(galaxyLocations.get(j));
+
+                // account for expansion
+                int lowestRow = Math.min(galaxyLocations.get(i).getX(), galaxyLocations.get(j).getX());
+                int highestRow = Math.max(galaxyLocations.get(i).getX(), galaxyLocations.get(j).getX());
+
+                for(int row = lowestRow; row <= highestRow; row++) {
+                    if (rowsWithoutGalaxies.contains(row)) {
+                        totalDistance += 999999; // add 999,999 (since 1 was already added for the original Manhattan distance)
+                    }
+                }
+
+                int lowestColumn = Math.min(galaxyLocations.get(i).getY(), galaxyLocations.get(j).getY());
+                int highestColumn = Math.max(galaxyLocations.get(i).getY(), galaxyLocations.get(j).getY());
+
+                for(int column = lowestColumn; column <= highestColumn; column++) {
+                    if (columnsWithoutGalaxies.contains(column)) {
+                        totalDistance += 999999; // add 999,999 (since 1 was already added for the original Manhattan distance)
+                    }
+                }
+            }
+        }
+        System.out.println("The total distance between all the pairs of galaxies is " + totalDistance);
+        return totalDistance;
     }
 }
