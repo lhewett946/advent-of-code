@@ -79,7 +79,7 @@ public final class Day5 implements Puzzle<Long> {
 
     private void processMapping(String mapName, List<AlmanacEntry> seedEntries) {
         List<AlmanacEntry> newSeedEntries = new ArrayList<>();
-        while(seedEntries.size() != 0) {
+        while(!seedEntries.isEmpty()) {
             AlmanacEntry seed = seedEntries.remove(0);
             boolean matchingRangeFound = false;
             boolean rangeSplitPerformed = false;
@@ -100,21 +100,39 @@ public final class Day5 implements Puzzle<Long> {
                     matchingRangeFound = true;
                     break;
                 }
+                else if (RangeUtils.rangesFullyContained(srcRangeStart, srcRangeStart + rangeSize - 1 , srcValue, srcValue + seedRangeSize - 1)) {
+                    AlmanacEntry newSeedRange1 = new AlmanacEntry(seed);
+                    AlmanacEntry newSeedRange2 = new AlmanacEntry(seed);
+                    AlmanacEntry newSeedRange3 = new AlmanacEntry(seed);
+
+                    newSeedRange1.setRange(srcRangeStart - srcValue);
+                    newSeedRange2.setRange(rangeSize);
+                    updateSrcValue(mapName, newSeedRange2, srcRangeStart);
+                    newSeedRange3.setRange(srcValue + seedRangeSize - srcRangeStart - (rangeSize - 1));
+                    updateSrcValue(mapName, newSeedRange3, srcRangeStart + rangeSize);
+
+                    seedEntries.add(newSeedRange1);
+                    seedEntries.add(newSeedRange2);
+                    seedEntries.add(newSeedRange3);
+                    rangeSplitPerformed = true;
+                    break;
+                }
                 else if (RangeUtils.rangesOverlap(srcRangeStart, srcRangeStart + rangeSize - 1 , srcValue, srcValue + seedRangeSize - 1)) {
                     // split the range represented by this entry up and push both new ranges back into the queue to be processed
                     AlmanacEntry newSeedRange1 = new AlmanacEntry(seed);
                     AlmanacEntry newSeedRange2 = new AlmanacEntry(seed);
-                    RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapDirection(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
+                    RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapType(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
                     long overlapPoint = RangeUtils.findOverlapPoint(srcRangeStart, srcRangeStart + rangeSize - 1, srcValue, srcValue + seedRangeSize - 1);
-                    if (overlapType == RangeUtils.RangeOverlapType.TOP) {
-                        newSeedRange1.setRange(overlapPoint - srcValue + 1);
-                        updateSrcValue(mapName, newSeedRange2, overlapPoint+1);
-                        newSeedRange2.setRange(seed.getRange() - newSeedRange1.getRange());
+                    if (overlapType == RangeUtils.RangeOverlapType.START_INSIDE) {
+                        newSeedRange1.setRange(srcRangeStart + rangeSize - overlapPoint);
+                        updateSrcValue(mapName, newSeedRange1, overlapPoint);
+                        newSeedRange2.setRange(seedRangeSize - newSeedRange1.getRange());
+                        updateSrcValue(mapName, newSeedRange2, srcRangeStart + rangeSize);
                     }
                     else {
-                        newSeedRange1.setRange(overlapPoint - srcValue);
-                        updateSrcValue(mapName, newSeedRange2, overlapPoint);
-                        newSeedRange2.setRange(seed.getRange() - newSeedRange1.getRange());
+                        newSeedRange1.setRange(srcRangeStart - srcValue);
+                        updateSrcValue(mapName, newSeedRange2, srcRangeStart);
+                        newSeedRange2.setRange(seedRangeSize - newSeedRange1.getRange());
                     }
                     seedEntries.add(newSeedRange1);
                     seedEntries.add(newSeedRange2);
@@ -172,7 +190,7 @@ public final class Day5 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        /*String[] seeds = StringUtils.split(values.get(0));
+        String[] seeds = StringUtils.split(values.get(0));
         List<AlmanacEntry> seedEntries = new ArrayList<>();
         for(int i = 1; i < seeds.length; i=i+2) {
             AlmanacEntry entry = new AlmanacEntry(Long.parseLong(seeds[i]), Long.parseLong(seeds[i+1]));
@@ -190,7 +208,5 @@ public final class Day5 implements Puzzle<Long> {
         long lowestLocation = findLowestLocation(seedEntries);
         System.out.println("The lowest location corresponding to the initial seeds is " + lowestLocation);
         return lowestLocation;
-        */
-        return 0L;
     }
 }

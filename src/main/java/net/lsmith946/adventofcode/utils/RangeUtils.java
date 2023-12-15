@@ -2,7 +2,7 @@ package net.lsmith946.adventofcode.utils;
 
 public class RangeUtils {
 
-    public enum RangeOverlapType { TOP, BOTTOM };
+    public enum RangeOverlapType { START_INSIDE, FINISH_INSIDE };
 
     /**
      * This function checks two ranges to see if they overlap with one another
@@ -73,45 +73,38 @@ public class RangeUtils {
     }
 
     /**
-     * This function determines the point at which two ranges start or stop overlapping
-     * @param startRange1 The start index of the first range
-     * @param endRange1 The end index of the first range
-     * @param startRange2 The start index of the second range
-     * @param endRange2 The end index of the second range
-     * @return the value at which the ranges start or stop overlapping
+     * This function determines whether ranges that are overlapping are overlapped at the top or at the bottom
+     * @param refRangeStart The start index of the reference range
+     * @param refRangeEnd The end index of the reference range
+     * @param targetRangeStart The start index of the target range
+     * @param targetRangeEnd The end index of the target range
+     * @return the start or end point of the overlapping portion of the range
      */
-    public static long findOverlapPoint(long startRange1, long endRange1, long startRange2, long endRange2) {
-        if (startRange1 == startRange2) {
-            return Math.min(endRange1, endRange2);
-        }
-        else if (endRange1 == endRange2) {
-            return Math.max(startRange1, startRange2);
-        }
-        else if ((startRange1 >= startRange2) && (startRange1 <= endRange2)) {
-            return startRange1;
-        }
-        else if ((endRange1 >= startRange2) && (endRange1 <= endRange2)) {
-            return startRange2;
+    public static long findOverlapPoint(long refRangeStart, long refRangeEnd, long targetRangeStart, long targetRangeEnd) {
+        RangeOverlapType overlapType = overlapType(refRangeStart, refRangeEnd, targetRangeStart, targetRangeEnd);
+        if (overlapType == RangeOverlapType.START_INSIDE) {
+            return targetRangeStart;
         }
         else {
-            throw new IllegalStateException("Tried to find the overlap point of ranges that were not overlapping!");
+            return targetRangeEnd;
         }
     }
 
     /**
      * This function determines whether ranges that are overlapping are overlapped at the top or at the bottom
-     * @param startRange1 The start index of the first range
-     * @param endRange1 The end index of the first range
-     * @param startRange2 The start index of the second range
-     * @param endRange2 The end index of the second range
-     * @return TOP if the ranges are overlapped such that the top of range 1 is overlapped with the bottom of range 2, otherwise BOTTOM
+     * @param refRangeStart The start index of the reference range
+     * @param refRangeEnd The end index of the reference range
+     * @param targetRangeStart The start index of the target range
+     * @param targetRangeEnd The end index of the target range
+     * @return START_INSIDE if the target range starts inside the reference range, FINISH_INSIDE if the target range finishes inside the reference range
+     * START_INSIDE takes priority so if the target range is fully contained within the reference it will return START_INSIDE
      */
-    public static RangeOverlapType overlapDirection(long startRange1, long endRange1, long startRange2, long endRange2) {
-        if ((startRange1 >= startRange2) && (startRange1 <= endRange2)) {
-            return RangeOverlapType.BOTTOM;
+    public static RangeOverlapType overlapType(long refRangeStart, long refRangeEnd, long targetRangeStart, long targetRangeEnd) {
+        if ((targetRangeStart >= refRangeStart) && (targetRangeStart <= refRangeEnd)) {
+            return RangeOverlapType.START_INSIDE;
         }
-        else if ((endRange1 >= startRange2) && (endRange1 <= endRange2)) {
-            return RangeOverlapType.TOP;
+        else if ((targetRangeEnd >= refRangeStart) && (targetRangeEnd <= refRangeEnd)) {
+            return RangeOverlapType.FINISH_INSIDE;
         }
         else {
             throw new IllegalStateException("Tried to find the overlap point of ranges that were not overlapping!");

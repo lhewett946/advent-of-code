@@ -11,22 +11,16 @@ class RangeUtilsTest {
         Assertions.assertEquals(10, overlapPoint);
 
         overlapPoint = RangeUtils.findOverlapPoint(10, 25, 0, 20);
-        Assertions.assertEquals(10, overlapPoint);
-
-        overlapPoint = RangeUtils.findOverlapPoint(10, 50, 10, 20);
         Assertions.assertEquals(20, overlapPoint);
-
-        overlapPoint = RangeUtils.findOverlapPoint(10, 50, 30, 50);
-        Assertions.assertEquals(30, overlapPoint);
     }
 
     @Test
     void testOverlapDirection() {
-        RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapDirection(0, 20, 10, 25);
-        Assertions.assertEquals(RangeUtils.RangeOverlapType.TOP, overlapType);
+        RangeUtils.RangeOverlapType overlapType = RangeUtils.overlapType(0, 20, 10, 25);
+        Assertions.assertEquals(RangeUtils.RangeOverlapType.START_INSIDE, overlapType);
 
-        overlapType = RangeUtils.overlapDirection(10, 25, 0, 20);
-        Assertions.assertEquals(RangeUtils.RangeOverlapType.BOTTOM, overlapType);
+        overlapType = RangeUtils.overlapType(10, 25, 0, 20);
+        Assertions.assertEquals(RangeUtils.RangeOverlapType.FINISH_INSIDE, overlapType);
     }
 
     @Test
