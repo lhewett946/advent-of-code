@@ -38,7 +38,7 @@ public final class Day10 implements Puzzle<Long> {
 
     // find the pipes that are connected to the start point
     // there must be exactly two of them, so check this to avoid errors
-    // create a loop traverser at each point to
+    // create a loop traveller each point to go around the loop in opposite directions until the entire loop is mapped out
     private List<LoopTraveller> findConnectedPipes(Grid2DCoordinates startPoint) {
         List<Grid2DCoordinates> adjacentPoints = startPoint.getAdjacentCoords(false);
         List<LoopTraveller> loopTravellers = new ArrayList<>();
