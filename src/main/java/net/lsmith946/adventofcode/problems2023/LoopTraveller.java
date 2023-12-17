@@ -12,12 +12,16 @@ public class LoopTraveller {
         return currentPosition;
     }
 
+    public void setCurrentPosition(Grid2DCoordinates currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
     public LoopTraveller(Grid2DCoordinates currentPosition, CompassDirection lastMoveDirection) {
         this.currentPosition = currentPosition;
         this.lastMoveDirection = lastMoveDirection;
     }
 
-    private CompassDirection findNextDrection(char pipeType) {
+    private CompassDirection findNextDirection(char pipeType) {
         switch (pipeType) {
             case '|' -> {
                 if (lastMoveDirection == CompassDirection.NORTH) {
@@ -66,7 +70,7 @@ public class LoopTraveller {
     }
 
     public void move(char pipeType) {
-        CompassDirection direction = findNextDrection(pipeType);
+        CompassDirection direction = findNextDirection(pipeType);
         currentPosition = currentPosition.move(direction, 1);
         lastMoveDirection = direction;
     }
