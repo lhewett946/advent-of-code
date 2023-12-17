@@ -16,6 +16,10 @@ public class LoopTraveller {
         this.currentPosition = currentPosition;
     }
 
+    public CompassDirection getLastMoveDirection() {
+        return lastMoveDirection;
+    }
+
     public LoopTraveller(Grid2DCoordinates currentPosition, CompassDirection lastMoveDirection) {
         this.currentPosition = currentPosition;
         this.lastMoveDirection = lastMoveDirection;

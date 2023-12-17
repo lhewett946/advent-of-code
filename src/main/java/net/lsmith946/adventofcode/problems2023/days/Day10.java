@@ -9,6 +9,7 @@ import net.lsmith946.adventofcode.utils.Puzzle;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class Day10 implements Puzzle<Long> {
@@ -158,15 +159,15 @@ public final class Day10 implements Puzzle<Long> {
         // create a line of fill points around the sides of the grid
         // to expand in from each side
         // left and right sides
-        for(int y = 0; y < values.length; y++) {
+        for(int y = 0; y < map.length; y++) {
             fillCoords.add(new Grid2DCoordinates(-1,y));
-            fillCoords.add(new Grid2DCoordinates(values[y].length,y));
+            fillCoords.add(new Grid2DCoordinates(map[y].length,y));
         }
 
         // top and bottom sides
-        for(int x = 0; x < values[0].length; x++) {
+        for(int x = 0; x < map[0].length; x++) {
             fillCoords.add(new Grid2DCoordinates(x,-1));
-            fillCoords.add(new Grid2DCoordinates(x, values.length));
+            fillCoords.add(new Grid2DCoordinates(x, map.length));
         }
 
         while(!fillCoords.isEmpty()) {
@@ -183,6 +184,7 @@ public final class Day10 implements Puzzle<Long> {
                 map[fillPoint.getY()][fillPoint.getX()] = 'O';
             }
         }
+
         return map;
     }
 
@@ -199,6 +201,16 @@ public final class Day10 implements Puzzle<Long> {
         // scale the starting location of the traveller up to the expanded map
         Grid2DCoordinates travellerStart = new Grid2DCoordinates(traveller1.getCurrentPosition().getX()*2, traveller1.getCurrentPosition().getY()*2);
         traveller1.setCurrentPosition(travellerStart);
+        // mark off the expansion that has been applied to the start location as outside the loop
+        if (traveller1.getLastMoveDirection() == CompassDirection.EAST || traveller1.getLastMoveDirection() == CompassDirection.WEST) {
+            // if the move was in the horizontal direction, change the X value
+            expandedMap[(startingPoint.getY()*2)][(startingPoint.getX()*2)+1] = 'S';
+        }
+        else {
+            // if the move was in the vertical direction, change the Y value
+            expandedMap[(startingPoint.getY()*2)+1][(startingPoint.getX()*2)] = 'S';
+        }
+
         while(expandedMap[traveller1.getCurrentPosition().getY()][traveller1.getCurrentPosition().getX()] != 'S') {
             char pipeType = expandedMap[traveller1.getCurrentPosition().getY()][traveller1.getCurrentPosition().getX()];
             expandedMap[traveller1.getCurrentPosition().getY()][traveller1.getCurrentPosition().getX()] = 'S';
