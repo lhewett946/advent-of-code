@@ -115,19 +115,7 @@ public final class Day10 implements Puzzle<Long> {
     @Override
     public Long solvePartOne() {
         // start by finding the start point, S
-        Grid2DCoordinates startingPoint = null;
-        for(int y = 0; y < values.length; y++) {
-            for(int x = 0; x < values.length; x++) {
-                if (values[y][x] == 'S') {
-                    startingPoint = new Grid2DCoordinates(x, y);
-                }
-            }
-        }
-
-        // check that the starting point was found
-        if (startingPoint == null) {
-            throw new IllegalStateException("Unable to locate the starting point!");
-        }
+        Grid2DCoordinates startingPoint = findStartingPoint();
 
         List<LoopTraveller> startingPointConnections = findConnectedPipes(startingPoint);
         long steps = 1;
