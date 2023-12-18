@@ -202,9 +202,17 @@ public final class Day10 implements Puzzle<Long> {
         Grid2DCoordinates travellerStart = new Grid2DCoordinates(traveller1.getCurrentPosition().getX()*2, traveller1.getCurrentPosition().getY()*2);
         traveller1.setCurrentPosition(travellerStart);
         // mark off the expansion that has been applied to the start location as outside the loop
-        if (traveller1.getLastMoveDirection() == CompassDirection.EAST || traveller1.getLastMoveDirection() == CompassDirection.WEST) {
+        if (traveller1.getLastMoveDirection() == CompassDirection.EAST) {
             // if the move was in the horizontal direction, change the X value
             expandedMap[(startingPoint.getY()*2)][(startingPoint.getX()*2)+1] = 'S';
+        }
+        else if (traveller1.getLastMoveDirection() == CompassDirection.WEST) {
+            // if the move was in the horizontal direction, change the X value
+            expandedMap[(startingPoint.getY()*2)][(startingPoint.getX()*2)-1] = 'S';
+        }
+        else if (traveller1.getLastMoveDirection() == CompassDirection.NORTH) {
+            // if the move was in the vertical direction, change the Y value
+            expandedMap[(startingPoint.getY()*2)-1][(startingPoint.getX()*2)] = 'S';
         }
         else {
             // if the move was in the vertical direction, change the Y value
