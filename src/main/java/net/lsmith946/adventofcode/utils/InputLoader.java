@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class InputLoader {
 
     public static String constructFilePath(int year, int day) {
-        String fileName = "/" + year + "_day" + day + "_input.txt";
+        String fileName = "/inputs/" + year + "_day" + day + "_input.txt";
         String dir = System.getProperty("user.dir");
         return dir + fileName;
     }
