@@ -2,6 +2,7 @@ package net.lsmith946.adventofcode.problems2024.days;
 
 import net.lsmith946.adventofcode.utils.InputLoader;
 import net.lsmith946.adventofcode.utils.Puzzle;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -54,7 +55,24 @@ public final class Day2 implements Puzzle<Long> {
     @Override
     public Long solvePartTwo() {
         long count = 0L;
-
+        for(String report : values) {
+            String[] levels;
+            levels = report.split(" ");
+            for(int i = -1; i < levels.length; i++) {
+                if (i == -1 && isSafe(levels)) {
+                    count++;
+                    break;
+                } else if (i != -1) {
+                    // rewrite the report removing one level
+                    String[] reportRemovedLevel = ArrayUtils.remove(levels, i);
+                    if (isSafe(reportRemovedLevel)) {
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("The number of safe reports is " + count);
         return count;
     }
 }
