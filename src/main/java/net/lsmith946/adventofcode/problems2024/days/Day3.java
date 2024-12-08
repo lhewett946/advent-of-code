@@ -44,6 +44,35 @@ public final class Day3 implements Puzzle<Long> {
 
     @Override
     public Long solvePartTwo() {
-        return 0L;
+        long sum = 0;
+        Pattern findMulOp = Pattern.compile("mul\\(\\d+,\\d+\\)");
+        Pattern extractInt = Pattern.compile("\\d+");
+        boolean enabled = true; // start in enabled state
+        for(String s : values) {
+            String [] splitString = s.split("do");
+            for(String ss : splitString) {
+                if (ss.startsWith("n't")) {
+                    // if the sub-string starts with n't, then it's disabling the mul instructions
+                    enabled = false;
+                } else if (!ss.equals(splitString[0])) {
+                    enabled = true;
+                }
+
+                if (enabled) {
+                    Matcher mulOpMatch = findMulOp.matcher(ss);
+                    while (mulOpMatch.find()) {
+                        String mulOperation = mulOpMatch.group();
+                        Matcher getInts = extractInt.matcher(mulOperation);
+                        long result = 1;
+                        while (getInts.find()) {
+                            result = result * Integer.parseInt(getInts.group());
+                        }
+                        sum += result;
+                    }
+                }
+            }
+        }
+        System.out.println("The sum of the results of the multiplication operations is " + sum);
+        return sum;
     }
 }
